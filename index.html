@@ -1,0 +1,707 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sri Guru Datta Paduka Kshetra | Swami Samartha Maharaj Seva Samasthan</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300;400;600;700&family=Prata&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --saffron: #f6a538;
+            --saffron-deep: #c97514;
+            --maroon: #6b1f1a;
+            --teal: #1c6d68;
+            --cream: #fff7ea;
+            --ink: #1e1e1e;
+            --muted: #575757;
+            --card: #ffffff;
+            --shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Hind Madurai", sans-serif;
+            color: var(--ink);
+            background:
+                radial-gradient(1200px 600px at 15% 0%, rgba(246, 165, 56, 0.12), transparent 70%),
+                radial-gradient(1200px 600px at 90% 10%, rgba(28, 109, 104, 0.14), transparent 70%),
+                linear-gradient(180deg, #fffaf2 0%, #fef3df 45%, #fffaf2 100%);
+            line-height: 1.7;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: min(1100px, 92vw);
+            margin: 0 auto;
+        }
+
+        .lang-bar {
+            background: #1f1b16;
+            padding: 12px 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .lang-bar .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .lang-btn {
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            color: #ffffff;
+            background: transparent;
+            padding: 7px 14px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.2s ease;
+        }
+
+        .lang-btn:hover {
+            background: var(--saffron);
+            color: #1b1106;
+            border-color: var(--saffron);
+        }
+
+        #google_translate_element {
+            position: absolute;
+            top: -999px;
+            left: -999px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        }
+
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 9;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 250, 242, 0.9);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .nav .container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 14px 0;
+        }
+
+        .brand {
+            font-family: "Prata", serif;
+            font-size: 1.2rem;
+            letter-spacing: 0.6px;
+            color: var(--maroon);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            font-weight: 600;
+            color: var(--muted);
+        }
+
+        .nav-links a:hover {
+            color: var(--maroon);
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            padding: 70px 0 90px;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(120deg, rgba(107, 31, 26, 0.88), rgba(246, 165, 56, 0.55)),
+                url("../1.jpg.jpeg") center/cover no-repeat;
+            opacity: 0.96;
+            z-index: -2;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.2), transparent 50%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            color: #ffffff;
+            display: grid;
+            gap: 26px;
+            max-width: 640px;
+        }
+
+        .hero h1 {
+            font-family: "Prata", serif;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--saffron);
+            color: #1b1106;
+            padding: 12px 22px;
+            border-radius: 999px;
+            font-weight: 700;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta.secondary {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            color: #ffffff;
+            box-shadow: none;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        section {
+            padding: 70px 0;
+        }
+
+        .section-title {
+            font-family: "Prata", serif;
+            font-size: clamp(1.5rem, 3.6vw, 2.2rem);
+            color: var(--maroon);
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            color: var(--muted);
+            max-width: 720px;
+            margin-bottom: 30px;
+        }
+
+        .grid {
+            display: grid;
+            gap: 24px;
+        }
+
+        .grid.two {
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        }
+
+        .card {
+            background: var(--card);
+            border-radius: 20px;
+            padding: 26px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .card h3 {
+            color: var(--teal);
+            margin-bottom: 10px;
+        }
+
+        .steps {
+            display: grid;
+            gap: 18px;
+        }
+
+        .step-card {
+            position: relative;
+            background: var(--card);
+            border-radius: 20px;
+            padding: 28px 26px 26px 72px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .step-card::before {
+            content: attr(data-step);
+            position: absolute;
+            left: 20px;
+            top: 22px;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            font-weight: 700;
+            color: #1b1106;
+            background: var(--saffron);
+            box-shadow: 0 10px 20px rgba(246, 165, 56, 0.4);
+        }
+
+        .step-card h3 {
+            color: var(--maroon);
+            margin-bottom: 8px;
+        }
+
+        .step-card.is-offset {
+            transform: translateX(24px);
+        }
+
+        .highlight {
+            background: rgba(246, 165, 56, 0.12);
+            border-left: 4px solid var(--saffron-deep);
+            padding: 16px 20px;
+            border-radius: 14px;
+            color: var(--maroon);
+            font-weight: 600;
+        }
+
+        .pill-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .pill-list li {
+            background: rgba(28, 109, 104, 0.12);
+            color: var(--teal);
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-weight: 600;
+        }
+
+        .panchangam {
+            background:
+                linear-gradient(120deg, rgba(28, 109, 104, 0.95), rgba(107, 31, 26, 0.92)),
+                url("../2.jpg.jpeg") center/cover no-repeat;
+            color: #ffffff;
+            border-radius: 24px;
+            padding: 36px;
+            display: grid;
+            gap: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .panchangam ul {
+            list-style: none;
+            display: grid;
+            gap: 8px;
+            padding: 0;
+        }
+
+        .panchangam a {
+            align-self: start;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            overflow: hidden;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .table th,
+        .table td {
+            padding: 14px 16px;
+            text-align: left;
+        }
+
+        .table th {
+            background: var(--maroon);
+            color: #ffffff;
+        }
+
+        .table tr:nth-child(even) {
+            background: #fff3e1;
+        }
+
+        .gallery {
+            display: grid;
+            gap: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        }
+
+        .gallery img {
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-card {
+            display: grid;
+            gap: 12px;
+            font-weight: 600;
+        }
+
+        .donation-cta {
+            display: grid;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .qr-box {
+            background: #fff9ef;
+            border-radius: 18px;
+            padding: 18px;
+            border: 1px dashed rgba(107, 31, 26, 0.25);
+            display: grid;
+            place-items: center;
+        }
+
+        .qr-box img {
+            width: min(220px, 70vw);
+        }
+
+        .qr-note {
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        footer {
+            padding: 40px 0 50px;
+            background: #1f1b16;
+            color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+        }
+
+        @media (max-width: 720px) {
+            .nav .container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .hero {
+                padding: 60px 0 70px;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .step-card.is-offset {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="lang-bar">
+        <div class="container">
+            <button class="lang-btn" onclick="triggerLanguage('en')">English</button>
+            <button class="lang-btn" onclick="triggerLanguage('ta')">தமிழ்</button>
+            <button class="lang-btn" onclick="triggerLanguage('hi')">हिंदी</button>
+            <button class="lang-btn" onclick="triggerLanguage('mr')">मराठी</button>
+            <button class="lang-btn" onclick="triggerLanguage('te')">తెలుగు</button>
+        </div>
+    </div>
+
+    <div id="google_translate_element"></div>
+
+    <nav class="nav">
+        <div class="container">
+            <div class="brand">Sri Guru Datta Paduka Kshetra</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#origin">Origin</a></li>
+                <li><a href="#structure">Structure</a></li>
+                <li><a href="#goshala">Goshala</a></li>
+                <li><a href="#panchangam">Panchangam</a></li>
+                <li><a href="#donations">Donations</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Sri Guru Datta Paduka Kshetra Irajitam</h1>
+                <p>Swami Samartha Maharaj Seva Samasthan Trust, Maruthipuram, Marudham Kulakkarai, Uthiramerur, Kanchipuram, Tamil Nadu - 603 406.</p>
+                <div class="hero-actions">
+                    <a class="cta" href="#donations">Support Sevas</a>
+                    <a class="cta secondary" href="#panchangam">View Panchangam</a>
+                </div>
+                <div class="hero-meta">
+                    <span>Paduka Mandir</span>
+                    <span>Goshala Service</span>
+                    <span>Daily Puja & Festivals</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="about">
+            <div class="container">
+                <h2 class="section-title">Swami Samarth - An Introduction</h2>
+                <p class="section-subtitle">The birth details of Swami Samarth, considered the third avatar of Sri Dattatreya, remain highly secretive. Sri Dattatreya’s first avatar, Sripada Srivallabha (1320 AD), predicted the future incarnations.</p>
+                <div class="grid two">
+                    <div class="card">
+                        <h3>Spiritual Lineage</h3>
+                        <p>The second avatar appeared as Sri Narasimha Saraswati (1450 AD). After concluding that avatar, he performed penance in the Kadali Vana for 300 years before emerging as Swami Samarth in Maharashtra.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Akkalkot Maharaj</h3>
+                        <p>Swami Samarth stayed in Akkalkot for twenty years and attained Samadhi in a devotee’s house there, earning the name “Akkalkot Maharaj.”</p>
+                    </div>
+                </div>
+                <div class="highlight" style="margin-top: 24px;">Divine presence, compassionate grace, and protection define the Swami Samarth path.</div>
+            </div>
+        </section>
+
+        <section id="origin">
+            <div class="container">
+                <h2 class="section-title">Origin in Kanchipuram</h2>
+                <p class="section-subtitle">The desire to build a temple for Paramaguru Sri Sainath Sadguru in Marudham (Maruthipuram) took root in 2011.</p>
+                <div class="grid two">
+                    <div class="steps">
+                        <div class="step-card" data-step="01">
+                            <h3>2015</h3>
+                            <p>After chanting the Hanuman Chalisa 108 times over 18 days at the local Maruti temple, a worship center was inaugurated with Padukas and portrait of Sai Nath.</p>
+                        </div>
+                        <div class="step-card is-offset" data-step="02">
+                            <h3>2017</h3>
+                            <p>The thought of building a dedicated Paduka Mandir took deep root.</p>
+                        </div>
+                        <div class="step-card" data-step="03">
+                            <h3>2021</h3>
+                            <p>With the blessings of the Gurus, Bhoomi Puja was performed on February 24.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Guided by Devotion</h3>
+                        <p>Each milestone strengthened the resolve to create a sacred space where devotees can experience darshan, seva, and spiritual upliftment.</p>
+                        <ul class="pill-list">
+                            <li>Paduka Mandir</li>
+                            <li>Seva Samasthan</li>
+                            <li>Guru Blessings</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="structure">
+            <div class="container">
+                <h2 class="section-title">Viswaroopa Darshan & Structure</h2>
+                <p class="section-subtitle">The temple consists of three levels: Underground (Thazhthalam), Sanctum Sanctorum (Garbhagriha), and the Tower (Gopuram).</p>
+                <div class="grid two">
+                    <div class="card">
+                        <h3>Underground</h3>
+                        <p>Maruthipuram Swami Samarth Maharaj Viswaroopa Darshan represents Swami’s holy feet up to the waist.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Garbhagriha</h3>
+                        <p>Sri Nrusimha Saraswati, Sri Swami Samarth, Sri Sai Nath, Audumbar Moola Paduka, and Panchaloha Idol of Dattatreya are consecrated over sacred Yantras.</p>
+                    </div>
+                </div>
+                <div class="highlight" style="margin-top: 20px;">Sacred Yantras include Sri Chakra, Vaibhava Lakshmi, Hanuman, and Datta Yantras.</div>
+            </div>
+        </section>
+
+        <section id="goshala">
+            <div class="container">
+                <h2 class="section-title">Goshala - The Living Form of Dharma</h2>
+                <p class="section-subtitle">In Hindu Dharma, the cow is Gomatha, a divine mother who nurtures life. Supporting the Goshala is a service that sustains harmony with nature.</p>
+                <div class="grid two">
+                    <div class="card">
+                        <h3>Why Goshala Matters</h3>
+                        <p>Kamadhenu is praised as the divine cow who bestows prosperity. Lord Krishna, as Gopala, lived with cows and taught Ahimsa and harmony with nature.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Benefits of Supporting</h3>
+                        <ul class="pill-list">
+                            <li>Merit of Go-Dhanam</li>
+                            <li>Family harmony</li>
+                            <li>Protection of nature</li>
+                            <li>Traditional agriculture</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="highlight" style="margin-top: 20px;">Lend a hand - Save a life. Service to Goshala is service to God.</div>
+            </div>
+        </section>
+
+        <section id="panchangam">
+            <div class="container">
+                <h2 class="section-title">Today’s Panchangam</h2>
+                <p class="section-subtitle">A clean, focused view of the day’s Nakshatra, Thithi, Rahu Kalam, Yamagandam, and auspicious timings.</p>
+                <div class="panchangam">
+                    <ul>
+                        <li>What is today’s Nakshatra?</li>
+                        <li>What is the Thithi?</li>
+                        <li>Rahu Kalam, Yamagandam, Kuligai</li>
+                        <li>Auspicious and inauspicious times</li>
+                    </ul>
+                    <a class="cta" href="https://yourdomain.com/today-panchangam" target="_blank" rel="noopener">View Today’s Panchangam</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="donations">
+            <div class="container">
+                <h2 class="section-title">Donations & Sevas</h2>
+                <div class="grid two">
+                    <div class="card donation-cta">
+                        <div>
+                            <h3>Support Sevas</h3>
+                            <p>Your contribution supports daily pujas, Annadanam, and Goshala care.</p>
+                        </div>
+                        <div class="qr-box">
+                            <img src="qr.png" alt="UPI payment QR">
+                        </div>
+                        <p class="qr-note">Scan to donate via UPI (GPay, PhonePe, Paytm, or BHIM).</p>
+                        <a class="cta" href="#contact">Send Donation Details</a>
+                    </div>
+                    <div class="card">
+                        <h3>Bank Details</h3>
+                        <div class="contact-card">
+                            <span>Account Name: SWAMI SAMARTHA MAHARAJ SEVA SAMASTHAN</span>
+                            <span>Account Number: 50200057752558</span>
+                            <span>Bank: HDFC Bank, Branch: Kanchipuram</span>
+                            <span>IFSC: HDFC0000879</span>
+                            <span>UPI/GPay: 9940941049@hdfcbank</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-top: 26px;">
+                    <h3>Annual Special Festivals</h3>
+                    <ul class="pill-list">
+                        <li>Sri Rama Navami</li>
+                        <li>Swami Samarth Punyatithi</li>
+                        <li>Guru Purnima</li>
+                        <li>Datta Jayanthi</li>
+                        <li>Vijaya Dashami</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 28px;">
+                    <h3 style="margin-bottom: 12px; color: var(--teal);">Puja Methods & Tariffs</h3>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Puja Name</th>
+                                <th>Amount (INR)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Nithya Puja (Daily)</td><td>116/-</td></tr>
+                            <tr><td>Guruvara Puja (Thursday)</td><td>333/-</td></tr>
+                            <tr><td>Go Puja (Cow Puja)</td><td>1116/-</td></tr>
+                            <tr><td>Amavasya - Vaibhava Lakshmi Puja</td><td>3016/-</td></tr>
+                            <tr><td>Pournami - Datta Sahasranamam</td><td>5016/-</td></tr>
+                            <tr><td>Mandala Abhishekam (40 Days)</td><td>5016/-</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery">
+            <div class="container">
+                <h2 class="section-title">Temple Gallery</h2>
+                <p class="section-subtitle">A glimpse of the divine presence and our ongoing seva.</p>
+                <div class="gallery">
+                    <img src="../1.jpg.jpeg" alt="Temple gallery image 1">
+                    <img src="../2.jpg.jpeg" alt="Temple gallery image 2">
+                    <img src="../3.jpg.jpeg" alt="Temple gallery image 3">
+                    <img src="../4.jpg.jpeg" alt="Temple gallery image 4">
+                    <img src="../06.jpg.jpeg" alt="Temple gallery image 5">
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2 class="section-title">Contact Us</h2>
+                <p class="section-subtitle">Devotees can visit, make a Sankalpa to Swami, and perform Abhishekam, Alankaram, and Naivedyam with their own hands to experience bliss.</p>
+                <div class="grid two">
+                    <div class="card">
+                        <h3>Trustee Contact Numbers</h3>
+                        <div class="contact-card">
+                            <span>99409 41019 - SSMS Trust</span>
+                            <span>88384 27262 - Rajivi</span>
+                            <span>97694 04451 - Sundar Sai</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Address</h3>
+                        <p>Maruthipuram, Marudham Kulakkarai, Uthiramerur, Kanchipuram, Tamil Nadu - 603 406</p>
+                        <p class="highlight">You came... You saw... You received...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 Swami Samartha Maharaj Seva Samasthan. All Rights Reserved.</p>
+            <p>Maruthipuram, Kanchipuram, Tamil Nadu.</p>
+        </div>
+    </footer>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,ta,hi,mr,te',
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+
+        function triggerLanguage(langCode) {
+            var selectField = document.querySelector('.goog-te-combo');
+            if (selectField) {
+                selectField.value = langCode;
+                selectField.dispatchEvent(new Event('change'));
+            } else {
+                alert('Translation tool is loading... please try again in a moment.');
+            }
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
