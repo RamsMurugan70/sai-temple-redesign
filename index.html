@@ -310,29 +310,6 @@
             font-weight: 600;
         }
 
-        .panchangam {
-            background:
-                linear-gradient(120deg, rgba(28, 109, 104, 0.95), rgba(107, 31, 26, 0.92)),
-                url("2.jpg.jpeg") center/cover no-repeat;
-            color: #ffffff;
-            border-radius: 24px;
-            padding: 36px;
-            display: grid;
-            gap: 16px;
-            box-shadow: var(--shadow);
-        }
-
-        .panchangam ul {
-            list-style: none;
-            display: grid;
-            gap: 8px;
-            padding: 0;
-        }
-
-        .panchangam a {
-            align-self: start;
-        }
-
         .table {
             width: 100%;
             border-collapse: collapse;
@@ -365,6 +342,24 @@
         .gallery img {
             border-radius: 16px;
             box-shadow: var(--shadow);
+        }
+
+        .gallery-link {
+            margin-top: 22px;
+        }
+
+        .gallery-link .card {
+            display: grid;
+            gap: 10px;
+        }
+
+        .gallery-link a {
+            color: var(--teal);
+            font-weight: 700;
+        }
+
+        .gallery-link a:hover {
+            color: var(--maroon);
         }
 
         .contact-card {
@@ -446,7 +441,6 @@
                 <li><a href="#origin">Origin</a></li>
                 <li><a href="#structure">Structure</a></li>
                 <li><a href="#goshala">Goshala</a></li>
-                <li><a href="#panchangam">Panchangam</a></li>
                 <li><a href="#donations">Donations</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -460,7 +454,6 @@
                 <p>Swami Samartha Maharaj Seva Samasthan Trust, Maruthipuram, Marudham Kulakkarai, Uthiramerur, Kanchipuram, Tamil Nadu - 603 406.</p>
                 <div class="hero-actions">
                     <a class="cta" href="#donations">Support Sevas</a>
-                    <a class="cta secondary" href="#panchangam">View Panchangam</a>
                 </div>
                 <div class="hero-meta">
                     <span>Paduka Mandir</span>
@@ -563,22 +556,6 @@
             </div>
         </section>
 
-        <section id="panchangam">
-            <div class="container">
-                <h2 class="section-title">Today’s Panchangam</h2>
-                <p class="section-subtitle">A clean, focused view of the day’s Nakshatra, Thithi, Rahu Kalam, Yamagandam, and auspicious timings.</p>
-                <div class="panchangam">
-                    <ul>
-                        <li>What is today’s Nakshatra?</li>
-                        <li>What is the Thithi?</li>
-                        <li>Rahu Kalam, Yamagandam, Kuligai</li>
-                        <li>Auspicious and inauspicious times</li>
-                    </ul>
-                    <a class="cta" href="https://yourdomain.com/today-panchangam" target="_blank" rel="noopener">View Today’s Panchangam</a>
-                </div>
-            </div>
-        </section>
-
         <section id="donations">
             <div class="container">
                 <h2 class="section-title">Donations & Sevas</h2>
@@ -649,6 +626,12 @@
                     <img src="3.jpg.jpeg" alt="Temple gallery image 3">
                     <img src="4.jpg.jpeg" alt="Temple gallery image 4">
                     <img src="06.jpg.jpeg" alt="Temple gallery image 5">
+                </div>
+                <div class="gallery-link">
+                    <div class="card">
+                        <h3>Featured Video</h3>
+                        <a href="https://youtube.com/watch?si=Su5y9tS66h5RFWHs&amp;t=212&amp;v=na0UgqUxkQ8&amp;feature=youtu.be" target="_blank" rel="noopener">Swami Akalkot Maharaj Aalayam Amaiya Kai Korppom | Gopuram Tv</a>
+                    </div>
                 </div>
             </div>
         </section>
