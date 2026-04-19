@@ -339,9 +339,25 @@
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
         }
 
-        .gallery img {
+        .gallery-section {
+            margin-top: 34px;
+        }
+
+        .gallery-section:first-of-type {
+            margin-top: 0;
+        }
+
+        .gallery-heading {
+            color: var(--teal);
+            margin-bottom: 14px;
+        }
+
+        .gallery img,
+        .gallery video {
+            width: 100%;
             border-radius: 16px;
             box-shadow: var(--shadow);
+            background: #000000;
         }
 
         .gallery-link {
@@ -626,13 +642,38 @@
             <div class="container">
                 <h2 class="section-title">Temple Gallery</h2>
                 <p class="section-subtitle">A glimpse of the divine presence and our ongoing seva.</p>
-                <div class="gallery">
-                    <img src="1.jpg.jpeg" alt="Temple gallery image 1">
-                    <img src="2.jpg.jpeg" alt="Temple gallery image 2">
-                    <img src="3.jpg.jpeg" alt="Temple gallery image 3">
-                    <img src="4.jpg.jpeg" alt="Temple gallery image 4">
-                    <img src="06.jpg.jpeg" alt="Temple gallery image 5">
+
+                <div class="gallery-section">
+                    <h3 class="gallery-heading">Temple Pictures</h3>
+                    <div class="gallery">
+                        <img src="1.jpg.jpeg" alt="Temple gallery image 1">
+                        <img src="2.jpg.jpeg" alt="Temple gallery image 2">
+                        <img src="3.jpg.jpeg" alt="Temple gallery image 3">
+                        <img src="4.jpg.jpeg" alt="Temple gallery image 4">
+                        <img src="06.jpg.jpeg" alt="Temple gallery image 5">
+                    </div>
                 </div>
+
+                <div class="gallery-section">
+                    <h3 class="gallery-heading">Goshala Pictures</h3>
+                    <div class="gallery">
+                        <img src="Goshala1.jpeg" alt="Goshala picture 1">
+                        <img src="Goshala2.jpeg" alt="Goshala picture 2">
+                        <img src="Goshala3.jpeg" alt="Goshala picture 3">
+                        <video controls preload="metadata">
+                            <source src="Goshala Video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+
+                <div class="gallery-section">
+                    <h3 class="gallery-heading">Temple Book</h3>
+                    <div class="gallery">
+                        <img src="BookPicture.jpeg" alt="Temple book picture">
+                    </div>
+                </div>
+
                 <div class="gallery-link">
                     <div class="card">
                         <h3>Featured Video</h3>
