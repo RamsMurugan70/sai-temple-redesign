@@ -397,6 +397,28 @@
             font-weight: 600;
         }
 
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-top: 12px;
+            color: var(--muted);
+        }
+
+        .contact-icon {
+            font-size: 1.1rem;
+            line-height: 1.4;
+        }
+
+        .contact-detail a {
+            color: var(--teal);
+            font-weight: 700;
+        }
+
+        .contact-detail a:hover {
+            color: var(--maroon);
+        }
+
         .donation-cta {
             display: grid;
             gap: 16px;
@@ -712,6 +734,14 @@
                     <div class="card">
                         <h3>Address</h3>
                         <p>Maruthipuram, Marudham Kulakkarai, Uthiramerur, Kanchipuram, Tamil Nadu - 603 406</p>
+                        <div class="contact-detail">
+                            <span class="contact-icon" aria-hidden="true">&#128205;</span>
+                            <a href="https://www.google.com/maps/place/12%C2%B039'55.0%22N+79%C2%B046'27.8%22E/@12.665284,79.7742211,56m/data=!3m1!1e3!4m4!3m3!8m2!3d12.665284!4d79.774382!5m1!1e2?entry=ttu&amp;g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">Open Temple Location in Google Maps</a>
+                        </div>
+                        <div class="contact-detail">
+                            <span class="contact-icon" aria-hidden="true">&#129517;</span>
+                            <span>12°39'55.0"N 79°46'27.8"E</span>
+                        </div>
                         <p class="highlight">You came... You saw... You received...</p>
                     </div>
                 </div>
