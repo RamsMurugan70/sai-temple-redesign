@@ -655,16 +655,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td>நித்திய பூஜா</td><td>ரூ. 116/-</td></tr>
-                            <tr><td>குருவார பூஜா</td><td>ரூ. 333/-</td></tr>
-                            <tr><td>கோ பூஜா (பிரதி ரேவதி நட்சத்திரம்)</td><td>ரூ. 1116/-</td></tr>
-                            <tr><td>அமாவாசை / பௌர்ணமி தத்த ஸஹஸ்ரநாமம் பூஜா</td><td>ரூ. 5016/-</td></tr>
-                            <tr><td>வைபவ லஷ்மி பூஜா (மாலை)</td><td>ரூ. 3016/-</td></tr>
-                            <tr><td>சர்வ பூர்த்திகரி (லலிதா பூஜா) மாலை</td><td>ரூ. 3016/-</td></tr>
-                            <tr><td>மண்டல அபிஷேகம் (40 நாள் சங்கல்பம்)</td><td>ரூ. 5016/-</td></tr>
-                            <tr><td>பித்ரு பூஜா அமாவாசை அன்னதானம்</td><td>ரூ. 3016 / 5016/-</td></tr>
-                            <tr><td>மகாபரணி தில ஹோமம் (புரட்டாசி மாதம்)</td><td>ரூ. 20,000/-</td></tr>
-                            <tr><td>பௌர்ணமி அன்னதானம்</td><td>ரூ. 5016/-</td></tr>
+                            <tr><td><span class="notranslate" data-i18n="puja_nithya">Nithya Puja</span></td><td><span class="notranslate" data-i18n="amount_116">Rs. 116/-</span></td></tr>
+                            <tr><td><span class="notranslate" data-i18n="puja_guruvara">Guruvara Puja</span></td><td><span class="notranslate" data-i18n="amount_333">Rs. 333/-</span></td></tr>
+                            <tr><td><span class="notranslate" data-i18n="puja_go">Go Puja (On Every Revathi Nakshatra)</span></td><td><span class="notranslate" data-i18n="amount_1116">Rs. 1116/-</span></td></tr>
+                            <tr><td><span class="notranslate" data-i18n="puja_amavasya_pournami">Amavasya / Pournami Datta Sahasranama Puja</span></td><td><span class="notranslate" data-i18n="amount_5016">Rs. 5016/-</span></td></tr>
+                            <tr><td><span class="notranslate" data-i18n="puja_vaibhava">Vaibhava Lakshmi Puja (Evening)</span></td><td><span class="notranslate" data-i18n="amount_3016">Rs. 3016/-</span></td></tr>
+                            <tr><td><span class="notranslate" data-i18n="puja_sarva">Sarva Poorthikari (Lalitha Puja) Evening</span></td><td><span class="notranslate" data-i18n="amount_3016">Rs. 3016/-</span></td></tr>
+                            <tr><td><span class="notranslate" data-i18n="puja_mandala">Mandala Abhishekam (40-Day Sankalpam)</span></td><td><span class="notranslate" data-i18n="amount_5016">Rs. 5016/-</span></td></tr>
+                            <tr><td><span class="notranslate" data-i18n="puja_pithru">Pithru Puja Amavasya Annadanam</span></td><td><span class="notranslate" data-i18n="amount_3016_5016">Rs. 3016 / 5016/-</span></td></tr>
+                            <tr><td><span class="notranslate" data-i18n="puja_mahaparani">Mahabarani Thila Homam (Purattasi Month)</span></td><td><span class="notranslate" data-i18n="amount_20000">Rs. 20,000/-</span></td></tr>
+                            <tr><td><span class="notranslate" data-i18n="puja_pournami_annadanam">Pournami Annadanam</span></td><td><span class="notranslate" data-i18n="amount_5016">Rs. 5016/-</span></td></tr>
+                            <tr><td><span class="notranslate" data-i18n="varushabishekam">Varushabishekam (On Vaigasi Astham)</span></td><td><span class="notranslate" data-i18n="amount_blank">-</span></td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -761,12 +762,162 @@
     </footer>
 
     <script type="text/javascript">
+        var localizedContent = {
+            puja_nithya: {
+                en: 'Nithya Puja',
+                ta: 'நித்திய பூஜா',
+                hi: 'नित्य पूजा',
+                mr: 'नित्य पूजा',
+                te: 'నిత్య పూజ'
+            },
+            puja_guruvara: {
+                en: 'Guruvara Puja',
+                ta: 'குருவார பூஜா',
+                hi: 'गुरुवार पूजा',
+                mr: 'गुरुवार पूजा',
+                te: 'గురువార పూజ'
+            },
+            puja_go: {
+                en: 'Go Puja (On Every Revathi Nakshatra)',
+                ta: 'கோ பூஜா (பிரதி ரேவதி நட்சத்திரம்)',
+                hi: 'गो पूजा (प्रत्येक रेवती नक्षत्र पर)',
+                mr: 'गो पूजा (प्रत्येक रेवती नक्षत्राला)',
+                te: 'గో పూజ (ప్రతి రేవతి నక్షత్రం నాడు)'
+            },
+            puja_amavasya_pournami: {
+                en: 'Amavasya / Pournami Datta Sahasranama Puja',
+                ta: 'அமாவாசை / பௌர்ணமி தத்த ஸஹஸ்ரநாமம் பூஜா',
+                hi: 'अमावस्या / पूर्णिमा दत्त सहस्रनाम पूजा',
+                mr: 'अमावस्या / पौर्णिमा दत्त सहस्रनाम पूजा',
+                te: 'అమావాస్య / పౌర్ణమి దత్త సహస్రనామ పూజ'
+            },
+            puja_vaibhava: {
+                en: 'Vaibhava Lakshmi Puja (Evening)',
+                ta: 'வைபவ லஷ்மி பூஜா (மாலை)',
+                hi: 'वैभव लक्ष्मी पूजा (संध्या)',
+                mr: 'वैभव लक्ष्मी पूजा (सायंकाळ)',
+                te: 'వైభవ లక్ష్మి పూజ (సాయంత్రం)'
+            },
+            puja_sarva: {
+                en: 'Sarva Poorthikari (Lalitha Puja) Evening',
+                ta: 'சர்வ பூர்த்திகரி (லலிதா பூஜா) மாலை',
+                hi: 'सर्व पूर्तिकरी (ललिता पूजा) संध्या',
+                mr: 'सर्व पूर्तिकरी (ललिता पूजा) सायंकाळ',
+                te: 'సర్వ పూర్థికరి (లలితా పూజ) సాయంత్రం'
+            },
+            puja_mandala: {
+                en: 'Mandala Abhishekam (40-Day Sankalpam)',
+                ta: 'மண்டல அபிஷேகம் (40 நாள் சங்கல்பம்)',
+                hi: 'मंडल अभिषेकम् (40-दिवसीय संकल्प)',
+                mr: 'मंडल अभिषेकम (40 दिवसांचा संकल्प)',
+                te: 'మండల అభిషేకం (40 రోజుల సంకల్పం)'
+            },
+            puja_pithru: {
+                en: 'Pithru Puja Amavasya Annadanam',
+                ta: 'பித்ரு பூஜா அமாவாசை அன்னதானம்',
+                hi: 'पितृ पूजा अमावस्या अन्नदानम्',
+                mr: 'पितृ पूजा अमावस्या अन्नदान',
+                te: 'పితృ పూజ అమావాస్య అన్నదానం'
+            },
+            puja_mahaparani: {
+                en: 'Mahabarani Thila Homam (Purattasi Month)',
+                ta: 'மகாபரணி தில ஹோமம் (புரட்டாசி மாதம்)',
+                hi: 'महाभरणी तिल होमम् (पुरट्टासी मास)',
+                mr: 'महाभरणी तिळ होमम् (पुरट्टासी महिना)',
+                te: 'మహాభరణి తిల హోమం (పురట్టాసి మాసం)'
+            },
+            puja_pournami_annadanam: {
+                en: 'Pournami Annadanam',
+                ta: 'பௌர்ணமி அன்னதானம்',
+                hi: 'पूर्णिमा अन्नदानम्',
+                mr: 'पौर्णिमा अन्नदान',
+                te: 'పౌర్ణమి అన్నదానం'
+            },
+            varushabishekam: {
+                en: 'Varushabishekam (On Vaigasi Astham)',
+                ta: 'வருடாபிஷேகம் (வைகாசி அஸ்தம்)',
+                hi: 'वरुषाभिषेकम् (वैगासी अस्तम पर)',
+                mr: 'वर्षाभिषेकम (वैगासी अस्तम दिवशी)',
+                te: 'వరుషాభిషేకం (వైగాసి అస్తం నాడు)'
+            },
+            amount_116: {
+                en: 'Rs. 116/-',
+                ta: 'ரூ. 116/-',
+                hi: 'रु. 116/-',
+                mr: 'रु. 116/-',
+                te: 'రూ. 116/-'
+            },
+            amount_333: {
+                en: 'Rs. 333/-',
+                ta: 'ரூ. 333/-',
+                hi: 'रु. 333/-',
+                mr: 'रु. 333/-',
+                te: 'రూ. 333/-'
+            },
+            amount_1116: {
+                en: 'Rs. 1116/-',
+                ta: 'ரூ. 1116/-',
+                hi: 'रु. 1116/-',
+                mr: 'रु. 1116/-',
+                te: 'రూ. 1116/-'
+            },
+            amount_3016: {
+                en: 'Rs. 3016/-',
+                ta: 'ரூ. 3016/-',
+                hi: 'रु. 3016/-',
+                mr: 'रु. 3016/-',
+                te: 'రూ. 3016/-'
+            },
+            amount_5016: {
+                en: 'Rs. 5016/-',
+                ta: 'ரூ. 5016/-',
+                hi: 'रु. 5016/-',
+                mr: 'रु. 5016/-',
+                te: 'రూ. 5016/-'
+            },
+            amount_3016_5016: {
+                en: 'Rs. 3016 / 5016/-',
+                ta: 'ரூ. 3016 / 5016/-',
+                hi: 'रु. 3016 / 5016/-',
+                mr: 'रु. 3016 / 5016/-',
+                te: 'రూ. 3016 / 5016/-'
+            },
+            amount_20000: {
+                en: 'Rs. 20,000/-',
+                ta: 'ரூ. 20,000/-',
+                hi: 'रु. 20,000/-',
+                mr: 'रु. 20,000/-',
+                te: 'రూ. 20,000/-'
+            },
+            amount_blank: {
+                en: '-',
+                ta: '-',
+                hi: '-',
+                mr: '-',
+                te: '-'
+            }
+        };
+
+        function updateLocalizedContent(langCode) {
+            document.querySelectorAll('[data-i18n]').forEach(function (node) {
+                var key = node.getAttribute('data-i18n');
+                var contentSet = localizedContent[key];
+                if (!contentSet) {
+                    return;
+                }
+
+                node.textContent = contentSet[langCode] || contentSet.en;
+            });
+        }
+
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
                 pageLanguage: 'en',
                 includedLanguages: 'en,ta,hi,mr,te',
                 autoDisplay: false
             }, 'google_translate_element');
+
+            updateLocalizedContent('en');
         }
 
         function triggerLanguage(langCode) {
@@ -774,6 +925,9 @@
             if (selectField) {
                 selectField.value = langCode;
                 selectField.dispatchEvent(new Event('change'));
+                window.setTimeout(function () {
+                    updateLocalizedContent(langCode);
+                }, 150);
             } else {
                 alert('Translation tool is loading... please try again in a moment.');
             }
