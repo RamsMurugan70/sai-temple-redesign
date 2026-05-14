@@ -34,9 +34,7 @@
 
         /* ===== RESET & BASE ===== */
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
         html { scroll-behavior: smooth; }
-
         body {
             font-family: "Hind Madurai", sans-serif;
             color: var(--ink);
@@ -44,14 +42,9 @@
             line-height: 1.75;
             overflow-x: hidden;
         }
-
         a { text-decoration: none; color: inherit; }
         img, video { max-width: 100%; display: block; }
-
-        .container {
-            width: min(1120px, 92vw);
-            margin: 0 auto;
-        }
+        .container { width: min(1120px, 92vw); margin: 0 auto; }
 
         /* ===== SECTION SPACING ===== */
         section { padding: 80px 0; }
@@ -65,7 +58,6 @@
             color: var(--saffron-deep);
             margin-bottom: 10px;
         }
-
         .section-title {
             font-family: "Cormorant Garamond", serif;
             font-size: clamp(1.9rem, 4vw, 2.8rem);
@@ -74,7 +66,6 @@
             line-height: 1.2;
             margin-bottom: 14px;
         }
-
         .section-subtitle {
             color: var(--muted);
             font-size: 1.05rem;
@@ -83,1122 +74,227 @@
         }
 
         /* ===== SCROLL REVEAL ===== */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.65s ease, transform 0.65s ease;
-        }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.65s ease, transform 0.65s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
         .reveal-delay-1 { transition-delay: 0.1s; }
         .reveal-delay-2 { transition-delay: 0.2s; }
         .reveal-delay-3 { transition-delay: 0.3s; }
         .reveal-delay-4 { transition-delay: 0.4s; }
 
         /* ===== LANGUAGE BAR ===== */
-        .lang-bar {
-            background: var(--maroon-dark);
-            padding: 10px 0;
-            position: relative;
-            z-index: 100;
-        }
-        .lang-bar .container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            justify-content: center;
-            align-items: center;
-        }
-        .lang-label {
-            font-size: 0.75rem;
-            color: rgba(255,255,255,0.5);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-right: 4px;
-        }
-        .lang-btn {
-            border: 1px solid rgba(255,255,255,0.25);
-            color: rgba(255,255,255,0.85);
-            background: transparent;
-            padding: 5px 14px;
-            border-radius: 999px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            font-weight: 600;
-            font-family: "Hind Madurai", sans-serif;
-            transition: var(--transition);
-        }
-        .lang-btn:hover, .lang-btn.active {
-            background: var(--saffron);
-            color: var(--ink);
-            border-color: var(--saffron);
-        }
-        #google_translate_element {
-            position: absolute; top: -999px; left: -999px;
-            width: 1px; height: 1px; overflow: hidden;
-        }
+        .lang-bar { background: var(--maroon-dark); padding: 10px 0; position: relative; z-index: 100; }
+        .lang-bar .container { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; align-items: center; }
+        .lang-label { font-size: 0.75rem; color: rgba(255,255,255,0.5); letter-spacing: 1px; text-transform: uppercase; margin-right: 4px; }
+        .lang-btn { border: 1px solid rgba(255,255,255,0.25); color: rgba(255,255,255,0.85); background: transparent; padding: 5px 14px; border-radius: 999px; cursor: pointer; font-size: 0.85rem; font-weight: 600; font-family: "Hind Madurai", sans-serif; transition: var(--transition); }
+        .lang-btn:hover, .lang-btn.active { background: var(--saffron); color: var(--ink); border-color: var(--saffron); }
+        #google_translate_element { position: absolute; top: -999px; left: -999px; width: 1px; height: 1px; overflow: hidden; }
 
         /* ===== NAVIGATION ===== */
-        .nav {
-            position: sticky;
-            top: 0;
-            z-index: 99;
-            background: rgba(255, 248, 240, 0.92);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(123, 31, 26, 0.1);
-            transition: box-shadow var(--transition);
-        }
+        .nav { position: sticky; top: 0; z-index: 99; background: rgba(255,248,240,0.92); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(123,31,26,0.1); transition: box-shadow var(--transition); }
         .nav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.1); }
-
-        .nav .container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 16px 0;
-            gap: 16px;
-        }
-
-        .brand {
-            display: flex;
-            flex-direction: column;
-            gap: 1px;
-        }
-        .brand-title {
-            font-family: "Cormorant Garamond", serif;
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--maroon);
-            letter-spacing: 0.3px;
-            line-height: 1.2;
-        }
-        .brand-sub {
-            font-size: 0.7rem;
-            color: var(--muted);
-            letter-spacing: 0.5px;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 4px;
-            align-items: center;
-        }
-        .nav-links a {
-            display: block;
-            padding: 7px 12px;
-            border-radius: var(--radius-sm);
-            font-size: 0.88rem;
-            font-weight: 600;
-            color: var(--muted);
-            transition: var(--transition);
-        }
-        .nav-links a:hover {
-            color: var(--maroon);
-            background: rgba(123, 31, 26, 0.07);
-        }
-
-        .nav-donate-btn {
-            background: var(--saffron);
-            color: var(--ink) !important;
-            padding: 8px 18px !important;
-            border-radius: 999px !important;
-            font-weight: 700 !important;
-        }
-        .nav-donate-btn:hover {
-            background: var(--saffron-deep) !important;
-            color: var(--white) !important;
-        }
-
-        /* Hamburger */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            padding: 6px;
-            border: none;
-            background: transparent;
-        }
-        .hamburger span {
-            display: block;
-            width: 24px;
-            height: 2px;
-            background: var(--maroon);
-            border-radius: 2px;
-            transition: var(--transition);
-        }
+        .nav .container { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; gap: 16px; }
+        .brand { display: flex; flex-direction: column; gap: 1px; }
+        .brand-title { font-family: "Cormorant Garamond", serif; font-size: 1.15rem; font-weight: 700; color: var(--maroon); letter-spacing: 0.3px; line-height: 1.2; }
+        .brand-sub { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.5px; }
+        .nav-links { list-style: none; display: flex; gap: 4px; align-items: center; }
+        .nav-links a { display: block; padding: 7px 12px; border-radius: var(--radius-sm); font-size: 0.88rem; font-weight: 600; color: var(--muted); transition: var(--transition); }
+        .nav-links a:hover { color: var(--maroon); background: rgba(123,31,26,0.07); }
+        .nav-donate-btn { background: var(--saffron); color: var(--ink) !important; padding: 8px 18px !important; border-radius: 999px !important; font-weight: 700 !important; }
+        .nav-donate-btn:hover { background: var(--saffron-deep) !important; color: var(--white) !important; }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; border: none; background: transparent; }
+        .hamburger span { display: block; width: 24px; height: 2px; background: var(--maroon); border-radius: 2px; transition: var(--transition); }
         .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
         .hamburger.open span:nth-child(2) { opacity: 0; }
         .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
         /* ===== HERO ===== */
-        .hero {
-            position: relative;
-            min-height: 92vh;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        .hero-bg {
-            position: absolute;
-            inset: 0;
-            background-image: url("1.jpg.jpeg");
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            transform: scale(1.05);
-            transition: transform 8s ease-out;
-        }
+        .hero { position: relative; min-height: 92vh; display: flex; align-items: center; overflow: hidden; }
+        .hero-bg { position: absolute; inset: 0; background-image: url("1.jpg.jpeg"); background-size: cover; background-position: center; background-attachment: fixed; transform: scale(1.05); transition: transform 8s ease-out; }
         .hero-bg.loaded { transform: scale(1); }
+        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(90,21,18,0.88) 0%, rgba(123,31,26,0.72) 40%, rgba(232,130,26,0.45) 100%); }
+        .hero-overlay-pattern { position: absolute; inset: 0; opacity: 0.06; background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30 Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); background-size: 40px 40px; }
+        .hero .container { position: relative; z-index: 2; padding: 100px 0 80px; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.9); padding: 6px 16px; border-radius: 999px; font-size: 0.82rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 24px; backdrop-filter: blur(8px); }
+        .hero-badge::before { content: "✦"; color: var(--saffron-light); }
+        .hero h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(2.4rem, 6vw, 4.2rem); font-weight: 700; color: var(--white); line-height: 1.15; margin-bottom: 20px; max-width: 700px; }
+        .hero h1 em { font-style: italic; color: var(--saffron-light); }
+        .hero-desc { font-size: 1.08rem; color: rgba(255,255,255,0.82); max-width: 540px; margin-bottom: 36px; line-height: 1.7; }
+        .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 48px; }
+        .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 26px; border-radius: 999px; font-weight: 700; font-size: 0.95rem; transition: var(--transition); cursor: pointer; border: none; }
+        .btn-primary { background: var(--saffron); color: var(--ink); box-shadow: 0 8px 24px rgba(232,130,26,0.4); }
+        .btn-primary:hover { background: var(--saffron-deep); color: var(--white); transform: translateY(-2px); box-shadow: 0 12px 30px rgba(232,130,26,0.5); }
+        .btn-outline { background: transparent; border: 1.5px solid rgba(255,255,255,0.55); color: var(--white); }
+        .btn-outline:hover { background: rgba(255,255,255,0.15); transform: translateY(-2px); }
+        .btn-teal { background: var(--teal); color: var(--white); box-shadow: 0 8px 24px rgba(27,109,104,0.35); }
+        .btn-teal:hover { background: var(--teal-light); transform: translateY(-2px); }
+        .hero-stats { display: flex; flex-wrap: wrap; gap: 28px; }
+        .hero-stat { display: flex; flex-direction: column; gap: 2px; }
+        .hero-stat-num { font-family: "Cormorant Garamond", serif; font-size: 1.8rem; font-weight: 700; color: var(--saffron-light); line-height: 1; }
+        .hero-stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.6); letter-spacing: 0.5px; text-transform: uppercase; }
+        .hero-scroll { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 6px; color: rgba(255,255,255,0.5); font-size: 0.72rem; letter-spacing: 1.5px; text-transform: uppercase; z-index: 2; animation: bounce 2s infinite; }
+        .hero-scroll::after { content: "↓"; font-size: 1.2rem; }
+        @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
 
-        .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(
-                135deg,
-                rgba(90, 21, 18, 0.88) 0%,
-                rgba(123, 31, 26, 0.72) 40%,
-                rgba(232, 130, 26, 0.45) 100%
-            );
-        }
-
-        .hero-overlay-pattern {
-            position: absolute;
-            inset: 0;
-            opacity: 0.06;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30 Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            background-size: 40px 40px;
-        }
-
-        .hero .container {
-            position: relative;
-            z-index: 2;
-            padding: 100px 0 80px;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(255,255,255,0.15);
-            border: 1px solid rgba(255,255,255,0.3);
-            color: rgba(255,255,255,0.9);
-            padding: 6px 16px;
-            border-radius: 999px;
-            font-size: 0.82rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 24px;
-            backdrop-filter: blur(8px);
-        }
-        .hero-badge::before {
-            content: "✦";
-            color: var(--saffron-light);
-        }
-
-        .hero h1 {
-            font-family: "Cormorant Garamond", serif;
-            font-size: clamp(2.4rem, 6vw, 4.2rem);
-            font-weight: 700;
-            color: var(--white);
-            line-height: 1.15;
-            margin-bottom: 20px;
-            max-width: 700px;
-        }
-
-        .hero h1 em {
-            font-style: italic;
-            color: var(--saffron-light);
-        }
-
-        .hero-desc {
-            font-size: 1.08rem;
-            color: rgba(255,255,255,0.82);
-            max-width: 540px;
-            margin-bottom: 36px;
-            line-height: 1.7;
-        }
-
-        .hero-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 14px;
-            margin-bottom: 48px;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 13px 26px;
-            border-radius: 999px;
-            font-weight: 700;
-            font-size: 0.95rem;
-            transition: var(--transition);
-            cursor: pointer;
-            border: none;
-        }
-        .btn-primary {
-            background: var(--saffron);
-            color: var(--ink);
-            box-shadow: 0 8px 24px rgba(232, 130, 26, 0.4);
-        }
-        .btn-primary:hover {
-            background: var(--saffron-deep);
-            color: var(--white);
-            transform: translateY(-2px);
-            box-shadow: 0 12px 30px rgba(232, 130, 26, 0.5);
-        }
-        .btn-outline {
-            background: transparent;
-            border: 1.5px solid rgba(255,255,255,0.55);
-            color: var(--white);
-        }
-        .btn-outline:hover {
-            background: rgba(255,255,255,0.15);
-            transform: translateY(-2px);
-        }
-        .btn-teal {
-            background: var(--teal);
-            color: var(--white);
-            box-shadow: 0 8px 24px rgba(27, 109, 104, 0.35);
-        }
-        .btn-teal:hover {
-            background: var(--teal-light);
-            transform: translateY(-2px);
-        }
-
-        .hero-stats {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 28px;
-        }
-        .hero-stat {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
-        .hero-stat-num {
-            font-family: "Cormorant Garamond", serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--saffron-light);
-            line-height: 1;
-        }
-        .hero-stat-label {
-            font-size: 0.78rem;
-            color: rgba(255,255,255,0.6);
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-
-        .hero-scroll {
-            position: absolute;
-            bottom: 32px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 6px;
-            color: rgba(255,255,255,0.5);
-            font-size: 0.72rem;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            z-index: 2;
-            animation: bounce 2s infinite;
-        }
-        .hero-scroll::after {
-            content: "↓";
-            font-size: 1.2rem;
-        }
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(8px); }
-        }
-
-        /* ===== DIVIDER ORNAMENT ===== */
-        .ornament-divider {
-            text-align: center;
-            font-size: 1.4rem;
-            color: var(--saffron-light);
-            letter-spacing: 8px;
-            margin: 0 0 48px;
-            opacity: 0.6;
-        }
-
-        /* ===== ABOUT ===== */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 32px;
-            align-items: start;
-        }
-
-        .card {
-            background: var(--white);
-            border-radius: var(--radius-md);
-            padding: 28px 30px;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid rgba(0,0,0,0.05);
-            transition: var(--transition);
-        }
-        .card:hover {
-            box-shadow: var(--shadow-md);
-            transform: translateY(-3px);
-        }
-
-        .card-icon {
-            width: 46px;
-            height: 46px;
-            border-radius: 12px;
-            background: rgba(232, 130, 26, 0.12);
-            display: grid;
-            place-items: center;
-            font-size: 1.4rem;
-            margin-bottom: 16px;
-        }
-
-        .card h3 {
-            font-family: "Cormorant Garamond", serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--maroon);
-            margin-bottom: 10px;
-        }
-
+        /* ===== CARDS ===== */
+        .card { background: var(--white); border-radius: var(--radius-md); padding: 28px 30px; box-shadow: var(--shadow-sm); border: 1px solid rgba(0,0,0,0.05); transition: var(--transition); }
+        .card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+        .card-icon { width: 46px; height: 46px; border-radius: 12px; background: rgba(232,130,26,0.12); display: grid; place-items: center; font-size: 1.4rem; margin-bottom: 16px; }
+        .card h3 { font-family: "Cormorant Garamond", serif; font-size: 1.3rem; font-weight: 700; color: var(--maroon); margin-bottom: 10px; }
         .card p { color: var(--muted); font-size: 0.97rem; }
+        .callout-box { background: linear-gradient(135deg, rgba(232,130,26,0.1), rgba(123,31,26,0.06)); border: 1px solid rgba(232,130,26,0.25); border-left: 4px solid var(--saffron); border-radius: var(--radius-md); padding: 20px 24px; color: var(--maroon-dark); font-weight: 500; font-style: italic; font-family: "Cormorant Garamond", serif; font-size: 1.12rem; line-height: 1.6; margin-top: 24px; }
 
-        .callout-box {
-            background: linear-gradient(135deg, rgba(232, 130, 26, 0.1), rgba(123, 31, 26, 0.06));
-            border: 1px solid rgba(232, 130, 26, 0.25);
-            border-left: 4px solid var(--saffron);
-            border-radius: var(--radius-md);
-            padding: 20px 24px;
-            color: var(--maroon-dark);
-            font-weight: 500;
-            font-style: italic;
-            font-family: "Cormorant Garamond", serif;
-            font-size: 1.12rem;
-            line-height: 1.6;
-            margin-top: 24px;
-        }
+        /* ===== GRID ===== */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
 
-        /* ===== ORIGIN TIMELINE ===== */
-        .timeline {
-            position: relative;
-            padding-left: 0;
-        }
-        .timeline::before {
-            content: "";
-            position: absolute;
-            left: 28px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(180deg, var(--saffron), var(--teal));
-            opacity: 0.3;
-        }
-
-        .timeline-item {
-            position: relative;
-            padding-left: 74px;
-            padding-bottom: 36px;
-        }
+        /* ===== TIMELINE ===== */
+        .timeline { position: relative; padding-left: 0; }
+        .timeline::before { content: ""; position: absolute; left: 28px; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, var(--saffron), var(--teal)); opacity: 0.3; }
+        .timeline-item { position: relative; padding-left: 74px; padding-bottom: 36px; }
         .timeline-item:last-child { padding-bottom: 0; }
-
-        .timeline-dot {
-            position: absolute;
-            left: 14px;
-            top: 4px;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: var(--saffron);
-            display: grid;
-            place-items: center;
-            font-size: 0.75rem;
-            font-weight: 800;
-            color: var(--ink);
-            box-shadow: 0 0 0 4px rgba(232, 130, 26, 0.2);
-        }
-
-        .timeline-year {
-            font-family: "Cormorant Garamond", serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--maroon);
-            line-height: 1;
-            margin-bottom: 6px;
-        }
-
+        .timeline-dot { position: absolute; left: 14px; top: 4px; width: 30px; height: 30px; border-radius: 50%; background: var(--saffron); display: grid; place-items: center; font-size: 0.75rem; font-weight: 800; color: var(--ink); box-shadow: 0 0 0 4px rgba(232,130,26,0.2); }
+        .timeline-year { font-family: "Cormorant Garamond", serif; font-size: 1.5rem; font-weight: 700; color: var(--maroon); line-height: 1; margin-bottom: 6px; }
         .timeline-text { color: var(--muted); font-size: 0.96rem; }
 
-        /* ===== PILL TAGS ===== */
-        .pill-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 14px;
-            list-style: none;
-        }
-        .pill-list li {
-            background: rgba(27, 109, 104, 0.1);
-            color: var(--teal);
-            padding: 5px 14px;
-            border-radius: 999px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            border: 1px solid rgba(27, 109, 104, 0.2);
-        }
-
-        /* ===== STRUCTURE ===== */
-        .structure-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        .structure-card {
-            background: var(--white);
-            border-radius: var(--radius-md);
-            padding: 32px 24px;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid rgba(0,0,0,0.05);
-            text-align: center;
-            transition: var(--transition);
-        }
-        .structure-card:hover {
-            box-shadow: var(--shadow-md);
-            transform: translateY(-4px);
-        }
-
-        .structure-num {
-            font-family: "Cormorant Garamond", serif;
-            font-size: 3rem;
-            font-weight: 700;
-            color: rgba(232, 130, 26, 0.18);
-            line-height: 1;
-            margin-bottom: 10px;
-        }
-
-        .structure-card h3 {
-            font-family: "Cormorant Garamond", serif;
-            font-size: 1.3rem;
-            color: var(--maroon);
-            margin-bottom: 10px;
-        }
-
-        .structure-card p { color: var(--muted); font-size: 0.93rem; }
+        /* ===== PILLS ===== */
+        .pill-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; list-style: none; }
+        .pill-list li { background: rgba(27,109,104,0.1); color: var(--teal); padding: 5px 14px; border-radius: 999px; font-size: 0.85rem; font-weight: 600; border: 1px solid rgba(27,109,104,0.2); }
 
         /* ===== GOSHALA ===== */
-        .goshala-section {
-            background: linear-gradient(135deg, #0e3d3a 0%, #1B6D68 60%, #0e3d3a 100%);
-            color: var(--white);
-        }
+        .goshala-section { background: linear-gradient(135deg, #0e3d3a 0%, #1B6D68 60%, #0e3d3a 100%); color: var(--white); }
         .goshala-section .section-eyebrow { color: var(--saffron-light); }
         .goshala-section .section-title { color: var(--white); }
         .goshala-section .section-subtitle { color: rgba(255,255,255,0.7); }
-
-        .goshala-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-        }
-
-        .goshala-card {
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.15);
-            border-radius: var(--radius-md);
-            padding: 28px;
-            backdrop-filter: blur(8px);
-            transition: var(--transition);
-        }
-        .goshala-card:hover {
-            background: rgba(255,255,255,0.13);
-            transform: translateY(-3px);
-        }
-        .goshala-card h3 {
-            font-family: "Cormorant Garamond", serif;
-            font-size: 1.3rem;
-            color: var(--saffron-light);
-            margin-bottom: 12px;
-        }
+        .goshala-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .goshala-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: var(--radius-md); padding: 28px; backdrop-filter: blur(8px); transition: var(--transition); }
+        .goshala-card:hover { background: rgba(255,255,255,0.13); transform: translateY(-3px); }
+        .goshala-card h3 { font-family: "Cormorant Garamond", serif; font-size: 1.3rem; color: var(--saffron-light); margin-bottom: 12px; }
         .goshala-card p { color: rgba(255,255,255,0.75); }
+        .goshala-card .pill-list li { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); border-color: rgba(255,255,255,0.2); }
+        .goshala-callout { margin-top: 36px; background: rgba(232,130,26,0.2); border: 1px solid rgba(232,130,26,0.4); border-radius: var(--radius-md); padding: 20px 28px; text-align: center; font-family: "Cormorant Garamond", serif; font-size: 1.3rem; font-style: italic; color: var(--saffron-light); }
 
-        .goshala-card .pill-list li {
-            background: rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.85);
-            border-color: rgba(255,255,255,0.2);
-        }
-
-        .goshala-callout {
-            margin-top: 36px;
-            background: rgba(232, 130, 26, 0.2);
-            border: 1px solid rgba(232, 130, 26, 0.4);
-            border-radius: var(--radius-md);
-            padding: 20px 28px;
-            text-align: center;
-            font-family: "Cormorant Garamond", serif;
-            font-size: 1.3rem;
-            font-style: italic;
-            color: var(--saffron-light);
-        }
-
-        /* ===== EVENTS CALENDAR ===== */
+        /* ===== EVENTS ===== */
         .events-section { background: var(--cream-dark); }
-
-        .events-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 20px;
-        }
-
-        .event-card {
-            background: var(--white);
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid rgba(0,0,0,0.05);
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-        }
-        .event-card:hover {
-            box-shadow: var(--shadow-md);
-            transform: translateY(-4px);
-        }
-
-        .event-date-bar {
-            background: var(--maroon);
-            color: var(--white);
-            padding: 16px 20px;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-        .event-day {
-            font-family: "Cormorant Garamond", serif;
-            font-size: 2.4rem;
-            font-weight: 700;
-            line-height: 1;
-            color: var(--saffron-light);
-        }
-        .event-month-year {
-            display: flex;
-            flex-direction: column;
-            gap: 1px;
-        }
-        .event-month {
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: rgba(255,255,255,0.7);
-        }
-        .event-year {
-            font-size: 0.72rem;
-            color: rgba(255,255,255,0.45);
-        }
-
-        .event-body {
-            padding: 20px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        .event-name {
-            font-family: "Cormorant Garamond", serif;
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--maroon);
-        }
-        .event-desc {
-            color: var(--muted);
-            font-size: 0.88rem;
-            line-height: 1.5;
-        }
-        .event-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            background: rgba(232, 130, 26, 0.1);
-            color: var(--saffron-deep);
-            padding: 3px 10px;
-            border-radius: 999px;
-            font-size: 0.76rem;
-            font-weight: 700;
-            border: 1px solid rgba(232, 130, 26, 0.25);
-            margin-top: auto;
-        }
+        .events-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+        .event-card { background: var(--white); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid rgba(0,0,0,0.05); transition: var(--transition); display: flex; flex-direction: column; }
+        .event-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
+        .event-date-bar { background: var(--maroon); color: var(--white); padding: 16px 20px; display: flex; align-items: center; gap: 16px; }
+        .event-day { font-family: "Cormorant Garamond", serif; font-size: 2.4rem; font-weight: 700; line-height: 1; color: var(--saffron-light); }
+        .event-month-year { display: flex; flex-direction: column; gap: 1px; }
+        .event-month { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.7); }
+        .event-year { font-size: 0.72rem; color: rgba(255,255,255,0.45); }
+        .event-body { padding: 20px; flex: 1; display: flex; flex-direction: column; gap: 8px; }
+        .event-name { font-family: "Cormorant Garamond", serif; font-size: 1.15rem; font-weight: 700; color: var(--maroon); }
+        .event-desc { color: var(--muted); font-size: 0.88rem; line-height: 1.5; }
+        .event-tag { display: inline-flex; align-items: center; gap: 5px; background: rgba(232,130,26,0.1); color: var(--saffron-deep); padding: 3px 10px; border-radius: 999px; font-size: 0.76rem; font-weight: 700; border: 1px solid rgba(232,130,26,0.25); margin-top: auto; }
 
         /* ===== DONATIONS ===== */
-        .donations-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 28px;
-            margin-bottom: 36px;
-        }
-
-        .donation-hero-card {
-            background: linear-gradient(135deg, var(--maroon), var(--maroon-dark));
-            border-radius: var(--radius-lg);
-            padding: 36px;
-            color: var(--white);
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        .donation-hero-card h3 {
-            font-family: "Cormorant Garamond", serif;
-            font-size: 1.6rem;
-            color: var(--saffron-light);
-        }
+        .donations-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 36px; }
+        .donation-hero-card { background: linear-gradient(135deg, var(--maroon), var(--maroon-dark)); border-radius: var(--radius-lg); padding: 36px; color: var(--white); display: flex; flex-direction: column; gap: 20px; }
+        .donation-hero-card h3 { font-family: "Cormorant Garamond", serif; font-size: 1.6rem; color: var(--saffron-light); }
         .donation-hero-card p { color: rgba(255,255,255,0.75); }
-
-        .qr-wrap {
-            background: var(--white);
-            border-radius: var(--radius-md);
-            padding: 20px;
-            display: grid;
-            place-items: center;
-            gap: 10px;
-        }
+        .qr-wrap { background: var(--white); border-radius: var(--radius-md); padding: 20px; display: grid; place-items: center; gap: 10px; }
         .qr-wrap img { width: min(180px, 65vw); border-radius: 8px; }
-        .qr-label {
-            font-size: 0.78rem;
-            color: var(--muted);
-            text-align: center;
-            line-height: 1.4;
-        }
-
+        .qr-label { font-size: 0.78rem; color: var(--muted); text-align: center; line-height: 1.4; }
         .bank-card { position: relative; overflow: hidden; }
-        .bank-card::before {
-            content: "🏦";
-            position: absolute;
-            right: -10px;
-            top: -10px;
-            font-size: 6rem;
-            opacity: 0.04;
-        }
-
-        .bank-detail {
-            display: flex;
-            flex-direction: column;
-            gap: 3px;
-            margin-bottom: 14px;
-        }
-        .bank-label {
-            font-size: 0.72rem;
-            font-weight: 700;
-            color: var(--saffron-deep);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .bank-value {
-            font-size: 0.97rem;
-            color: var(--ink);
-            font-weight: 500;
-        }
-
-        /* Puja table */
-        .puja-table-wrap {
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-        }
-        .puja-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        .puja-table th {
-            background: var(--maroon);
-            color: var(--white);
-            padding: 14px 20px;
-            text-align: left;
-            font-size: 0.88rem;
-            letter-spacing: 0.5px;
-        }
-        .puja-table td {
-            padding: 13px 20px;
-            font-size: 0.93rem;
-            color: var(--ink);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-        }
+        .bank-card::before { content: "🏦"; position: absolute; right: -10px; top: -10px; font-size: 6rem; opacity: 0.04; }
+        .bank-detail { display: flex; flex-direction: column; gap: 3px; margin-bottom: 14px; }
+        .bank-label { font-size: 0.72rem; font-weight: 700; color: var(--saffron-deep); text-transform: uppercase; letter-spacing: 1px; }
+        .bank-value { font-size: 0.97rem; color: var(--ink); font-weight: 500; }
+        .puja-table-wrap { border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-md); }
+        .puja-table { width: 100%; border-collapse: collapse; }
+        .puja-table th { background: var(--maroon); color: var(--white); padding: 14px 20px; text-align: left; font-size: 0.88rem; letter-spacing: 0.5px; }
+        .puja-table td { padding: 13px 20px; font-size: 0.93rem; color: var(--ink); border-bottom: 1px solid rgba(0,0,0,0.05); }
         .puja-table tr:nth-child(even) td { background: #FFF3E0; }
-        .puja-table tr:hover td { background: rgba(232, 130, 26, 0.07); }
-        .puja-table td:last-child {
-            font-weight: 700;
-            color: var(--teal);
-        }
+        .puja-table tr:hover td { background: rgba(232,130,26,0.07); }
+        .puja-table td:last-child { font-weight: 700; color: var(--teal); }
 
         /* ===== GALLERY ===== */
-        .gallery-tabs {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 32px;
-            flex-wrap: wrap;
-        }
-        .gallery-tab {
-            padding: 8px 20px;
-            border-radius: 999px;
-            font-size: 0.87rem;
-            font-weight: 600;
-            cursor: pointer;
-            border: 1.5px solid rgba(123, 31, 26, 0.25);
-            color: var(--muted);
-            background: transparent;
-            transition: var(--transition);
-            font-family: "Hind Madurai", sans-serif;
-        }
-        .gallery-tab.active, .gallery-tab:hover {
-            background: var(--maroon);
-            color: var(--white);
-            border-color: var(--maroon);
-        }
-
+        .gallery-tabs { display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; }
+        .gallery-tab { padding: 8px 20px; border-radius: 999px; font-size: 0.87rem; font-weight: 600; cursor: pointer; border: 1.5px solid rgba(123,31,26,0.25); color: var(--muted); background: transparent; transition: var(--transition); font-family: "Hind Madurai", sans-serif; }
+        .gallery-tab.active, .gallery-tab:hover { background: var(--maroon); color: var(--white); border-color: var(--maroon); }
         .gallery-panel { display: none; }
         .gallery-panel.active { display: block; }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-        }
-
-        .gallery-item {
-            position: relative;
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            aspect-ratio: 4/3;
-            cursor: pointer;
-            box-shadow: var(--shadow-sm);
-        }
-        .gallery-item img, .gallery-item video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        .gallery-item:hover img, .gallery-item:hover video {
-            transform: scale(1.06);
-        }
-        .gallery-item-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.55) 100%);
-            opacity: 0;
-            transition: var(--transition);
-        }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+        .gallery-item { position: relative; border-radius: var(--radius-md); overflow: hidden; aspect-ratio: 4/3; cursor: pointer; box-shadow: var(--shadow-sm); }
+        .gallery-item img, .gallery-item video { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .gallery-item:hover img, .gallery-item:hover video { transform: scale(1.06); }
+        .gallery-item-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.55) 100%); opacity: 0; transition: var(--transition); }
         .gallery-item:hover .gallery-item-overlay { opacity: 1; }
-
-        .youtube-card {
-            background: var(--white);
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            display: grid;
-            grid-template-columns: auto 1fr;
-            align-items: center;
-            gap: 0;
-            transition: var(--transition);
-            margin-top: 28px;
-        }
+        .youtube-card { background: var(--white); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-md); display: grid; grid-template-columns: auto 1fr; align-items: center; transition: var(--transition); margin-top: 28px; }
         .youtube-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
-
-        .youtube-thumb {
-            position: relative;
-            width: 220px;
-        }
+        .youtube-thumb { position: relative; width: 220px; }
         .youtube-thumb img { width: 100%; height: 140px; object-fit: cover; }
-        .youtube-play {
-            position: absolute;
-            inset: 0;
-            display: grid;
-            place-items: center;
-            background: rgba(0,0,0,0.3);
-        }
-        .youtube-play::after {
-            content: "▶";
-            width: 46px;
-            height: 46px;
-            background: #FF0000;
-            border-radius: 50%;
-            display: grid;
-            place-items: center;
-            color: white;
-            font-size: 1rem;
-        }
-
-        .youtube-info {
-            padding: 20px 24px;
-        }
-        .youtube-info h3 {
-            font-family: "Cormorant Garamond", serif;
-            font-size: 1.1rem;
-            color: var(--maroon);
-            margin-bottom: 8px;
-            line-height: 1.4;
-        }
+        .youtube-play { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(0,0,0,0.3); }
+        .youtube-play::after { content: "▶"; width: 46px; height: 46px; background: #FF0000; border-radius: 50%; display: grid; place-items: center; color: white; font-size: 1rem; }
+        .youtube-info { padding: 20px 24px; }
+        .youtube-info h3 { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; color: var(--maroon); margin-bottom: 8px; line-height: 1.4; }
         .youtube-info p { color: var(--muted); font-size: 0.85rem; }
-
-        .qr-youtube {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-top: 12px;
-        }
+        .qr-youtube { display: flex; align-items: center; gap: 12px; margin-top: 12px; }
         .qr-youtube img { width: 60px; border-radius: 8px; }
-        .qr-youtube span {
-            font-size: 0.8rem;
-            color: var(--muted);
-        }
+        .qr-youtube span { font-size: 0.8rem; color: var(--muted); }
 
         /* ===== VOLUNTEER ===== */
-        .volunteer-section {
-            background: var(--cream-dark);
-        }
-
-        .volunteer-intro {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 48px;
-            align-items: center;
-            margin-bottom: 48px;
-        }
-
-        .volunteer-image {
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
-            aspect-ratio: 4/3;
-        }
-        .volunteer-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .volunteer-roles {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-
-        .role-card {
-            background: var(--white);
-            border-radius: var(--radius-md);
-            padding: 22px;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid rgba(0,0,0,0.05);
-            transition: var(--transition);
-        }
-        .role-card:hover {
-            box-shadow: var(--shadow-md);
-            transform: translateY(-3px);
-            border-color: rgba(232, 130, 26, 0.25);
-        }
-
-        .role-icon {
-            font-size: 1.6rem;
-            margin-bottom: 10px;
-        }
-        .role-card h4 {
-            font-family: "Cormorant Garamond", serif;
-            font-size: 1.08rem;
-            color: var(--maroon);
-            margin-bottom: 6px;
-        }
+        .volunteer-section { background: var(--cream-dark); }
+        .volunteer-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; margin-bottom: 48px; }
+        .volunteer-image { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); aspect-ratio: 4/3; }
+        .volunteer-image img { width: 100%; height: 100%; object-fit: cover; }
+        .volunteer-roles { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .role-card { background: var(--white); border-radius: var(--radius-md); padding: 22px; box-shadow: var(--shadow-sm); border: 1px solid rgba(0,0,0,0.05); transition: var(--transition); }
+        .role-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); border-color: rgba(232,130,26,0.25); }
+        .role-icon { font-size: 1.6rem; margin-bottom: 10px; }
+        .role-card h4 { font-family: "Cormorant Garamond", serif; font-size: 1.08rem; color: var(--maroon); margin-bottom: 6px; }
         .role-card p { font-size: 0.85rem; color: var(--muted); }
-
-        .volunteer-cta {
-            text-align: center;
-            background: var(--white);
-            border-radius: var(--radius-lg);
-            padding: 40px;
-            box-shadow: var(--shadow-md);
-        }
-        .volunteer-cta h3 {
-            font-family: "Cormorant Garamond", serif;
-            font-size: 1.7rem;
-            color: var(--maroon);
-            margin-bottom: 12px;
-        }
-        .volunteer-cta p {
-            color: var(--muted);
-            max-width: 500px;
-            margin: 0 auto 24px;
-        }
+        .volunteer-cta { text-align: center; background: var(--white); border-radius: var(--radius-lg); padding: 40px; box-shadow: var(--shadow-md); }
+        .volunteer-cta h3 { font-family: "Cormorant Garamond", serif; font-size: 1.7rem; color: var(--maroon); margin-bottom: 12px; }
+        .volunteer-cta p { color: var(--muted); max-width: 500px; margin: 0 auto 24px; }
 
         /* ===== CONTACT ===== */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 28px;
-        }
-
-        .contact-item {
-            display: flex;
-            gap: 14px;
-            padding: 18px 0;
-            border-bottom: 1px solid rgba(0,0,0,0.07);
-        }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+        .contact-item { display: flex; gap: 14px; padding: 18px 0; border-bottom: 1px solid rgba(0,0,0,0.07); }
         .contact-item:last-child { border-bottom: none; padding-bottom: 0; }
-        .contact-emoji {
-            width: 40px;
-            height: 40px;
-            background: rgba(232, 130, 26, 0.1);
-            border-radius: 10px;
-            display: grid;
-            place-items: center;
-            font-size: 1.1rem;
-            flex-shrink: 0;
-        }
+        .contact-emoji { width: 40px; height: 40px; background: rgba(232,130,26,0.1); border-radius: 10px; display: grid; place-items: center; font-size: 1.1rem; flex-shrink: 0; }
         .contact-info { display: flex; flex-direction: column; gap: 2px; }
-        .contact-label {
-            font-size: 0.74rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--saffron-deep);
-        }
-        .contact-value {
-            font-size: 0.97rem;
-            color: var(--ink);
-            font-weight: 500;
-        }
+        .contact-label { font-size: 0.74rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--saffron-deep); }
+        .contact-value { font-size: 0.97rem; color: var(--ink); font-weight: 500; }
         .contact-value a { color: var(--teal); font-weight: 700; }
         .contact-value a:hover { color: var(--maroon); }
-
-        .map-embed {
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            height: 280px;
-            background: rgba(0,0,0,0.05);
-            display: grid;
-            place-items: center;
-        }
-        .map-embed a {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-            color: var(--teal);
-            font-weight: 700;
-            text-decoration: none;
-        }
+        .map-embed { border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-md); height: 280px; background: rgba(0,0,0,0.05); display: grid; place-items: center; }
+        .map-embed a { display: flex; flex-direction: column; align-items: center; gap: 12px; color: var(--teal); font-weight: 700; }
         .map-embed-icon { font-size: 3rem; }
         .map-embed a:hover { color: var(--maroon); }
 
         /* ===== FOOTER ===== */
-        footer {
-            background: var(--ink);
-            color: rgba(255,255,255,0.7);
-        }
-
-        .footer-top {
-            padding: 60px 0 40px;
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr;
-            gap: 48px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .footer-brand-name {
-            font-family: "Cormorant Garamond", serif;
-            font-size: 1.4rem;
-            color: var(--white);
-            margin-bottom: 10px;
-        }
-        .footer-brand-desc {
-            font-size: 0.88rem;
-            line-height: 1.65;
-            color: rgba(255,255,255,0.5);
-            margin-bottom: 20px;
-        }
-        .footer-upi {
-            background: rgba(255,255,255,0.07);
-            border-radius: 10px;
-            padding: 10px 14px;
-            font-size: 0.82rem;
-            color: var(--saffron-light);
-            font-weight: 600;
-            display: inline-block;
-        }
-
-        .footer-col-title {
-            font-size: 0.78rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--saffron);
-            margin-bottom: 18px;
-        }
+        footer { background: var(--ink); color: rgba(255,255,255,0.7); }
+        .footer-top { padding: 60px 0 40px; display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 48px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .footer-brand-name { font-family: "Cormorant Garamond", serif; font-size: 1.4rem; color: var(--white); margin-bottom: 10px; }
+        .footer-brand-desc { font-size: 0.88rem; line-height: 1.65; color: rgba(255,255,255,0.5); margin-bottom: 20px; }
+        .footer-upi { background: rgba(255,255,255,0.07); border-radius: 10px; padding: 10px 14px; font-size: 0.82rem; color: var(--saffron-light); font-weight: 600; display: inline-block; }
+        .footer-col-title { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--saffron); margin-bottom: 18px; }
         .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-        .footer-links a {
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.55);
-            transition: var(--transition);
-        }
+        .footer-links a { font-size: 0.9rem; color: rgba(255,255,255,0.55); transition: var(--transition); }
         .footer-links a:hover { color: var(--saffron-light); padding-left: 4px; }
-
-        .footer-bottom {
-            padding: 22px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            font-size: 0.82rem;
-            color: rgba(255,255,255,0.35);
-        }
+        .footer-bottom { padding: 22px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; font-size: 0.82rem; color: rgba(255,255,255,0.35); }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 900px) {
-            .about-grid,
-            .structure-grid,
-            .goshala-grid,
-            .donations-grid,
-            .contact-grid,
-            .volunteer-intro,
-            .footer-top { grid-template-columns: 1fr; }
-
-            .structure-grid { grid-template-columns: 1fr 1fr; }
-
+            .about-grid, .goshala-grid, .donations-grid, .contact-grid, .volunteer-intro, .footer-top { grid-template-columns: 1fr; }
             .volunteer-roles { grid-template-columns: 1fr 1fr; }
-
-            .youtube-card {
-                grid-template-columns: 1fr;
-            }
+            .youtube-card { grid-template-columns: 1fr; }
             .youtube-thumb { width: 100%; }
             .youtube-thumb img { height: 200px; }
-
             .footer-top { gap: 32px; }
         }
-
         @media (max-width: 720px) {
             section { padding: 60px 0; }
-
             .nav-links { display: none; flex-direction: column; width: 100%; }
             .nav-links.open { display: flex; }
             .nav .container { flex-wrap: wrap; }
             .hamburger { display: flex; }
-
             .hero { min-height: 100svh; }
             .hero-bg { background-attachment: scroll; }
             .hero .container { padding: 80px 0 60px; }
-
-            .structure-grid { grid-template-columns: 1fr; }
             .volunteer-roles { grid-template-columns: 1fr; }
             .events-grid { grid-template-columns: 1fr; }
-
             .footer-top { grid-template-columns: 1fr; }
             .footer-bottom { flex-direction: column; text-align: center; }
         }
@@ -1300,7 +396,7 @@
                         <div class="callout-box">
                             "Divine presence, compassionate grace, and protection define the Swami Samarth path. The Guru's blessings flow ceaselessly to all who seek with a pure heart."
                         </div>
-                        <div style="height: 20px;"></div>
+                        <div style="height:20px;"></div>
                         <div class="card">
                             <div class="card-icon">🙏</div>
                             <h3>Dattatreya Avatars</h3>
@@ -1420,12 +516,12 @@
                             <div class="event-day">Jun</div>
                             <div class="event-month-year">
                                 <div class="event-month notranslate">Varushabishekam</div>
-                                <div class="event-year notranslate">Vaigasi Astham — Jun 23</div>
+                                <div class="event-year notranslate">Vaigasi Astham</div>
                             </div>
                         </div>
                         <div class="event-body">
                             <div class="event-name notranslate">Varushabishekam</div>
-                            <div class="event-desc">Annual temple anniversary <span class="notranslate">Abhishekam</span> on <span class="notranslate">Vaigasi Astham</span> — Tuesday, June 23rd. A highly auspicious occasion for all devotees.</div>
+                            <div class="event-desc">Annual temple anniversary <span class="notranslate">Abhishekam</span> on <span class="notranslate">Vaigasi Astham</span>. A highly auspicious occasion for all devotees.</div>
                             <span class="event-tag">⭐ Annual Highlight</span>
                         </div>
                     </div>
@@ -1502,7 +598,7 @@
         <!-- DONATIONS -->
         <section id="donations">
             <div class="container">
-                <span class="section-eyebrow reveal">Give & Receive</span>
+                <span class="section-eyebrow reveal">Give &amp; Receive</span>
                 <h2 class="section-title reveal">Donations &amp; Sevas</h2>
                 <p class="section-subtitle reveal">Your contribution supports daily pujas, Annadanam, and Goshala care — each offering returns manifold blessings to the giver and their family.</p>
 
@@ -1544,7 +640,10 @@
                             <span class="bank-label">UPI / GPay</span>
                             <span class="bank-value notranslate">9940941049@hdfcbank</span>
                         </div>
-                        <div style="margin-top:18px;">
+                        <div style="margin-top:18px; padding:14px 16px; background:rgba(27,109,104,0.07); border-radius:var(--radius-sm); border-left:3px solid var(--teal);">
+                            <span style="font-size:0.85rem; color:var(--teal); font-weight:600;">🏛️ Donations are eligible for deduction under Section 80G of Income Tax Act, 1961.</span>
+                        </div>
+                        <div style="margin-top:14px;">
                             <a href="#contact" class="btn btn-teal">Contact for Receipts →</a>
                         </div>
                     </div>
@@ -1571,7 +670,7 @@
                                 <tr><td><span class="notranslate" data-i18n="puja_pithru">Pithru Puja Amavasya Annadanam</span></td><td><span class="notranslate" data-i18n="amount_3016_5016">Rs. 3016 / 5016/-</span></td></tr>
                                 <tr><td><span class="notranslate" data-i18n="puja_mahaparani">Mahabarani Thila Homam (Purattasi Month)</span></td><td><span class="notranslate" data-i18n="amount_20000">Rs. 20,000/-</span></td></tr>
                                 <tr><td><span class="notranslate" data-i18n="puja_pournami_annadanam">Pournami Annadanam</span></td><td><span class="notranslate" data-i18n="amount_5016">Rs. 5016/-</span></td></tr>
-                                <tr><td><span class="notranslate" data-i18n="varushabishekam">Varushabishekam (On Vaigasi Astham — June 23rd, Tuesday)</span></td><td><span class="notranslate" data-i18n="amount_blank">—</span></td></tr>
+                                <tr><td><span class="notranslate" data-i18n="varushabishekam">Varushabishekam (On Vaigasi Astham)</span></td><td><span class="notranslate" data-i18n="amount_blank">—</span></td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -1584,7 +683,7 @@
             <div class="container">
                 <span class="section-eyebrow reveal">Visual Journey</span>
                 <h2 class="section-title reveal">Temple Gallery</h2>
-                <p class="section-subtitle reveal">A glimpse of the divine presence, sacred spaces, and ongoing seva at Sri Guru Datta Paduka Kshetra.</p>
+                <p class="section-subtitle reveal">A glimpse of the divine presence, sacred spaces, and ongoing seva at <span class="notranslate">Sri Guru Datta Paduka Kshetra</span>.</p>
 
                 <div class="gallery-tabs reveal">
                     <button class="gallery-tab active" onclick="showGallery('temple', this)">Temple Pictures</button>
@@ -1594,45 +693,21 @@
 
                 <div class="gallery-panel active" id="gallery-temple">
                     <div class="gallery-grid">
-                        <div class="gallery-item reveal reveal-delay-1">
-                            <img src="1.jpg.jpeg" alt="Temple view 1" loading="lazy">
-                            <div class="gallery-item-overlay"></div>
-                        </div>
-                        <div class="gallery-item reveal reveal-delay-2">
-                            <img src="2.jpg.jpeg" alt="Temple view 2" loading="lazy">
-                            <div class="gallery-item-overlay"></div>
-                        </div>
-                        <div class="gallery-item reveal reveal-delay-3">
-                            <img src="3.jpg.jpeg" alt="Temple view 3" loading="lazy">
-                            <div class="gallery-item-overlay"></div>
-                        </div>
-                        <div class="gallery-item reveal reveal-delay-4">
-                            <img src="4.jpg.jpeg" alt="Temple view 4" loading="lazy">
-                            <div class="gallery-item-overlay"></div>
-                        </div>
-                        <div class="gallery-item reveal">
-                            <img src="06.jpg.jpeg" alt="Temple view 5" loading="lazy">
-                            <div class="gallery-item-overlay"></div>
-                        </div>
+                        <div class="gallery-item reveal reveal-delay-1"><img src="1.jpg.jpeg" alt="Temple view 1" loading="lazy"><div class="gallery-item-overlay"></div></div>
+                        <div class="gallery-item reveal reveal-delay-2"><img src="2.jpg.jpeg" alt="Temple view 2" loading="lazy"><div class="gallery-item-overlay"></div></div>
+                        <div class="gallery-item reveal reveal-delay-3"><img src="3.jpg.jpeg" alt="Temple view 3" loading="lazy"><div class="gallery-item-overlay"></div></div>
+                        <div class="gallery-item reveal reveal-delay-4"><img src="4.jpg.jpeg" alt="Temple view 4" loading="lazy"><div class="gallery-item-overlay"></div></div>
+                        <div class="gallery-item reveal"><img src="06.jpg.jpeg" alt="Temple view 5" loading="lazy"><div class="gallery-item-overlay"></div></div>
                     </div>
                 </div>
 
                 <div class="gallery-panel" id="gallery-goshala">
                     <div class="gallery-grid">
-                        <div class="gallery-item">
-                            <img src="Goshala1.jpeg" alt="Goshala 1" loading="lazy">
-                            <div class="gallery-item-overlay"></div>
-                        </div>
-                        <div class="gallery-item">
-                            <img src="Goshala2.jpeg" alt="Goshala 2" loading="lazy">
-                            <div class="gallery-item-overlay"></div>
-                        </div>
-                        <div class="gallery-item">
-                            <img src="Goshala3.jpeg" alt="Goshala 3" loading="lazy">
-                            <div class="gallery-item-overlay"></div>
-                        </div>
-                        <div class="gallery-item" style="aspect-ratio: auto;">
-                            <video controls preload="metadata" style="width:100%; height:100%; object-fit:cover; aspect-ratio:4/3;">
+                        <div class="gallery-item"><img src="Goshala1.jpeg" alt="Goshala 1" loading="lazy"><div class="gallery-item-overlay"></div></div>
+                        <div class="gallery-item"><img src="Goshala2.jpeg" alt="Goshala 2" loading="lazy"><div class="gallery-item-overlay"></div></div>
+                        <div class="gallery-item"><img src="Goshala3.jpeg" alt="Goshala 3" loading="lazy"><div class="gallery-item-overlay"></div></div>
+                        <div class="gallery-item" style="aspect-ratio:auto;">
+                            <video controls preload="metadata" style="width:100%;height:100%;object-fit:cover;aspect-ratio:4/3;">
                                 <source src="Goshala Video.mp4" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>
@@ -1641,15 +716,12 @@
                 </div>
 
                 <div class="gallery-panel" id="gallery-book">
-                    <div class="gallery-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
-                        <div class="gallery-item" style="aspect-ratio: 3/4;">
-                            <img src="BookPicture.jpeg" alt="Temple Book" loading="lazy" style="object-fit: contain; background:#f5f0e8;">
-                        </div>
+                    <div class="gallery-grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));">
+                        <div class="gallery-item" style="aspect-ratio:3/4;"><img src="BookPicture.jpeg" alt="Temple Book" loading="lazy" style="object-fit:contain;background:#f5f0e8;"></div>
                     </div>
                 </div>
 
-                <!-- YouTube Featured Video -->
-                <div class="reveal" style="margin-top: 36px;">
+                <div class="reveal" style="margin-top:36px;">
                     <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.4rem; color:var(--maroon); margin-bottom:18px;">Featured Video</h3>
                     <a href="https://youtube.com/watch?si=Su5y9tS66h5RFWHs&t=212&v=na0UgqUxkQ8&feature=youtu.be" target="_blank" rel="noopener" class="youtube-card">
                         <div class="youtube-thumb">
@@ -1712,10 +784,10 @@
                     </div>
                 </div>
 
-                <div class="volunteer-cta reveal" style="margin-top: 40px;">
+                <div class="volunteer-cta reveal" style="margin-top:40px;">
                     <h3>Ready to Begin Your Seva?</h3>
                     <p>Reach out to the trust directly. Every act of service, big or small, is received with love and gratitude by the Guru.</p>
-                    <a href="tel:+919940941019" class="btn btn-primary">Call the Trust — 99409 41019</a>
+                    <a href="tel:+919940941019" class="btn btn-primary">Call the Trust — <span class="notranslate">99409 41019</span></a>
                 </div>
             </div>
         </section>
@@ -1735,7 +807,7 @@
                             <div class="contact-emoji">📞</div>
                             <div class="contact-info">
                                 <span class="contact-label">SSMS Trust</span>
-                                <a href="tel:+919940941019" class="contact-value" style="color:var(--teal); font-weight:700;">99409 41019</a>
+                                <a href="tel:+919940941019" class="contact-value notranslate" style="color:var(--teal); font-weight:700;">99409 41019</a>
                             </div>
                         </div>
                         <div class="contact-item">
@@ -1753,7 +825,15 @@
                             </div>
                         </div>
 
-                        <div style="height: 24px;"></div>
+                        <div class="contact-item">
+                            <div class="contact-emoji">✉️</div>
+                            <div class="contact-info">
+                                <span class="contact-label">Email</span>
+                                <a href="mailto:sevasamasthan@gmail.com" class="contact-value notranslate" style="color:var(--teal); font-weight:700;">sevasamasthan@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div style="height:24px;"></div>
 
                         <div class="contact-item">
                             <div class="contact-emoji">📍</div>
@@ -1770,7 +850,7 @@
                             </div>
                         </div>
 
-                        <div style="margin-top: 20px;">
+                        <div style="margin-top:20px;">
                             <a href="https://www.google.com/maps/place/12%C2%B039'55.0%22N+79%C2%B046'27.8%22E/@12.665284,79.7742211,56m/data=!3m1!1e3!4m4!3m3!8m2!3d12.665284!4d79.774382!5m1!1e2?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="btn btn-teal">
                                 📍 Open in Google Maps
                             </a>
@@ -1784,7 +864,7 @@
                                 <span><span class="notranslate">Sri Guru Datta Paduka Kshetra</span><br>Click to open in Google Maps</span>
                             </a>
                         </div>
-                        <div style="height: 20px;"></div>
+                        <div style="height:20px;"></div>
                         <div class="callout-box">
                             "You came... You saw... You received..." — The Guru's grace awaits every sincere devotee who visits this sacred place.
                         </div>
@@ -1820,9 +900,9 @@
                     <ul class="footer-links">
                         <li><a href="#donations">Donate &amp; Sponsor Seva</a></li>
                         <li><a href="#contact">Contact the Trust</a></li>
-                        <li><a href="tel:+919940941019">99409 41019</a></li>
-                        <li><a href="tel:+918838427262">88384 27262</a></li>
-                        <li><a href="tel:+919769404451">97694 04451</a></li>
+                        <li><a href="tel:+919940941019" class="notranslate">99409 41019</a></li>
+                        <li><a href="tel:+918838427262" class="notranslate">88384 27262</a></li>
+                        <li><a href="tel:+919769404451" class="notranslate">97694 04451</a></li>
                         <li><a href="https://youtube.com/watch?si=Su5y9tS66h5RFWHs&t=212&v=na0UgqUxkQ8&feature=youtu.be" target="_blank" rel="noopener">Watch on YouTube</a></li>
                     </ul>
                 </div>
@@ -1847,7 +927,7 @@
             puja_pithru:            { en:'Pithru Puja Amavasya Annadanam', ta:'பித்ரு பூஜா அமாவாசை அன்னதானம்', hi:'पितृ पूजा अमावस्या अन्नदानम्', mr:'पितृ पूजा अमावस्या अन्नदान', te:'పితృ పూజ అమావాస్య అన్నదానం' },
             puja_mahaparani:        { en:'Mahabarani Thila Homam (Purattasi Month)', ta:'மகாபரணி தில ஹோமம் (புரட்டாசி மாதம்)', hi:'महाभरणी तिल होमम् (पुरट्टासी मास)', mr:'महाभरणी तिळ होमम् (पुरट्टासी महिना)', te:'మహాభరణి తిల హోమం (పురట్టాసి మాసం)' },
             puja_pournami_annadanam:{ en:'Pournami Annadanam', ta:'பௌர்ணமி அன்னதானம்', hi:'पूर्णिमा अन्नदानम्', mr:'पौर्णिमा अन्नदान', te:'పౌర్ణమి అన్నదానం' },
-            varushabishekam:        { en:'Varushabishekam (On Vaigasi Astham — June 23rd, Tuesday)', ta:'வருடாபிஷேகம் (வைகாசி அஸ்தம் - ஜூன் 23, செவ்வாய்)', hi:'वरुषाभिषेकम् (वैगासी अस्तम - 23 जून, मंगलवार)', mr:'वर्षाभिषेकम (वैगासी अस्तम - 23 जून, मंगळवार)', te:'వరుషాభిషేకం (వైగాసి అస్తం - జూన్ 23, మంగళవారం)' },
+            varushabishekam:        { en:'Varushabishekam (On Vaigasi Astham)', ta:'வருடாபிஷேகம் (வைகாசி அஸ்தம்)', hi:'वरुषाभिषेकम् (वैगासी अस्तम)', mr:'वर्षाभिषेकम (वैगासी अस्तम)', te:'వరుషాభిషేకం (వైగాసి అస్తం)' },
             amount_116:             { en:'Rs. 116/-', ta:'ரூ. 116/-', hi:'रु. 116/-', mr:'रु. 116/-', te:'రూ. 116/-' },
             amount_333:             { en:'Rs. 333/-', ta:'ரூ. 333/-', hi:'रु. 333/-', mr:'रु. 333/-', te:'రూ. 333/-' },
             amount_1116:            { en:'Rs. 1116/-', ta:'ரூ. 1116/-', hi:'रु. 1116/-', mr:'रु. 1116/-', te:'రూ. 1116/-' },
@@ -1922,10 +1002,7 @@
                 }
             });
         }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-        document.querySelectorAll('.reveal').forEach(function(el) {
-            revealObserver.observe(el);
-        });
+        document.querySelectorAll('.reveal').forEach(function(el) { revealObserver.observe(el); });
 
         /* ===== GALLERY TABS ===== */
         function showGallery(id, btn) {
