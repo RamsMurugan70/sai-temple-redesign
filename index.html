@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" translate="no">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Stop browser (Chrome/Edge) auto-translate from reverting our own language switcher -->
+    <meta name="google" content="notranslate">
+    <meta http-equiv="Content-Language" content="en">
     <title>Sri Guru Datta Paduka Kshetra | Swami Samartha Maharaj Seva Samasthan</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Hind+Madurai:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Hind+Madurai:wght@300;400;500;600&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Noto+Serif+Tamil:wght@500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@500;600;700&family=Noto+Sans+Telugu:wght@400;500;600;700&family=Noto+Serif+Telugu:wght@500;600;700&display=swap" rel="stylesheet">
 
     <style>
         /* ===== DESIGN TOKENS ===== */
@@ -30,13 +33,17 @@
             --radius-md:    18px;
             --radius-lg:    28px;
             --transition:   0.3s cubic-bezier(0.4,0,0.2,1);
+            /* Multi-script font stacks: Latin uses the decorative faces, Indic glyphs
+               fall through to the matching Noto face automatically (per-character). */
+            --font-serif: "Cormorant Garamond", "Noto Serif Tamil", "Noto Serif Devanagari", "Noto Serif Telugu", serif;
+            --font-sans:  "Hind Madurai", "Noto Sans Tamil", "Noto Sans Devanagari", "Noto Sans Telugu", sans-serif;
         }
 
         /* ===== RESET & BASE ===== */
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         body {
-            font-family: "Hind Madurai", sans-serif;
+            font-family: var(--font-sans);
             color: var(--ink);
             background: var(--cream);
             line-height: 1.75;
@@ -59,7 +66,7 @@
             margin-bottom: 10px;
         }
         .section-title {
-            font-family: "Cormorant Garamond", serif;
+            font-family: var(--font-serif);
             font-size: clamp(1.9rem, 4vw, 2.8rem);
             font-weight: 700;
             color: var(--maroon);
@@ -85,22 +92,21 @@
         .lang-bar { background: var(--maroon-dark); padding: 10px 0; position: relative; z-index: 100; }
         .lang-bar .container { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; align-items: center; }
         .lang-label { font-size: 0.75rem; color: rgba(255,255,255,0.5); letter-spacing: 1px; text-transform: uppercase; margin-right: 4px; }
-        .lang-btn { border: 1px solid rgba(255,255,255,0.25); color: rgba(255,255,255,0.85); background: transparent; padding: 5px 14px; border-radius: 999px; cursor: pointer; font-size: 0.85rem; font-weight: 600; font-family: "Hind Madurai", sans-serif; transition: var(--transition); }
+        .lang-btn { border: 1px solid rgba(255,255,255,0.25); color: rgba(255,255,255,0.85); background: transparent; padding: 5px 14px; border-radius: 999px; cursor: pointer; font-size: 0.85rem; font-weight: 600; font-family: var(--font-sans); transition: var(--transition); }
         .lang-btn:hover, .lang-btn.active { background: var(--saffron); color: var(--ink); border-color: var(--saffron); }
-        #google_translate_element { position: absolute; top: -999px; left: -999px; width: 1px; height: 1px; overflow: hidden; }
 
         /* ===== NAVIGATION ===== */
         .nav { position: sticky; top: 0; z-index: 99; background: rgba(255,248,240,0.92); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(123,31,26,0.1); transition: box-shadow var(--transition); }
         .nav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.1); }
         .nav .container { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; gap: 16px; }
         .brand { display: flex; flex-direction: column; gap: 1px; }
-        .brand-title { font-family: "Cormorant Garamond", serif; font-size: 1.15rem; font-weight: 700; color: var(--maroon); letter-spacing: 0.3px; line-height: 1.2; }
+        .brand-title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; color: var(--maroon); letter-spacing: 0.3px; line-height: 1.2; }
         .brand-sub { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.5px; }
         .nav-links { list-style: none; display: flex; gap: 4px; align-items: center; }
         .nav-links a { display: block; padding: 7px 12px; border-radius: var(--radius-sm); font-size: 0.88rem; font-weight: 600; color: var(--muted); transition: var(--transition); }
         .nav-links a:hover { color: var(--maroon); background: rgba(123,31,26,0.07); }
         .nav-donate-btn { background: var(--saffron); color: var(--ink) !important; padding: 8px 18px !important; border-radius: 999px !important; font-weight: 700 !important; }
-        .nav-donate-btn:hover { background: var(--saffron-deep) !important; color: var(--white) !important; }
+        .nav-donate-btn:hover { background: var(--saffron-deep); color: var(--white) !important; }
         .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; border: none; background: transparent; }
         .hamburger span { display: block; width: 24px; height: 2px; background: var(--maroon); border-radius: 2px; transition: var(--transition); }
         .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
@@ -116,7 +122,7 @@
         .hero .container { position: relative; z-index: 2; padding: 100px 0 80px; }
         .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.9); padding: 6px 16px; border-radius: 999px; font-size: 0.82rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 24px; backdrop-filter: blur(8px); }
         .hero-badge::before { content: "✦"; color: var(--saffron-light); }
-        .hero h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(2.4rem, 6vw, 4.2rem); font-weight: 700; color: var(--white); line-height: 1.15; margin-bottom: 20px; max-width: 700px; }
+        .hero h1 { font-family: var(--font-serif); font-size: clamp(2.4rem, 6vw, 4.2rem); font-weight: 700; color: var(--white); line-height: 1.15; margin-bottom: 20px; max-width: 700px; }
         .hero h1 em { font-style: italic; color: var(--saffron-light); }
         .hero-desc { font-size: 1.08rem; color: rgba(255,255,255,0.82); max-width: 540px; margin-bottom: 36px; line-height: 1.7; }
         .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 48px; }
@@ -129,7 +135,7 @@
         .btn-teal:hover { background: var(--teal-light); transform: translateY(-2px); }
         .hero-stats { display: flex; flex-wrap: wrap; gap: 28px; }
         .hero-stat { display: flex; flex-direction: column; gap: 2px; }
-        .hero-stat-num { font-family: "Cormorant Garamond", serif; font-size: 1.8rem; font-weight: 700; color: var(--saffron-light); line-height: 1; }
+        .hero-stat-num { font-family: var(--font-serif); font-size: 1.8rem; font-weight: 700; color: var(--saffron-light); line-height: 1; }
         .hero-stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.6); letter-spacing: 0.5px; text-transform: uppercase; }
         .hero-scroll { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 6px; color: rgba(255,255,255,0.5); font-size: 0.72rem; letter-spacing: 1.5px; text-transform: uppercase; z-index: 2; animation: bounce 2s infinite; }
         .hero-scroll::after { content: "↓"; font-size: 1.2rem; }
@@ -139,9 +145,9 @@
         .card { background: var(--white); border-radius: var(--radius-md); padding: 28px 30px; box-shadow: var(--shadow-sm); border: 1px solid rgba(0,0,0,0.05); transition: var(--transition); }
         .card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
         .card-icon { width: 46px; height: 46px; border-radius: 12px; background: rgba(232,130,26,0.12); display: grid; place-items: center; font-size: 1.4rem; margin-bottom: 16px; }
-        .card h3 { font-family: "Cormorant Garamond", serif; font-size: 1.3rem; font-weight: 700; color: var(--maroon); margin-bottom: 10px; }
+        .card h3 { font-family: var(--font-serif); font-size: 1.3rem; font-weight: 700; color: var(--maroon); margin-bottom: 10px; }
         .card p { color: var(--muted); font-size: 0.97rem; }
-        .callout-box { background: linear-gradient(135deg, rgba(232,130,26,0.1), rgba(123,31,26,0.06)); border: 1px solid rgba(232,130,26,0.25); border-left: 4px solid var(--saffron); border-radius: var(--radius-md); padding: 20px 24px; color: var(--maroon-dark); font-weight: 500; font-style: italic; font-family: "Cormorant Garamond", serif; font-size: 1.12rem; line-height: 1.6; margin-top: 24px; }
+        .callout-box { background: linear-gradient(135deg, rgba(232,130,26,0.1), rgba(123,31,26,0.06)); border: 1px solid rgba(232,130,26,0.25); border-left: 4px solid var(--saffron); border-radius: var(--radius-md); padding: 20px 24px; color: var(--maroon-dark); font-weight: 500; font-style: italic; font-family: var(--font-serif); font-size: 1.12rem; line-height: 1.6; margin-top: 24px; }
 
         /* ===== GRID ===== */
         .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
@@ -152,7 +158,7 @@
         .timeline-item { position: relative; padding-left: 74px; padding-bottom: 36px; }
         .timeline-item:last-child { padding-bottom: 0; }
         .timeline-dot { position: absolute; left: 14px; top: 4px; width: 30px; height: 30px; border-radius: 50%; background: var(--saffron); display: grid; place-items: center; font-size: 0.75rem; font-weight: 800; color: var(--ink); box-shadow: 0 0 0 4px rgba(232,130,26,0.2); }
-        .timeline-year { font-family: "Cormorant Garamond", serif; font-size: 1.5rem; font-weight: 700; color: var(--maroon); line-height: 1; margin-bottom: 6px; }
+        .timeline-year { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 700; color: var(--maroon); line-height: 1; margin-bottom: 6px; }
         .timeline-text { color: var(--muted); font-size: 0.96rem; }
 
         /* ===== PILLS ===== */
@@ -167,10 +173,10 @@
         .goshala-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
         .goshala-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: var(--radius-md); padding: 28px; backdrop-filter: blur(8px); transition: var(--transition); }
         .goshala-card:hover { background: rgba(255,255,255,0.13); transform: translateY(-3px); }
-        .goshala-card h3 { font-family: "Cormorant Garamond", serif; font-size: 1.3rem; color: var(--saffron-light); margin-bottom: 12px; }
+        .goshala-card h3 { font-family: var(--font-serif); font-size: 1.3rem; color: var(--saffron-light); margin-bottom: 12px; }
         .goshala-card p { color: rgba(255,255,255,0.75); }
         .goshala-card .pill-list li { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); border-color: rgba(255,255,255,0.2); }
-        .goshala-callout { margin-top: 36px; background: rgba(232,130,26,0.2); border: 1px solid rgba(232,130,26,0.4); border-radius: var(--radius-md); padding: 20px 28px; text-align: center; font-family: "Cormorant Garamond", serif; font-size: 1.3rem; font-style: italic; color: var(--saffron-light); }
+        .goshala-callout { margin-top: 36px; background: rgba(232,130,26,0.2); border: 1px solid rgba(232,130,26,0.4); border-radius: var(--radius-md); padding: 20px 28px; text-align: center; font-family: var(--font-serif); font-size: 1.3rem; font-style: italic; color: var(--saffron-light); }
 
         /* ===== EVENTS ===== */
         .events-section { background: var(--cream-dark); }
@@ -178,19 +184,19 @@
         .event-card { background: var(--white); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid rgba(0,0,0,0.05); transition: var(--transition); display: flex; flex-direction: column; }
         .event-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
         .event-date-bar { background: var(--maroon); color: var(--white); padding: 16px 20px; display: flex; align-items: center; gap: 16px; }
-        .event-day { font-family: "Cormorant Garamond", serif; font-size: 2.4rem; font-weight: 700; line-height: 1; color: var(--saffron-light); }
+        .event-day { font-family: var(--font-serif); font-size: 2.4rem; font-weight: 700; line-height: 1; color: var(--saffron-light); }
         .event-month-year { display: flex; flex-direction: column; gap: 1px; }
         .event-month { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.7); }
         .event-year { font-size: 0.72rem; color: rgba(255,255,255,0.45); }
         .event-body { padding: 20px; flex: 1; display: flex; flex-direction: column; gap: 8px; }
-        .event-name { font-family: "Cormorant Garamond", serif; font-size: 1.15rem; font-weight: 700; color: var(--maroon); }
+        .event-name { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; color: var(--maroon); }
         .event-desc { color: var(--muted); font-size: 0.88rem; line-height: 1.5; }
         .event-tag { display: inline-flex; align-items: center; gap: 5px; background: rgba(232,130,26,0.1); color: var(--saffron-deep); padding: 3px 10px; border-radius: 999px; font-size: 0.76rem; font-weight: 700; border: 1px solid rgba(232,130,26,0.25); margin-top: auto; }
 
         /* ===== DONATIONS ===== */
         .donations-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 36px; }
         .donation-hero-card { background: linear-gradient(135deg, var(--maroon), var(--maroon-dark)); border-radius: var(--radius-lg); padding: 36px; color: var(--white); display: flex; flex-direction: column; gap: 20px; }
-        .donation-hero-card h3 { font-family: "Cormorant Garamond", serif; font-size: 1.6rem; color: var(--saffron-light); }
+        .donation-hero-card h3 { font-family: var(--font-serif); font-size: 1.6rem; color: var(--saffron-light); }
         .donation-hero-card p { color: rgba(255,255,255,0.75); }
         .qr-wrap { background: var(--white); border-radius: var(--radius-md); padding: 20px; display: grid; place-items: center; gap: 10px; }
         .qr-wrap img { width: min(180px, 65vw); border-radius: 8px; }
@@ -210,7 +216,7 @@
 
         /* ===== GALLERY ===== */
         .gallery-tabs { display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; }
-        .gallery-tab { padding: 8px 20px; border-radius: 999px; font-size: 0.87rem; font-weight: 600; cursor: pointer; border: 1.5px solid rgba(123,31,26,0.25); color: var(--muted); background: transparent; transition: var(--transition); font-family: "Hind Madurai", sans-serif; }
+        .gallery-tab { padding: 8px 20px; border-radius: 999px; font-size: 0.87rem; font-weight: 600; cursor: pointer; border: 1.5px solid rgba(123,31,26,0.25); color: var(--muted); background: transparent; transition: var(--transition); font-family: var(--font-sans); }
         .gallery-tab.active, .gallery-tab:hover { background: var(--maroon); color: var(--white); border-color: var(--maroon); }
         .gallery-panel { display: none; }
         .gallery-panel.active { display: block; }
@@ -227,7 +233,7 @@
         .youtube-play { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(0,0,0,0.3); }
         .youtube-play::after { content: "▶"; width: 46px; height: 46px; background: #FF0000; border-radius: 50%; display: grid; place-items: center; color: white; font-size: 1rem; }
         .youtube-info { padding: 20px 24px; }
-        .youtube-info h3 { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; color: var(--maroon); margin-bottom: 8px; line-height: 1.4; }
+        .youtube-info h3 { font-family: var(--font-serif); font-size: 1.1rem; color: var(--maroon); margin-bottom: 8px; line-height: 1.4; }
         .youtube-info p { color: var(--muted); font-size: 0.85rem; }
         .qr-youtube { display: flex; align-items: center; gap: 12px; margin-top: 12px; }
         .qr-youtube img { width: 60px; border-radius: 8px; }
@@ -242,10 +248,10 @@
         .role-card { background: var(--white); border-radius: var(--radius-md); padding: 22px; box-shadow: var(--shadow-sm); border: 1px solid rgba(0,0,0,0.05); transition: var(--transition); }
         .role-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); border-color: rgba(232,130,26,0.25); }
         .role-icon { font-size: 1.6rem; margin-bottom: 10px; }
-        .role-card h4 { font-family: "Cormorant Garamond", serif; font-size: 1.08rem; color: var(--maroon); margin-bottom: 6px; }
+        .role-card h4 { font-family: var(--font-serif); font-size: 1.08rem; color: var(--maroon); margin-bottom: 6px; }
         .role-card p { font-size: 0.85rem; color: var(--muted); }
         .volunteer-cta { text-align: center; background: var(--white); border-radius: var(--radius-lg); padding: 40px; box-shadow: var(--shadow-md); }
-        .volunteer-cta h3 { font-family: "Cormorant Garamond", serif; font-size: 1.7rem; color: var(--maroon); margin-bottom: 12px; }
+        .volunteer-cta h3 { font-family: var(--font-serif); font-size: 1.7rem; color: var(--maroon); margin-bottom: 12px; }
         .volunteer-cta p { color: var(--muted); max-width: 500px; margin: 0 auto 24px; }
 
         /* ===== CONTACT ===== */
@@ -266,7 +272,7 @@
         /* ===== FOOTER ===== */
         footer { background: var(--ink); color: rgba(255,255,255,0.7); }
         .footer-top { padding: 60px 0 40px; display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 48px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .footer-brand-name { font-family: "Cormorant Garamond", serif; font-size: 1.4rem; color: var(--white); margin-bottom: 10px; }
+        .footer-brand-name { font-family: var(--font-serif); font-size: 1.4rem; color: var(--white); margin-bottom: 10px; }
         .footer-brand-desc { font-size: 0.88rem; line-height: 1.65; color: rgba(255,255,255,0.5); margin-bottom: 20px; }
         .footer-upi { background: rgba(255,255,255,0.07); border-radius: 10px; padding: 10px 14px; font-size: 0.82rem; color: var(--saffron-light); font-weight: 600; display: inline-block; }
         .footer-col-title { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--saffron); margin-bottom: 18px; }
@@ -288,7 +294,6 @@
             section { padding: 60px 0; }
             .nav-links { display: none; flex-direction: column; width: 100%; }
             .nav-links.open { display: flex; }
-            .nav .container { flex-wrap: wrap; }
             .hamburger { display: flex; }
             .hero { min-height: 100svh; }
             .hero-bg { background-attachment: scroll; }
@@ -305,35 +310,34 @@
     <!-- LANGUAGE BAR -->
     <div class="lang-bar">
         <div class="container">
-            <span class="lang-label">Language:</span>
-            <button class="lang-btn active" onclick="triggerLanguage('en')">English</button>
-            <button class="lang-btn" onclick="triggerLanguage('ta')">தமிழ்</button>
-            <button class="lang-btn" onclick="triggerLanguage('hi')">हिंदी</button>
-            <button class="lang-btn" onclick="triggerLanguage('mr')">मराठी</button>
-            <button class="lang-btn" onclick="triggerLanguage('te')">తెలుగు</button>
+            <span class="lang-label" data-i18n="ui_language">Language:</span>
+            <button class="lang-btn active" data-lang="en" onclick="setLang('en')">English</button>
+            <button class="lang-btn" data-lang="ta" onclick="setLang('ta')">தமிழ்</button>
+            <button class="lang-btn" data-lang="hi" onclick="setLang('hi')">हिंदी</button>
+            <button class="lang-btn" data-lang="mr" onclick="setLang('mr')">मराठी</button>
+            <button class="lang-btn" data-lang="te" onclick="setLang('te')">తెలుగు</button>
         </div>
     </div>
-    <div id="google_translate_element"></div>
 
     <!-- NAVIGATION -->
     <nav class="nav" id="mainNav">
         <div class="container">
             <div class="brand">
-                <div class="brand-title" translate="no">Sri Guru Datta Paduka Kshetra</div>
-                <div class="brand-sub" translate="no">Swami Samartha Maharaj Seva Samasthan</div>
+                <div class="brand-title" data-i18n="brand_title">Sri Guru Datta Paduka Kshetra</div>
+                <div class="brand-sub" data-i18n="brand_sub">Swami Samartha Maharaj Seva Samasthan</div>
             </div>
             <button class="hamburger" id="hamburger" aria-label="Toggle menu">
                 <span></span><span></span><span></span>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#about">About</a></li>
-                <li><a href="#origin">Origin</a></li>
-                <li><a href="#goshala">Goshala</a></li>
-                <li><a href="#events">Events</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#volunteer">Volunteer</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#donations" class="nav-donate-btn">Donate</a></li>
+                <li><a href="#about" data-i18n="nav_about">About</a></li>
+                <li><a href="#origin" data-i18n="nav_origin">Origin</a></li>
+                <li><a href="#goshala" data-i18n="nav_goshala">Goshala</a></li>
+                <li><a href="#events" data-i18n="nav_events">Events</a></li>
+                <li><a href="#gallery" data-i18n="nav_gallery">Gallery</a></li>
+                <li><a href="#volunteer" data-i18n="nav_volunteer">Volunteer</a></li>
+                <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+                <li><a href="#donations" class="nav-donate-btn" data-i18n="nav_donate">Donate</a></li>
             </ul>
         </div>
     </nav>
@@ -344,29 +348,29 @@
         <div class="hero-overlay"></div>
         <div class="hero-overlay-pattern"></div>
         <div class="container">
-            <div class="hero-badge" translate="no">Est. 2015 · Maruthipuram · Kanchipuram</div>
-            <h1><span class="notranslate">Sri Guru Datta Paduka Kshetra</span> <em class="notranslate">Irajitam</em></h1>
-            <p class="hero-desc"><span class="notranslate">Swami Samartha Maharaj Seva Samasthan</span> Trust, <span class="notranslate">Maruthipuram, Marudham Kulakkarai, Uthiramerur, Kanchipuram</span>, Tamil Nadu — <span class="notranslate">603 406</span>.</p>
+            <div class="hero-badge" data-i18n="hero_badge">Est. 2015 · Maruthipuram · Kanchipuram</div>
+            <h1><span data-i18n="brand_title">Sri Guru Datta Paduka Kshetra</span> <em data-i18n="hero_title_em">Irajitam</em></h1>
+            <p class="hero-desc" data-i18n="hero_desc">Swami Samartha Maharaj Seva Samasthan Trust, Maruthipuram, Marudham Kulakkarai, Uthiramerur, Kanchipuram, Tamil Nadu — 603 406.</p>
             <div class="hero-actions">
-                <a href="#donations" class="btn btn-primary">Support Sevas ✦</a>
-                <a href="#about" class="btn btn-outline">Explore the Temple</a>
+                <a href="#donations" class="btn btn-primary" data-i18n="hero_btn_support">Support Sevas ✦</a>
+                <a href="#about" class="btn btn-outline" data-i18n="hero_btn_explore">Explore the Temple</a>
             </div>
             <div class="hero-stats">
                 <div class="hero-stat">
                     <span class="hero-stat-num">11+</span>
-                    <span class="hero-stat-label">Years of Devotion</span>
+                    <span class="hero-stat-label" data-i18n="hero_stat1_label">Years of Devotion</span>
                 </div>
                 <div class="hero-stat">
                     <span class="hero-stat-num">3</span>
-                    <span class="hero-stat-label">Levels of Darshan</span>
+                    <span class="hero-stat-label" data-i18n="hero_stat2_label">Levels of Darshan</span>
                 </div>
                 <div class="hero-stat">
                     <span class="hero-stat-num">5</span>
-                    <span class="hero-stat-label">Daily Sevas</span>
+                    <span class="hero-stat-label" data-i18n="hero_stat3_label">Daily Sevas</span>
                 </div>
             </div>
         </div>
-        <div class="hero-scroll">Scroll</div>
+        <div class="hero-scroll" data-i18n="hero_scroll">Scroll</div>
     </header>
 
     <main>
@@ -374,37 +378,37 @@
         <!-- ABOUT -->
         <section id="about">
             <div class="container">
-                <span class="section-eyebrow reveal">Sacred Lineage</span>
-                <h2 class="section-title reveal">Swami Samarth — An Introduction</h2>
-                <p class="section-subtitle reveal">The birth details of Swami Samarth, considered the third avatar of Sri Dattatreya, remain highly secretive. Sri Dattatreya's first avatar, Sripada Srivallabha (1320 AD), predicted the future incarnations.</p>
+                <span class="section-eyebrow reveal" data-i18n="about_eyebrow">Sacred Lineage</span>
+                <h2 class="section-title reveal" data-i18n="about_title">Swami Samarth — An Introduction</h2>
+                <p class="section-subtitle reveal" data-i18n="about_subtitle">The birth details of Swami Samarth, considered the third avatar of Sri Dattatreya, remain highly secretive. Sri Dattatreya's first avatar, Sripada Srivallabha (1320 AD), predicted the future incarnations.</p>
 
                 <div class="about-grid">
                     <div>
                         <div class="card reveal reveal-delay-1">
                             <div class="card-icon">🔱</div>
-                            <h3>Spiritual Lineage</h3>
-                            <p>The second avatar appeared as <span class="notranslate">Sri Narasimha Saraswati</span> (1450 AD). After concluding that avatar, he performed penance in the <span class="notranslate">Kadali Vana</span> for 300 years before emerging as <span class="notranslate">Swami Samarth</span> in Maharashtra.</p>
+                            <h3 data-i18n="about_card1_h3">Spiritual Lineage</h3>
+                            <p data-i18n="about_card1_p">The second avatar appeared as Sri Narasimha Saraswati (1450 AD). After concluding that avatar, he performed penance in the Kadali Vana for 300 years before emerging as Swami Samarth in Maharashtra.</p>
                         </div>
                         <div style="height:20px;"></div>
                         <div class="card reveal reveal-delay-2">
                             <div class="card-icon">🛕</div>
-                            <h3 translate="no">Akkalkot Maharaj</h3>
-                            <p><span class="notranslate">Swami Samarth</span> stayed in <span class="notranslate">Akkalkot</span> for twenty years and attained <span class="notranslate">Samadhi</span> in a devotee's house there, earning the beloved name "<span class="notranslate">Akkalkot Maharaj</span>."</p>
+                            <h3 data-i18n="about_card2_h3">Akkalkot Maharaj</h3>
+                            <p data-i18n="about_card2_p">Swami Samarth stayed in Akkalkot for twenty years and attained Samadhi in a devotee's house there, earning the beloved name "Akkalkot Maharaj."</p>
                         </div>
                     </div>
                     <div class="reveal reveal-delay-3">
-                        <div class="callout-box">
+                        <div class="callout-box" data-i18n="about_callout">
                             "Divine presence, compassionate grace, and protection define the Swami Samarth path. The Guru's blessings flow ceaselessly to all who seek with a pure heart."
                         </div>
                         <div style="height:20px;"></div>
                         <div class="card">
                             <div class="card-icon">🙏</div>
-                            <h3>Dattatreya Avatars</h3>
-                            <p>Sri Dattatreya, the divine trinity of Brahma, Vishnu, and Shiva, has blessed humanity through three sacred avatars across the centuries — each appearing when devotion calls.</p>
+                            <h3 data-i18n="about_card3_h3">Dattatreya Avatars</h3>
+                            <p data-i18n="about_card3_p">Sri Dattatreya, the divine trinity of Brahma, Vishnu, and Shiva, has blessed humanity through three sacred avatars across the centuries — each appearing when devotion calls.</p>
                             <ul class="pill-list">
-                                <li class="notranslate">Sripada Srivallabha — 1320 AD</li>
-                                <li class="notranslate">Narasimha Saraswati — 1450 AD</li>
-                                <li class="notranslate">Swami Samarth</li>
+                                <li data-i18n="pill_sripada">Sripada Srivallabha — 1320 AD</li>
+                                <li data-i18n="pill_narasimha">Narasimha Saraswati — 1450 AD</li>
+                                <li data-i18n="pill_swami">Swami Samarth</li>
                             </ul>
                         </div>
                     </div>
@@ -415,45 +419,45 @@
         <!-- ORIGIN -->
         <section id="origin" style="background: var(--cream-dark);">
             <div class="container">
-                <span class="section-eyebrow reveal">Our Story</span>
-                <h2 class="section-title reveal">Origin in Kanchipuram</h2>
-                <p class="section-subtitle reveal">The desire to build a temple for Paramaguru Sri Sainath Sadguru in Marudham (Maruthipuram) took root in 2011 and blossomed with divine grace.</p>
+                <span class="section-eyebrow reveal" data-i18n="origin_eyebrow">Our Story</span>
+                <h2 class="section-title reveal" data-i18n="origin_title">Origin in Kanchipuram</h2>
+                <p class="section-subtitle reveal" data-i18n="origin_subtitle">The desire to build a temple for Paramaguru Sri Sainath Sadguru in Marudham (Maruthipuram) took root in 2011 and blossomed with divine grace.</p>
 
                 <div class="about-grid">
                     <div class="timeline reveal reveal-delay-1">
                         <div class="timeline-item">
                             <div class="timeline-dot">01</div>
                             <div class="timeline-year">2015</div>
-                            <p class="timeline-text">After chanting the <span class="notranslate">Hanuman Chalisa</span> 108 times over 18 days at the local <span class="notranslate">Maruti</span> temple, a worship center was inaugurated with <span class="notranslate">Padukas</span> and portrait of <span class="notranslate">Sai Nath</span>.</p>
+                            <p class="timeline-text" data-i18n="timeline_2015">After chanting the Hanuman Chalisa 108 times over 18 days at the local Maruti temple, a worship center was inaugurated with Padukas and portrait of Sai Nath.</p>
                         </div>
                         <div class="timeline-item">
                             <div class="timeline-dot">02</div>
                             <div class="timeline-year">2017</div>
-                            <p class="timeline-text">The thought of building a dedicated <span class="notranslate">Paduka Mandir</span> took deep root in the hearts of devotees and trustees.</p>
+                            <p class="timeline-text" data-i18n="timeline_2017">The thought of building a dedicated Paduka Mandir took deep root in the hearts of devotees and trustees.</p>
                         </div>
                         <div class="timeline-item">
                             <div class="timeline-dot">03</div>
                             <div class="timeline-year">2021</div>
-                            <p class="timeline-text">With the blessings of the Gurus, the sacred Bhoomi Puja was performed on February 24th, marking the commencement of construction.</p>
+                            <p class="timeline-text" data-i18n="timeline_2021">With the blessings of the Gurus, the sacred Bhoomi Puja was performed on February 24th, marking the commencement of construction.</p>
                         </div>
                     </div>
 
                     <div class="card reveal reveal-delay-2">
                         <div class="card-icon">🌸</div>
-                        <h3>Guided by Devotion</h3>
-                        <p>Each milestone strengthened the resolve to create a sacred space where devotees can experience darshan, seva, and spiritual upliftment. The journey is a testament to collective faith.</p>
+                        <h3 data-i18n="origin_card_h3a">Guided by Devotion</h3>
+                        <p data-i18n="origin_card_pa">Each milestone strengthened the resolve to create a sacred space where devotees can experience darshan, seva, and spiritual upliftment. The journey is a testament to collective faith.</p>
                         <div style="height:14px;"></div>
 
-                        <h3>Temple Structure</h3>
-                        <p>The temple consists of three sacred levels, each representing a dimension of the divine form:</p>
+                        <h3 data-i18n="origin_card_h3b">Temple Structure</h3>
+                        <p data-i18n="origin_card_pb">The temple consists of three sacred levels, each representing a dimension of the divine form:</p>
                         <ul class="pill-list">
-                            <li>Underground (<span class="notranslate">Thazhthalam</span>)</li>
-                            <li>Sanctum (<span class="notranslate">Garbhagriha</span>)</li>
-                            <li>Tower (<span class="notranslate">Gopuram</span>)</li>
+                            <li data-i18n="pill_underground">Underground (Thazhthalam)</li>
+                            <li data-i18n="pill_sanctum">Sanctum (Garbhagriha)</li>
+                            <li data-i18n="pill_tower">Tower (Gopuram)</li>
                         </ul>
                         <div style="height:14px;"></div>
 
-                        <p>The <span class="notranslate">Garbhagriha</span> houses <span class="notranslate">Sri Nrusimha Saraswati, Sri Swami Samarth, Sri Sai Nath, Audumbar Moola Paduka</span>, and <span class="notranslate">Panchaloha</span> Idol of <span class="notranslate">Dattatreya</span> — consecrated over sacred <span class="notranslate">Yantras</span> including <span class="notranslate">Sri Chakra, Vaibhava Lakshmi, Hanuman</span>, and <span class="notranslate">Datta Yantras</span>.</p>
+                        <p data-i18n="origin_card_pc">The Garbhagriha houses Sri Nrusimha Saraswati, Sri Swami Samarth, Sri Sai Nath, Audumbar Moola Paduka, and Panchaloha Idol of Dattatreya — consecrated over sacred Yantras including Sri Chakra, Vaibhava Lakshmi, Hanuman, and Datta Yantras.</p>
                     </div>
                 </div>
             </div>
@@ -462,133 +466,133 @@
         <!-- GOSHALA -->
         <section id="goshala" class="goshala-section">
             <div class="container">
-                <span class="section-eyebrow reveal">Living Dharma</span>
-                <h2 class="section-title reveal">Goshala — Service to the Divine Mother</h2>
-                <p class="section-subtitle reveal">In Hindu Dharma, the cow is Gomatha — a divine mother who nurtures life. Supporting the Goshala is a service that sustains harmony with nature and earns eternal merit.</p>
+                <span class="section-eyebrow reveal" data-i18n="goshala_eyebrow">Living Dharma</span>
+                <h2 class="section-title reveal" data-i18n="goshala_title">Goshala — Service to the Divine Mother</h2>
+                <p class="section-subtitle reveal" data-i18n="goshala_subtitle">In Hindu Dharma, the cow is Gomatha — a divine mother who nurtures life. Supporting the Goshala is a service that sustains harmony with nature and earns eternal merit.</p>
 
                 <div class="goshala-grid">
                     <div class="goshala-card reveal reveal-delay-1">
-                        <h3>Why Goshala Matters</h3>
-                        <p><span class="notranslate">Kamadhenu</span> is praised as the divine cow who bestows prosperity. Lord Krishna, as <span class="notranslate">Gopala</span>, lived with cows and taught <span class="notranslate">Ahimsa</span> and harmony with nature. To serve the cow is to serve the Guru.</p>
+                        <h3 data-i18n="goshala_card1_h3">Why Goshala Matters</h3>
+                        <p data-i18n="goshala_card1_p">Kamadhenu is praised as the divine cow who bestows prosperity. Lord Krishna, as Gopala, lived with cows and taught Ahimsa and harmony with nature. To serve the cow is to serve the Guru.</p>
                     </div>
                     <div class="goshala-card reveal reveal-delay-2">
-                        <h3>Benefits of Supporting</h3>
-                        <p>Every contribution to the Goshala carries immense spiritual merit. Your seva sustains Gomatha's well-being and brings these blessings:</p>
+                        <h3 data-i18n="goshala_card2_h3">Benefits of Supporting</h3>
+                        <p data-i18n="goshala_card2_p">Every contribution to the Goshala carries immense spiritual merit. Your seva sustains Gomatha's well-being and brings these blessings:</p>
                         <ul class="pill-list">
-                            <li>Merit of Go-Dhanam</li>
-                            <li>Family harmony</li>
-                            <li>Protection of nature</li>
-                            <li>Traditional agriculture</li>
-                            <li>Ancestral blessings</li>
+                            <li data-i18n="pill_godhanam">Merit of Go-Dhanam</li>
+                            <li data-i18n="pill_family">Family harmony</li>
+                            <li data-i18n="pill_nature">Protection of nature</li>
+                            <li data-i18n="pill_agri">Traditional agriculture</li>
+                            <li data-i18n="pill_ancestral">Ancestral blessings</li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="goshala-callout reveal">"Lend a hand — Save a life. Service to Goshala is service to God himself."</div>
+                <div class="goshala-callout reveal" data-i18n="goshala_callout">"Lend a hand — Save a life. Service to Goshala is service to God himself."</div>
             </div>
         </section>
 
         <!-- EVENTS CALENDAR -->
         <section id="events" class="events-section">
             <div class="container">
-                <span class="section-eyebrow reveal">Sacred Calendar</span>
-                <h2 class="section-title reveal">Annual Festivals &amp; Events</h2>
-                <p class="section-subtitle reveal">Join us in celebrating these sacred occasions throughout the year. Each festival is an opportunity for darshan, seva, and divine blessings.</p>
+                <span class="section-eyebrow reveal" data-i18n="events_eyebrow">Sacred Calendar</span>
+                <h2 class="section-title reveal" data-i18n="events_title">Annual Festivals &amp; Events</h2>
+                <p class="section-subtitle reveal" data-i18n="events_subtitle">Join us in celebrating these sacred occasions throughout the year. Each festival is an opportunity for darshan, seva, and divine blessings.</p>
 
                 <div class="events-grid">
                     <div class="event-card reveal reveal-delay-1">
                         <div class="event-date-bar">
-                            <div class="event-day">Apr</div>
+                            <div class="event-day" data-i18n="ev_apr">Apr</div>
                             <div class="event-month-year">
-                                <div class="event-month notranslate">Sri Rama Navami</div>
-                                <div class="event-year">Annual — April</div>
+                                <div class="event-month" data-i18n="ev1_name">Sri Rama Navami</div>
+                                <div class="event-year" data-i18n="ev1_year">Annual — April</div>
                             </div>
                         </div>
                         <div class="event-body">
-                            <div class="event-name notranslate">Sri Rama Navami</div>
-                            <div class="event-desc">Celebrating the divine birth of Lord Rama with special abhishekam, bhajans, and annadanam for all devotees.</div>
-                            <span class="event-tag">🪔 Major Festival</span>
+                            <div class="event-name" data-i18n="ev1_name">Sri Rama Navami</div>
+                            <div class="event-desc" data-i18n="ev1_desc">Celebrating the divine birth of Lord Rama with special abhishekam, bhajans, and annadanam for all devotees.</div>
+                            <span class="event-tag" data-i18n="tag_major">🪔 Major Festival</span>
                         </div>
                     </div>
 
                     <div class="event-card reveal reveal-delay-2">
                         <div class="event-date-bar">
-                            <div class="event-day">Jun</div>
+                            <div class="event-day" data-i18n="ev_jun">Jun</div>
                             <div class="event-month-year">
-                                <div class="event-month notranslate">Varushabishekam</div>
-                                <div class="event-year notranslate">Vaigasi Astham</div>
+                                <div class="event-month" data-i18n="ev2_name">Varushabishekam</div>
+                                <div class="event-year" data-i18n="ev2_year">Vaigasi Astham</div>
                             </div>
                         </div>
                         <div class="event-body">
-                            <div class="event-name notranslate">Varushabishekam</div>
-                            <div class="event-desc">Annual temple anniversary <span class="notranslate">Abhishekam</span> on <span class="notranslate">Vaigasi Astham</span>. A highly auspicious occasion for all devotees.</div>
-                            <span class="event-tag">⭐ Annual Highlight</span>
+                            <div class="event-name" data-i18n="ev2_name">Varushabishekam</div>
+                            <div class="event-desc" data-i18n="ev2_desc">Annual temple anniversary Abhishekam on Vaigasi Astham. A highly auspicious occasion for all devotees.</div>
+                            <span class="event-tag" data-i18n="tag_annual">⭐ Annual Highlight</span>
                         </div>
                     </div>
 
                     <div class="event-card reveal reveal-delay-3">
                         <div class="event-date-bar">
-                            <div class="event-day">Jul</div>
+                            <div class="event-day" data-i18n="ev_jul">Jul</div>
                             <div class="event-month-year">
-                                <div class="event-month notranslate">Swami Punyatithi</div>
-                                <div class="event-year">Annual — July</div>
+                                <div class="event-month" data-i18n="ev3_name">Swami Samarth Punyatithi</div>
+                                <div class="event-year" data-i18n="ev3_year">Annual — July</div>
                             </div>
                         </div>
                         <div class="event-body">
-                            <div class="event-name notranslate">Swami Samarth Punyatithi</div>
-                            <div class="event-desc">A solemn and joyous commemoration of Swami Samarth's Mahasamadhi with special pujas, homa, and devotional programs.</div>
-                            <span class="event-tag">🙏 Devotional</span>
+                            <div class="event-name" data-i18n="ev3_name">Swami Samarth Punyatithi</div>
+                            <div class="event-desc" data-i18n="ev3_desc">A solemn and joyous commemoration of Swami Samarth's Mahasamadhi with special pujas, homa, and devotional programs.</div>
+                            <span class="event-tag" data-i18n="tag_devotional">🙏 Devotional</span>
                         </div>
                     </div>
 
                     <div class="event-card reveal reveal-delay-4">
                         <div class="event-date-bar">
-                            <div class="event-day">Jul</div>
+                            <div class="event-day" data-i18n="ev_jul">Jul</div>
                             <div class="event-month-year">
-                                <div class="event-month notranslate">Guru Purnima</div>
-                                <div class="event-year">Annual — Full Moon</div>
+                                <div class="event-month" data-i18n="ev4_name">Guru Purnima</div>
+                                <div class="event-year" data-i18n="ev4_year">Annual — Full Moon</div>
                             </div>
                         </div>
                         <div class="event-body">
-                            <div class="event-name notranslate">Guru Purnima</div>
-                            <div class="event-desc">The most sacred day to honour the Guru lineage — Dattatreya, Narasimha Saraswati, Swami Samarth, and Sai Nath.</div>
-                            <span class="event-tag">🌕 Sacred Day</span>
+                            <div class="event-name" data-i18n="ev4_name">Guru Purnima</div>
+                            <div class="event-desc" data-i18n="ev4_desc">The most sacred day to honour the Guru lineage — Dattatreya, Narasimha Saraswati, Swami Samarth, and Sai Nath.</div>
+                            <span class="event-tag" data-i18n="tag_sacred">🌕 Sacred Day</span>
                         </div>
                     </div>
 
                     <div class="event-card reveal reveal-delay-1">
                         <div class="event-date-bar">
-                            <div class="event-day">Oct</div>
+                            <div class="event-day" data-i18n="ev_oct">Oct</div>
                             <div class="event-month-year">
-                                <div class="event-month notranslate">Vijaya Dashami</div>
-                                <div class="event-year">Annual — <span class="notranslate">Navaratri</span></div>
+                                <div class="event-month" data-i18n="ev5_name">Vijaya Dashami</div>
+                                <div class="event-year" data-i18n="ev5_year">Annual — Navaratri</div>
                             </div>
                         </div>
                         <div class="event-body">
-                            <div class="event-name notranslate">Vijaya Dashami</div>
-                            <div class="event-desc">The victory of dharma over adharma celebrated with Saraswati Puja, procession, and special offerings.</div>
-                            <span class="event-tag">🎉 Grand Celebration</span>
+                            <div class="event-name" data-i18n="ev5_name">Vijaya Dashami</div>
+                            <div class="event-desc" data-i18n="ev5_desc">The victory of dharma over adharma celebrated with Saraswati Puja, procession, and special offerings.</div>
+                            <span class="event-tag" data-i18n="tag_grand">🎉 Grand Celebration</span>
                         </div>
                     </div>
 
                     <div class="event-card reveal reveal-delay-2">
                         <div class="event-date-bar">
-                            <div class="event-day">Dec</div>
+                            <div class="event-day" data-i18n="ev_dec">Dec</div>
                             <div class="event-month-year">
-                                <div class="event-month notranslate">Datta Jayanthi</div>
-                                <div class="event-year">Annual — December</div>
+                                <div class="event-month" data-i18n="ev6_name">Datta Jayanthi</div>
+                                <div class="event-year" data-i18n="ev6_year">Annual — December</div>
                             </div>
                         </div>
                         <div class="event-body">
-                            <div class="event-name notranslate">Datta Jayanthi</div>
-                            <div class="event-desc">The divine birth celebration of Sri Dattatreya — the supreme Guru — with Sahasranama puja, procession, and Annadanam.</div>
-                            <span class="event-tag">🔱 Divine Celebration</span>
+                            <div class="event-name" data-i18n="ev6_name">Datta Jayanthi</div>
+                            <div class="event-desc" data-i18n="ev6_desc">The divine birth celebration of Sri Dattatreya — the supreme Guru — with Sahasranama puja, procession, and Annadanam.</div>
+                            <span class="event-tag" data-i18n="tag_divine">🔱 Divine Celebration</span>
                         </div>
                     </div>
                 </div>
 
                 <div style="margin-top:28px; text-align:center;" class="reveal">
-                    <div class="callout-box" style="max-width:600px; margin:0 auto;">
+                    <div class="callout-box" style="max-width:600px; margin:0 auto;" data-i18n="events_bottom">
                         Monthly events include Guruvara Puja (every Thursday), Go Puja (every Revathi Nakshatra), and Amavasya / Pournami Datta Sahasranama Puja.
                     </div>
                 </div>
@@ -598,79 +602,79 @@
         <!-- DONATIONS -->
         <section id="donations">
             <div class="container">
-                <span class="section-eyebrow reveal">Give &amp; Receive</span>
-                <h2 class="section-title reveal">Donations &amp; Sevas</h2>
-                <p class="section-subtitle reveal">Your contribution supports daily pujas, Annadanam, and Goshala care — each offering returns manifold blessings to the giver and their family.</p>
+                <span class="section-eyebrow reveal" data-i18n="don_eyebrow">Give &amp; Receive</span>
+                <h2 class="section-title reveal" data-i18n="don_title">Donations &amp; Sevas</h2>
+                <p class="section-subtitle reveal" data-i18n="don_subtitle">Your contribution supports daily pujas, Annadanam, and Goshala care — each offering returns manifold blessings to the giver and their family.</p>
 
                 <div class="donations-grid">
                     <div class="donation-hero-card reveal reveal-delay-1">
                         <div>
-                            <h3>Scan &amp; Donate via UPI</h3>
-                            <p>Donate instantly and securely using any UPI app — GPay, PhonePe, Paytm, or BHIM. Your seva reaches the temple directly.</p>
+                            <h3 data-i18n="don_upi_h3">Scan &amp; Donate via UPI</h3>
+                            <p data-i18n="don_upi_p">Donate instantly and securely using any UPI app — GPay, PhonePe, Paytm, or BHIM. Your seva reaches the temple directly.</p>
                         </div>
                         <div class="qr-wrap">
                             <img src="qr.png" alt="UPI QR Code for donations">
-                            <div class="qr-label">Scan with any UPI app<br>GPay · PhonePe · Paytm · BHIM</div>
+                            <div class="qr-label"><span data-i18n="don_qr_label">Scan with any UPI app</span><br>GPay · PhonePe · Paytm · BHIM</div>
                         </div>
-                        <div style="font-size:0.85rem; color:rgba(255,255,255,0.6);">UPI: <strong class="notranslate" style="color:var(--saffron-light);">9940941049@hdfcbank</strong></div>
-                        <a href="#contact" class="btn btn-primary" style="align-self:flex-start;">Send Donation Details →</a>
+                        <div style="font-size:0.85rem; color:rgba(255,255,255,0.6);">UPI: <strong style="color:var(--saffron-light);">9940941049@hdfcbank</strong></div>
+                        <a href="#contact" class="btn btn-primary" style="align-self:flex-start;" data-i18n="don_send_btn">Send Donation Details →</a>
                     </div>
 
                     <div class="card bank-card reveal reveal-delay-2">
-                        <h3>Bank Transfer Details</h3>
-                        <p style="color:var(--muted); font-size:0.88rem; margin-bottom:20px;">For NEFT/RTGS transfers and larger donations, use the details below.</p>
+                        <h3 data-i18n="don_bank_h3">Bank Transfer Details</h3>
+                        <p style="color:var(--muted); font-size:0.88rem; margin-bottom:20px;" data-i18n="don_bank_p">For NEFT/RTGS transfers and larger donations, use the details below.</p>
 
                         <div class="bank-detail">
-                            <span class="bank-label">Account Name</span>
-                            <span class="bank-value notranslate">SWAMI SAMARTHA MAHARAJ SEVA SAMASTHAN</span>
+                            <span class="bank-label" data-i18n="bank_label_name">Account Name</span>
+                            <span class="bank-value">SWAMI SAMARTHA MAHARAJ SEVA SAMASTHAN</span>
                         </div>
                         <div class="bank-detail">
-                            <span class="bank-label">Account Number</span>
-                            <span class="bank-value notranslate">50200057752558</span>
+                            <span class="bank-label" data-i18n="bank_label_number">Account Number</span>
+                            <span class="bank-value">50200057752558</span>
                         </div>
                         <div class="bank-detail">
-                            <span class="bank-label">Bank &amp; Branch</span>
-                            <span class="bank-value notranslate">HDFC Bank, Kanchipuram Branch</span>
+                            <span class="bank-label" data-i18n="bank_label_branch">Bank &amp; Branch</span>
+                            <span class="bank-value">HDFC Bank, Kanchipuram Branch</span>
                         </div>
                         <div class="bank-detail">
-                            <span class="bank-label">IFSC Code</span>
-                            <span class="bank-value notranslate">HDFC0000879</span>
+                            <span class="bank-label" data-i18n="bank_label_ifsc">IFSC Code</span>
+                            <span class="bank-value">HDFC0000879</span>
                         </div>
                         <div class="bank-detail">
                             <span class="bank-label">UPI / GPay</span>
-                            <span class="bank-value notranslate">9940941049@hdfcbank</span>
+                            <span class="bank-value">9940941049@hdfcbank</span>
                         </div>
                         <div style="margin-top:18px; padding:14px 16px; background:rgba(27,109,104,0.07); border-radius:var(--radius-sm); border-left:3px solid var(--teal);">
-                            <span style="font-size:0.85rem; color:var(--teal); font-weight:600;">🏛️ Donations are eligible for deduction under Section 80G of Income Tax Act, 1961.</span>
+                            <span style="font-size:0.85rem; color:var(--teal); font-weight:600;" data-i18n="don_80g">🏛️ Donations are eligible for deduction under Section 80G of Income Tax Act, 1961.</span>
                         </div>
                         <div style="margin-top:14px;">
-                            <a href="#contact" class="btn btn-teal">Contact for Receipts →</a>
+                            <a href="#contact" class="btn btn-teal" data-i18n="don_receipt_btn">Contact for Receipts →</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="reveal">
-                    <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.6rem; color:var(--maroon); margin-bottom:20px;">Puja Methods &amp; Tariffs</h3>
+                    <h3 style="font-family:var(--font-serif); font-size:1.6rem; color:var(--maroon); margin-bottom:20px;" data-i18n="don_puja_heading">Puja Methods &amp; Tariffs</h3>
                     <div class="puja-table-wrap">
                         <table class="puja-table">
                             <thead>
                                 <tr>
-                                    <th>Puja / Seva</th>
-                                    <th>Offering (INR)</th>
+                                    <th data-i18n="puja_th_seva">Puja / Seva</th>
+                                    <th data-i18n="puja_th_offering">Offering (INR)</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td><span class="notranslate" data-i18n="puja_nithya">Nithya Puja</span></td><td><span class="notranslate" data-i18n="amount_116">Rs. 116/-</span></td></tr>
-                                <tr><td><span class="notranslate" data-i18n="puja_guruvara">Guruvara Puja</span></td><td><span class="notranslate" data-i18n="amount_333">Rs. 333/-</span></td></tr>
-                                <tr><td><span class="notranslate" data-i18n="puja_go">Go Puja (On Every Revathi Nakshatra)</span></td><td><span class="notranslate" data-i18n="amount_1116">Rs. 1116/-</span></td></tr>
-                                <tr><td><span class="notranslate" data-i18n="puja_amavasya_pournami">Amavasya / Pournami Datta Sahasranama Puja</span></td><td><span class="notranslate" data-i18n="amount_5016">Rs. 5016/-</span></td></tr>
-                                <tr><td><span class="notranslate" data-i18n="puja_vaibhava">Vaibhava Lakshmi Puja (Evening)</span></td><td><span class="notranslate" data-i18n="amount_3016">Rs. 3016/-</span></td></tr>
-                                <tr><td><span class="notranslate" data-i18n="puja_sarva">Sarva Poorthikari (Lalitha Puja) Evening</span></td><td><span class="notranslate" data-i18n="amount_3016">Rs. 3016/-</span></td></tr>
-                                <tr><td><span class="notranslate" data-i18n="puja_mandala">Mandala Abhishekam (40-Day Sankalpam)</span></td><td><span class="notranslate" data-i18n="amount_5016">Rs. 5016/-</span></td></tr>
-                                <tr><td><span class="notranslate" data-i18n="puja_pithru">Pithru Puja Amavasya Annadanam</span></td><td><span class="notranslate" data-i18n="amount_3016_5016">Rs. 3016 / 5016/-</span></td></tr>
-                                <tr><td><span class="notranslate" data-i18n="puja_mahaparani">Mahabarani Thila Homam (Purattasi Month)</span></td><td><span class="notranslate" data-i18n="amount_20000">Rs. 20,000/-</span></td></tr>
-                                <tr><td><span class="notranslate" data-i18n="puja_pournami_annadanam">Pournami Annadanam</span></td><td><span class="notranslate" data-i18n="amount_5016">Rs. 5016/-</span></td></tr>
-                                <tr><td><span class="notranslate" data-i18n="varushabishekam">Varushabishekam (On Vaigasi Astham)</span></td><td><span class="notranslate" data-i18n="amount_blank">—</span></td></tr>
+                                <tr><td><span data-i18n="puja_nithya">Nithya Puja</span></td><td><span data-i18n="amount_116">Rs. 116/-</span></td></tr>
+                                <tr><td><span data-i18n="puja_guruvara">Guruvara Puja</span></td><td><span data-i18n="amount_333">Rs. 333/-</span></td></tr>
+                                <tr><td><span data-i18n="puja_go">Go Puja (On Every Revathi Nakshatra)</span></td><td><span data-i18n="amount_1116">Rs. 1116/-</span></td></tr>
+                                <tr><td><span data-i18n="puja_amavasya_pournami">Amavasya / Pournami Datta Sahasranama Puja</span></td><td><span data-i18n="amount_5016">Rs. 5016/-</span></td></tr>
+                                <tr><td><span data-i18n="puja_vaibhava">Vaibhava Lakshmi Puja (Evening)</span></td><td><span data-i18n="amount_3016">Rs. 3016/-</span></td></tr>
+                                <tr><td><span data-i18n="puja_sarva">Sarva Poorthikari (Lalitha Puja) Evening</span></td><td><span data-i18n="amount_3016">Rs. 3016/-</span></td></tr>
+                                <tr><td><span data-i18n="puja_mandala">Mandala Abhishekam (40-Day Sankalpam)</span></td><td><span data-i18n="amount_5016">Rs. 5016/-</span></td></tr>
+                                <tr><td><span data-i18n="puja_pithru">Pithru Puja Amavasya Annadanam</span></td><td><span data-i18n="amount_3016_5016">Rs. 3016 / 5016/-</span></td></tr>
+                                <tr><td><span data-i18n="puja_mahaparani">Mahabarani Thila Homam (Purattasi Month)</span></td><td><span data-i18n="amount_20000">Rs. 20,000/-</span></td></tr>
+                                <tr><td><span data-i18n="puja_pournami_annadanam">Pournami Annadanam</span></td><td><span data-i18n="amount_5016">Rs. 5016/-</span></td></tr>
+                                <tr><td><span data-i18n="varushabishekam">Varushabishekam (On Vaigasi Astham)</span></td><td><span data-i18n="amount_blank">—</span></td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -681,14 +685,14 @@
         <!-- GALLERY -->
         <section id="gallery" style="background: var(--cream-dark);">
             <div class="container">
-                <span class="section-eyebrow reveal">Visual Journey</span>
-                <h2 class="section-title reveal">Temple Gallery</h2>
-                <p class="section-subtitle reveal">A glimpse of the divine presence, sacred spaces, and ongoing seva at <span class="notranslate">Sri Guru Datta Paduka Kshetra</span>.</p>
+                <span class="section-eyebrow reveal" data-i18n="gal_eyebrow">Visual Journey</span>
+                <h2 class="section-title reveal" data-i18n="gal_title">Temple Gallery</h2>
+                <p class="section-subtitle reveal" data-i18n="gal_subtitle">A glimpse of the divine presence, sacred spaces, and ongoing seva at Sri Guru Datta Paduka Kshetra.</p>
 
                 <div class="gallery-tabs reveal">
-                    <button class="gallery-tab active" onclick="showGallery('temple', this)">Temple Pictures</button>
-                    <button class="gallery-tab" onclick="showGallery('goshala', this)">Goshala</button>
-                    <button class="gallery-tab" onclick="showGallery('book', this)">Temple Book</button>
+                    <button class="gallery-tab active" onclick="showGallery('temple', this)" data-i18n="gal_tab_temple">Temple Pictures</button>
+                    <button class="gallery-tab" onclick="showGallery('goshala', this)" data-i18n="gal_tab_goshala">Goshala</button>
+                    <button class="gallery-tab" onclick="showGallery('book', this)" data-i18n="gal_tab_book">Temple Book</button>
                 </div>
 
                 <div class="gallery-panel active" id="gallery-temple">
@@ -722,18 +726,18 @@
                 </div>
 
                 <div class="reveal" style="margin-top:36px;">
-                    <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.4rem; color:var(--maroon); margin-bottom:18px;">Featured Video</h3>
+                    <h3 style="font-family:var(--font-serif); font-size:1.4rem; color:var(--maroon); margin-bottom:18px;" data-i18n="gal_video_heading">Featured Video</h3>
                     <a href="https://youtube.com/watch?si=Su5y9tS66h5RFWHs&t=212&v=na0UgqUxkQ8&feature=youtu.be" target="_blank" rel="noopener" class="youtube-card">
                         <div class="youtube-thumb">
                             <img src="YT Thumpnail.jpg" alt="YouTube thumbnail for the featured temple video">
                             <div class="youtube-play"></div>
                         </div>
                         <div class="youtube-info">
-                            <h3 translate="no">Swami Akalkot Maharaj Aalayam Amaiya Kai Korppom | Gopuram Tv</h3>
-                            <p>Watch the complete feature on the temple construction and inauguration on Gopuram TV.</p>
+                            <h3 data-i18n="gal_yt_title">Swami Akalkot Maharaj Aalayam Amaiya Kai Korppom | Gopuram Tv</h3>
+                            <p data-i18n="gal_yt_desc">Watch the complete feature on the temple construction and inauguration on Gopuram TV.</p>
                             <div class="qr-youtube">
                                 <img src="QR Code to YouTube Video.jpg" alt="QR code to YouTube video">
-                                <span>Scan the QR code to watch on your phone</span>
+                                <span data-i18n="gal_qr_text">Scan the QR code to watch on your phone</span>
                             </div>
                         </div>
                     </a>
@@ -744,50 +748,50 @@
         <!-- VOLUNTEER -->
         <section id="volunteer" class="volunteer-section">
             <div class="container">
-                <span class="section-eyebrow reveal">Join the Seva</span>
-                <h2 class="section-title reveal">Volunteer &amp; Participate</h2>
-                <p class="section-subtitle reveal">The temple is built on devotion and collective service. There are many ways to contribute your time, skills, and energy to this sacred mission.</p>
+                <span class="section-eyebrow reveal" data-i18n="vol_eyebrow">Join the Seva</span>
+                <h2 class="section-title reveal" data-i18n="vol_title">Volunteer &amp; Participate</h2>
+                <p class="section-subtitle reveal" data-i18n="vol_subtitle">The temple is built on devotion and collective service. There are many ways to contribute your time, skills, and energy to this sacred mission.</p>
 
                 <div class="volunteer-intro">
                     <div class="volunteer-image reveal reveal-delay-1">
                         <img src="1.jpg.jpeg" alt="Temple seva activities" loading="lazy">
                     </div>
                     <div class="reveal reveal-delay-2">
-                        <div class="callout-box" style="margin-bottom:24px;">
+                        <div class="callout-box" style="margin-bottom:24px;" data-i18n="vol_callout">
                             "Seva (selfless service) is the highest form of worship. When you serve the Kshetra, you serve the Guru himself."
                         </div>
-                        <p style="color:var(--muted); margin-bottom:24px;">Whether you are near Kanchipuram or far away, there is a meaningful role for every devotee — from sponsoring a meal to participating in festivals, from helping with communications to welcoming visitors.</p>
-                        <a href="#contact" class="btn btn-primary">Connect with the Trust →</a>
+                        <p style="color:var(--muted); margin-bottom:24px;" data-i18n="vol_p">Whether you are near Kanchipuram or far away, there is a meaningful role for every devotee — from sponsoring a meal to participating in festivals, from helping with communications to welcoming visitors.</p>
+                        <a href="#contact" class="btn btn-primary" data-i18n="vol_btn_connect">Connect with the Trust →</a>
                     </div>
                 </div>
 
                 <div class="volunteer-roles">
                     <div class="role-card reveal reveal-delay-1">
                         <div class="role-icon">🍽️</div>
-                        <h4>Annadanam Sponsor</h4>
-                        <p>Sponsor a meal on any festival day or Amavasya / Pournami. Feed devotees and receive the merit of Annadanam.</p>
+                        <h4 data-i18n="role1_h4">Annadanam Sponsor</h4>
+                        <p data-i18n="role1_p">Sponsor a meal on any festival day or Amavasya / Pournami. Feed devotees and receive the merit of Annadanam.</p>
                     </div>
                     <div class="role-card reveal reveal-delay-2">
                         <div class="role-icon">🐄</div>
-                        <h4>Goshala Seva</h4>
-                        <p>Contribute to the daily care of cows — feeding, cleaning, or sponsoring their upkeep. Gomatha's grace is boundless.</p>
+                        <h4 data-i18n="role2_h4">Goshala Seva</h4>
+                        <p data-i18n="role2_p">Contribute to the daily care of cows — feeding, cleaning, or sponsoring their upkeep. Gomatha's grace is boundless.</p>
                     </div>
                     <div class="role-card reveal reveal-delay-3">
                         <div class="role-icon">🛕</div>
-                        <h4>Festival Volunteer</h4>
-                        <p>Help with organizing, decorating, and conducting major festivals and daily pujas at the temple.</p>
+                        <h4 data-i18n="role3_h4">Festival Volunteer</h4>
+                        <p data-i18n="role3_p">Help with organizing, decorating, and conducting major festivals and daily pujas at the temple.</p>
                     </div>
                     <div class="role-card reveal reveal-delay-4">
                         <div class="role-icon">📢</div>
-                        <h4>Outreach &amp; Awareness</h4>
-                        <p>Help spread awareness about the temple's mission through social media, word of mouth, or printed materials.</p>
+                        <h4 data-i18n="role4_h4">Outreach &amp; Awareness</h4>
+                        <p data-i18n="role4_p">Help spread awareness about the temple's mission through social media, word of mouth, or printed materials.</p>
                     </div>
                 </div>
 
                 <div class="volunteer-cta reveal" style="margin-top:40px;">
-                    <h3>Ready to Begin Your Seva?</h3>
-                    <p>Reach out to the trust directly. Every act of service, big or small, is received with love and gratitude by the Guru.</p>
-                    <a href="tel:+919940941019" class="btn btn-primary">Call the Trust — <span class="notranslate">99409 41019</span></a>
+                    <h3 data-i18n="vol_cta_h3">Ready to Begin Your Seva?</h3>
+                    <p data-i18n="vol_cta_p">Reach out to the trust directly. Every act of service, big or small, is received with love and gratitude by the Guru.</p>
+                    <a href="tel:+919940941019" class="btn btn-primary"><span data-i18n="vol_cta_btn">Call the Trust —</span>&nbsp;<span>99409 41019</span></a>
                 </div>
             </div>
         </section>
@@ -795,41 +799,41 @@
         <!-- CONTACT -->
         <section id="contact">
             <div class="container">
-                <span class="section-eyebrow reveal">Come, Visit, Receive</span>
-                <h2 class="section-title reveal">Contact &amp; Location</h2>
-                <p class="section-subtitle reveal">Devotees can visit, make a Sankalpa to Swami, and perform Abhishekam, Alankaram, and Naivedyam with their own hands to experience divine bliss.</p>
+                <span class="section-eyebrow reveal" data-i18n="con_eyebrow">Come, Visit, Receive</span>
+                <h2 class="section-title reveal" data-i18n="con_title">Contact &amp; Location</h2>
+                <p class="section-subtitle reveal" data-i18n="con_subtitle">Devotees can visit, make a Sankalpa to Swami, and perform Abhishekam, Alankaram, and Naivedyam with their own hands to experience divine bliss.</p>
 
                 <div class="contact-grid">
                     <div class="card reveal reveal-delay-1">
-                        <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.4rem; color:var(--maroon); margin-bottom:20px;">Trustee Contact Numbers</h3>
+                        <h3 style="font-family:var(--font-serif); font-size:1.4rem; color:var(--maroon); margin-bottom:20px;" data-i18n="con_card_h3">Trustee Contact Numbers</h3>
 
                         <div class="contact-item">
                             <div class="contact-emoji">📞</div>
                             <div class="contact-info">
-                                <span class="contact-label">SSMS Trust</span>
-                                <a href="tel:+919940941019" class="contact-value notranslate" style="color:var(--teal); font-weight:700;">99409 41019</a>
+                                <span class="contact-label" data-i18n="con_label_trust">SSMS Trust</span>
+                                <a href="tel:+919940941019" class="contact-value" style="color:var(--teal); font-weight:700;">99409 41019</a>
                             </div>
                         </div>
                         <div class="contact-item">
                             <div class="contact-emoji">📱</div>
                             <div class="contact-info">
-                                <span class="contact-label notranslate">Rajivi</span>
-                                <a href="tel:+918838427262" class="contact-value notranslate" style="color:var(--teal); font-weight:700;">88384 27262</a>
+                                <span class="contact-label">Rajivi</span>
+                                <a href="tel:+918838427262" class="contact-value" style="color:var(--teal); font-weight:700;">88384 27262</a>
                             </div>
                         </div>
                         <div class="contact-item">
                             <div class="contact-emoji">📱</div>
                             <div class="contact-info">
-                                <span class="contact-label notranslate">Sundar Sai</span>
-                                <a href="tel:+919769404451" class="contact-value notranslate" style="color:var(--teal); font-weight:700;">97694 04451</a>
+                                <span class="contact-label">Sundar Sai</span>
+                                <a href="tel:+919769404451" class="contact-value" style="color:var(--teal); font-weight:700;">97694 04451</a>
                             </div>
                         </div>
 
                         <div class="contact-item">
                             <div class="contact-emoji">✉️</div>
                             <div class="contact-info">
-                                <span class="contact-label">Email</span>
-                                <a href="mailto:sevasamasthan@gmail.com" class="contact-value notranslate" style="color:var(--teal); font-weight:700;">sevasamasthan@gmail.com</a>
+                                <span class="contact-label" data-i18n="con_label_email">Email</span>
+                                <a href="mailto:sevasamasthan@gmail.com" class="contact-value" style="color:var(--teal); font-weight:700;">sevasamasthan@gmail.com</a>
                             </div>
                         </div>
 
@@ -838,20 +842,20 @@
                         <div class="contact-item">
                             <div class="contact-emoji">📍</div>
                             <div class="contact-info">
-                                <span class="contact-label">Address</span>
-                                <span class="contact-value notranslate">Maruthipuram, Marudham Kulakkarai, Uthiramerur, Kanchipuram, Tamil Nadu — 603 406</span>
+                                <span class="contact-label" data-i18n="con_label_address">Address</span>
+                                <span class="contact-value" data-i18n="con_address_value">Maruthipuram, Marudham Kulakkarai, Uthiramerur, Kanchipuram, Tamil Nadu — 603 406</span>
                             </div>
                         </div>
                         <div class="contact-item">
                             <div class="contact-emoji">🧭</div>
                             <div class="contact-info">
-                                <span class="contact-label">GPS Coordinates</span>
-                                <span class="contact-value notranslate">12°39'55.0"N 79°46'27.8"E</span>
+                                <span class="contact-label" data-i18n="con_label_gps">GPS Coordinates</span>
+                                <span class="contact-value">12°39'55.0"N 79°46'27.8"E</span>
                             </div>
                         </div>
 
                         <div style="margin-top:20px;">
-                            <a href="https://www.google.com/maps/place/12%C2%B039'55.0%22N+79%C2%B046'27.8%22E/@12.665284,79.7742211,56m/data=!3m1!1e3!4m4!3m3!8m2!3d12.665284!4d79.774382!5m1!1e2?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="btn btn-teal">
+                            <a href="https://www.google.com/maps/place/12%C2%B039'55.0%22N+79%C2%B046'27.8%22E/@12.665284,79.7742211,56m/data=!3m1!1e3!4m4!3m3!8m2!3d12.665284!4d79.774382!5m1!1e2?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="btn btn-teal" data-i18n="con_maps_btn">
                                 📍 Open in Google Maps
                             </a>
                         </div>
@@ -861,11 +865,11 @@
                         <div class="map-embed">
                             <a href="https://www.google.com/maps/place/12%C2%B039'55.0%22N+79%C2%B046'27.8%22E/@12.665284,79.7742211,56m/data=!3m1!1e3!4m4!3m3!8m2!3d12.665284!4d79.774382!5m1!1e2?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">
                                 <div class="map-embed-icon">📍</div>
-                                <span><span class="notranslate">Sri Guru Datta Paduka Kshetra</span><br>Click to open in Google Maps</span>
+                                <span><span data-i18n="brand_title">Sri Guru Datta Paduka Kshetra</span><br><span data-i18n="con_map_click">Click to open in Google Maps</span></span>
                             </a>
                         </div>
                         <div style="height:20px;"></div>
-                        <div class="callout-box">
+                        <div class="callout-box" data-i18n="con_callout">
                             "You came... You saw... You received..." — The Guru's grace awaits every sincere devotee who visits this sacred place.
                         </div>
                     </div>
@@ -880,93 +884,261 @@
         <div class="container">
             <div class="footer-top">
                 <div>
-                    <div class="footer-brand-name" translate="no">Sri Guru Datta Paduka Kshetra</div>
-                    <div class="footer-brand-desc" translate="no">Swami Samartha Maharaj Seva Samasthan Trust<br>Maruthipuram, Marudham Kulakkarai, Uthiramerur,<br>Kanchipuram, Tamil Nadu — 603 406</div>
-                    <div class="footer-upi notranslate">UPI: 9940941049@hdfcbank</div>
+                    <div class="footer-brand-name" data-i18n="brand_title">Sri Guru Datta Paduka Kshetra</div>
+                    <div class="footer-brand-desc"><span data-i18n="footer_org">Swami Samartha Maharaj Seva Samasthan Trust</span><br><span data-i18n="con_address_value">Maruthipuram, Marudham Kulakkarai, Uthiramerur, Kanchipuram, Tamil Nadu — 603 406</span></div>
+                    <div class="footer-upi">UPI: 9940941049@hdfcbank</div>
                 </div>
                 <div>
-                    <div class="footer-col-title">Quick Links</div>
+                    <div class="footer-col-title" data-i18n="footer_quicklinks">Quick Links</div>
                     <ul class="footer-links">
-                        <li><a href="#about">About the Temple</a></li>
-                        <li><a href="#origin">Our Origin</a></li>
-                        <li><a href="#goshala">Goshala Seva</a></li>
-                        <li><a href="#events">Festivals &amp; Events</a></li>
-                        <li><a href="#gallery">Gallery</a></li>
-                        <li><a href="#volunteer">Volunteer</a></li>
+                        <li><a href="#about" data-i18n="fl_about">About the Temple</a></li>
+                        <li><a href="#origin" data-i18n="fl_origin">Our Origin</a></li>
+                        <li><a href="#goshala" data-i18n="fl_goshala">Goshala Seva</a></li>
+                        <li><a href="#events" data-i18n="fl_events">Festivals &amp; Events</a></li>
+                        <li><a href="#gallery" data-i18n="nav_gallery">Gallery</a></li>
+                        <li><a href="#volunteer" data-i18n="nav_volunteer">Volunteer</a></li>
                     </ul>
                 </div>
                 <div>
-                    <div class="footer-col-title">Support</div>
+                    <div class="footer-col-title" data-i18n="footer_support">Support</div>
                     <ul class="footer-links">
-                        <li><a href="#donations">Donate &amp; Sponsor Seva</a></li>
-                        <li><a href="#contact">Contact the Trust</a></li>
-                        <li><a href="tel:+919940941019" class="notranslate">99409 41019</a></li>
-                        <li><a href="tel:+918838427262" class="notranslate">88384 27262</a></li>
-                        <li><a href="tel:+919769404451" class="notranslate">97694 04451</a></li>
-                        <li><a href="https://youtube.com/watch?si=Su5y9tS66h5RFWHs&t=212&v=na0UgqUxkQ8&feature=youtu.be" target="_blank" rel="noopener">Watch on YouTube</a></li>
+                        <li><a href="#donations" data-i18n="fs_donate">Donate &amp; Sponsor Seva</a></li>
+                        <li><a href="#contact" data-i18n="fs_contact">Contact the Trust</a></li>
+                        <li><a href="tel:+919940941019">99409 41019</a></li>
+                        <li><a href="tel:+918838427262">88384 27262</a></li>
+                        <li><a href="tel:+919769404451">97694 04451</a></li>
+                        <li><a href="https://youtube.com/watch?si=Su5y9tS66h5RFWHs&t=212&v=na0UgqUxkQ8&feature=youtu.be" target="_blank" rel="noopener" data-i18n="fs_youtube">Watch on YouTube</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <span>© 2026 Swami Samartha Maharaj Seva Samasthan. All Rights Reserved.</span>
-                <span>Designed with devotion · Kanchipuram, Tamil Nadu</span>
+                <span data-i18n="footer_copyright">© 2026 Swami Samartha Maharaj Seva Samasthan. All Rights Reserved.</span>
+                <span data-i18n="footer_tagline">Designed with devotion · Kanchipuram, Tamil Nadu</span>
             </div>
         </div>
     </footer>
 
     <script>
-        /* ===== LOCALIZATION DATA ===== */
-        var localizedContent = {
-            puja_nithya:            { en:'Nithya Puja', ta:'நித்திய பூஜா', hi:'नित्य पूजा', mr:'नित्य पूजा', te:'నిత్య పూజ' },
-            puja_guruvara:          { en:'Guruvara Puja', ta:'குருவார பூஜா', hi:'गुरुवार पूजा', mr:'गुरुवार पूजा', te:'గురువార పూజ' },
-            puja_go:                { en:'Go Puja (On Every Revathi Nakshatra)', ta:'கோ பூஜா (பிரதி ரேவதி நட்சத்திரம்)', hi:'गो पूजा (प्रत्येक रेवती नक्षत्र पर)', mr:'गो पूजा (प्रत्येक रेवती नक्षत्राला)', te:'గో పూజ (ప్రతి రేవతి నక్షత్రం నాడు)' },
-            puja_amavasya_pournami: { en:'Amavasya / Pournami Datta Sahasranama Puja', ta:'அமாவாசை / பௌர்ணமி தத்த ஸஹஸ்ரநாமம் பூஜா', hi:'अमावस्या / पूर्णिमा दत्त सहस्रनाम पूजा', mr:'अमावस्या / पौर्णिमा दत्त सहस्रनाम पूजा', te:'అమావాస్య / పౌర్ణమి దత్త సహస్రనామ పూజ' },
-            puja_vaibhava:          { en:'Vaibhava Lakshmi Puja (Evening)', ta:'வைபவ லஷ்மி பூஜா (மாலை)', hi:'वैभव लक्ष्मी पूजा (संध्या)', mr:'वैभव लक्ष्मी पूजा (सायंकाळ)', te:'వైభవ లక్ష్మి పూజ (సాయంత్రం)' },
-            puja_sarva:             { en:'Sarva Poorthikari (Lalitha Puja) Evening', ta:'சர்வ பூர்த்திகரி (லலிதா பூஜா) மாலை', hi:'सर्व पूर्तिकरी (ललिता पूजा) संध्या', mr:'सर्व पूर्तिकरी (ललिता पूजा) सायंकाळ', te:'సర్వ పూర్థికరి (లలితా పూజ) సాయంత్రం' },
-            puja_mandala:           { en:'Mandala Abhishekam (40-Day Sankalpam)', ta:'மண்டல அபிஷேகம் (40 நாள் சங்கல்பம்)', hi:'मंडल अभिषेकम् (40-दिवसीय संकल्प)', mr:'मंडल अभिषेकम (40 दिवसांचा संकल्प)', te:'మండల అభిషేకం (40 రోజుల సంకల్పం)' },
-            puja_pithru:            { en:'Pithru Puja Amavasya Annadanam', ta:'பித்ரு பூஜா அமாவாசை அன்னதானம்', hi:'पितृ पूजा अमावस्या अन्नदानम्', mr:'पितृ पूजा अमावस्या अन्नदान', te:'పితృ పూజ అమావాస్య అన్నదానం' },
-            puja_mahaparani:        { en:'Mahabarani Thila Homam (Purattasi Month)', ta:'மகாபரணி தில ஹோமம் (புரட்டாசி மாதம்)', hi:'महाभरणी तिल होमम् (पुरट्टासी मास)', mr:'महाभरणी तिळ होमम् (पुरट्टासी महिना)', te:'మహాభరణి తిల హోమం (పురట్టాసి మాసం)' },
-            puja_pournami_annadanam:{ en:'Pournami Annadanam', ta:'பௌர்ணமி அன்னதானம்', hi:'पूर्णिमा अन्नदानम्', mr:'पौर्णिमा अन्नदान', te:'పౌర్ణమి అన్నదానం' },
-            varushabishekam:        { en:'Varushabishekam (On Vaigasi Astham)', ta:'வருடாபிஷேகம் (வைகாசி அஸ்தம்)', hi:'वरुषाभिषेकम् (वैगासी अस्तम)', mr:'वर्षाभिषेकम (वैगासी अस्तम)', te:'వరుషాభిషేకం (వైగాసి అస్తం)' },
-            amount_116:             { en:'Rs. 116/-', ta:'ரூ. 116/-', hi:'रु. 116/-', mr:'रु. 116/-', te:'రూ. 116/-' },
-            amount_333:             { en:'Rs. 333/-', ta:'ரூ. 333/-', hi:'रु. 333/-', mr:'रु. 333/-', te:'రూ. 333/-' },
-            amount_1116:            { en:'Rs. 1116/-', ta:'ரூ. 1116/-', hi:'रु. 1116/-', mr:'रु. 1116/-', te:'రూ. 1116/-' },
-            amount_3016:            { en:'Rs. 3016/-', ta:'ரூ. 3016/-', hi:'रु. 3016/-', mr:'रु. 3016/-', te:'రూ. 3016/-' },
-            amount_5016:            { en:'Rs. 5016/-', ta:'ரூ. 5016/-', hi:'रु. 5016/-', mr:'रु. 5016/-', te:'రూ. 5016/-' },
-            amount_3016_5016:       { en:'Rs. 3016 / 5016/-', ta:'ரூ. 3016 / 5016/-', hi:'रु. 3016 / 5016/-', mr:'रु. 3016 / 5016/-', te:'రూ. 3016 / 5016/-' },
-            amount_20000:           { en:'Rs. 20,000/-', ta:'ரூ. 20,000/-', hi:'रु. 20,000/-', mr:'रु. 20,000/-', te:'రూ. 20,000/-' },
-            amount_blank:           { en:'—', ta:'—', hi:'—', mr:'—', te:'—' }
-        };
+        /* ===== TRANSLATIONS (ta / hi / mr / te). English is the authored HTML,
+           captured per-element on load so switching back to English is lossless. ===== */
+        var I18N = {};
+        Object.assign(I18N, {
+            ui_language:    { ta:'மொழி', hi:'भाषा', mr:'भाषा', te:'భాష' },
+            nav_about:      { ta:'அறிமுகம்', hi:'परिचय', mr:'परिचय', te:'పరిచయం' },
+            nav_origin:     { ta:'தோற்றம்', hi:'उद्गम', mr:'उगम', te:'ఆవిర్భావం' },
+            nav_goshala:    { ta:'கோசாலை', hi:'गोशाला', mr:'गोशाळा', te:'గోశాల' },
+            nav_events:     { ta:'நிகழ்வுகள்', hi:'कार्यक्रम', mr:'कार्यक्रम', te:'కార్యక్రమాలు' },
+            nav_gallery:    { ta:'படத்தொகுப்பு', hi:'गैलरी', mr:'गॅलरी', te:'గ్యాలరీ' },
+            nav_volunteer:  { ta:'தொண்டு', hi:'स्वयंसेवा', mr:'स्वयंसेवा', te:'స్వచ్ఛంద సేవ' },
+            nav_contact:    { ta:'தொடர்பு', hi:'संपर्क', mr:'संपर्क', te:'సంప్రదింపు' },
+            nav_donate:     { ta:'நன்கொடை', hi:'दान', mr:'देणगी', te:'విరాళం' },
+            brand_title:    { ta:'ஸ்ரீ குரு தத்த பாதுக க்ஷேத்ரம்', hi:'श्री गुरु दत्त पादुका क्षेत्र', mr:'श्री गुरु दत्त पादुका क्षेत्र', te:'శ్రీ గురు దత్త పాదుక క్షేత్రం' },
+            brand_sub:      { ta:'ஸ்வாமி சமர்த்த மகாராஜ் சேவா சமஸ்தான்', hi:'स्वामी समर्थ महाराज सेवा समस्थान', mr:'स्वामी समर्थ महाराज सेवा समस्थान', te:'స్వామి సమర్థ మహారాజ్ సేవా సమస్థాన్' },
+            hero_badge:     { ta:'நிறுவப்பட்டது 2015 · மருதிபுரம் · காஞ்சிபுரம்', hi:'स्थापना 2015 · मारुतिपुरम · कांचीपुरम', mr:'स्थापना 2015 · मारुतीपुरम · कांचीपुरम', te:'స్థాపన 2015 · మారుతిపురం · కంచీపురం' },
+            hero_title_em:  { ta:'இராஜிதம்', hi:'इराजितम्', mr:'इराजितम्', te:'ఇరాజితం' },
+            hero_desc:      { ta:'ஸ்வாமி சமர்த்த மகாராஜ் சேவா சமஸ்தான் அறக்கட்டளை, மருதிபுரம், மருதம் குளக்கரை, உத்திரமேரூர், காஞ்சிபுரம், தமிழ்நாடு — 603 406.', hi:'स्वामी समर्थ महाराज सेवा समस्थान ट्रस्ट, मारुतिपुरम, मरुदम कुलक्कराई, उत्तिरमेरूर, कांचीपुरम, तमिलनाडु — 603 406।', mr:'स्वामी समर्थ महाराज सेवा समस्थान ट्रस्ट, मारुतीपुरम, मरुदम कुलक्कराई, उत्तिरमेरूर, कांचीपुरम, तमिळनाडू — 603 406.', te:'స్వామి సమర్థ మహారాజ్ సేవా సమస్థాన్ ట్రస్ట్, మారుతిపురం, మరుదం కులక్కరై, ఉత్తిరమేరూర్, కంచీపురం, తమిళనాడు — 603 406.' },
+            hero_btn_support: { ta:'சேவைகளை ஆதரியுங்கள் ✦', hi:'सेवाओं का सहयोग करें ✦', mr:'सेवांना पाठिंबा द्या ✦', te:'సేవలకు తోడ్పడండి ✦' },
+            hero_btn_explore: { ta:'கோயிலைக் காணுங்கள்', hi:'मंदिर का दर्शन करें', mr:'मंदिर पाहा', te:'ఆలయాన్ని చూడండి' },
+            hero_stat1_label: { ta:'பக்தி ஆண்டுகள்', hi:'भक्ति के वर्ष', mr:'भक्तीची वर्षे', te:'భక్తి సంవత్సరాలు' },
+            hero_stat2_label: { ta:'தரிசன நிலைகள்', hi:'दर्शन के स्तर', mr:'दर्शनाचे स्तर', te:'దర్శన స్థాయిలు' },
+            hero_stat3_label: { ta:'தினசரி சேவைகள்', hi:'दैनिक सेवाएँ', mr:'दैनिक सेवा', te:'నిత్య సేవలు' },
+            hero_scroll:    { ta:'கீழே செல்லுங்கள்', hi:'नीचे जाएँ', mr:'खाली स्क्रोल करा', te:'క్రిందికి జరపండి' },
+            about_eyebrow:  { ta:'புனித பரம்பரை', hi:'पवित्र परंपरा', mr:'पवित्र परंपरा', te:'పవిత్ర పరంపర' },
+            about_title:    { ta:'ஸ்வாமி சமர்த்த — ஓர் அறிமுகம்', hi:'स्वामी समर्थ — एक परिचय', mr:'स्वामी समर्थ — एक परिचय', te:'స్వామి సమర్థ — ఒక పరిచయం' },
+            about_subtitle: { ta:'ஸ்ரீ தத்தாத்ரேயரின் மூன்றாவது அவதாரமாகக் கருதப்படும் ஸ்வாமி சமர்த்தரின் பிறப்பு விவரங்கள் இன்றளவும் மிகவும் ரகசியமாகவே உள்ளன. ஸ்ரீ தத்தாத்ரேயரின் முதல் அவதாரமான ஸ்ரீபாத ஸ்ரீவல்லபர் (கி.பி. 1320) வருங்கால அவதாரங்களை முன்னறிவித்தார்.', hi:'श्री दत्तात्रेय के तीसरे अवतार माने जाने वाले स्वामी समर्थ के जन्म का विवरण आज भी अत्यंत गोपनीय है। श्री दत्तात्रेय के प्रथम अवतार श्रीपाद श्रीवल्लभ (1320 ई.) ने भविष्य के अवतारों की भविष्यवाणी की थी।', mr:'श्री दत्तात्रेयांचा तिसरा अवतार मानल्या जाणाऱ्या स्वामी समर्थांच्या जन्माचे तपशील आजही अत्यंत गुप्त आहेत. श्री दत्तात्रेयांचा पहिला अवतार श्रीपाद श्रीवल्लभ (इ.स. 1320) यांनी भविष्यातील अवतारांचे भाकीत केले होते.', te:'శ్రీ దత్తాత్రేయుని మూడవ అవతారంగా భావించే స్వామి సమర్థుని జన్మ వివరాలు నేటికీ అత్యంత రహస్యంగా ఉన్నాయి. శ్రీ దత్తాత్రేయుని మొదటి అవతారమైన శ్రీపాద శ్రీవల్లభ (క్రీ.శ. 1320) భవిష్యత్ అవతారాలను ముందే చెప్పారు.' },
+            about_card1_h3: { ta:'ஆன்மிக பரம்பரை', hi:'आध्यात्मिक परंपरा', mr:'आध्यात्मिक परंपरा', te:'ఆధ్యాత్మిక పరంపర' },
+            about_card1_p:  { ta:'இரண்டாவது அவதாரம் ஸ்ரீ நரசிம்ம சரஸ்வதியாக (கி.பி. 1450) தோன்றியது. அந்த அவதாரத்தை நிறைவு செய்த பின், 300 ஆண்டுகள் கதளீ வனத்தில் தவம் இயற்றி, பின்னர் மகாராஷ்டிராவில் ஸ்வாமி சமர்த்தராக அவதரித்தார்.', hi:'दूसरा अवतार श्री नरसिंह सरस्वती (1450 ई.) के रूप में प्रकट हुआ। उस अवतार को संपन्न करने के बाद उन्होंने 300 वर्षों तक कदली वन में तपस्या की और फिर महाराष्ट्र में स्वामी समर्थ के रूप में प्रकट हुए।', mr:'दुसरा अवतार श्री नृसिंह सरस्वती (इ.स. 1450) या रूपात प्रकट झाला. तो अवतार पूर्ण केल्यानंतर त्यांनी 300 वर्षे कदळी वनात तपश्चर्या केली आणि नंतर महाराष्ट्रात स्वामी समर्थ या रूपात प्रकट झाले.', te:'రెండవ అవతారం శ్రీ నరసింహ సరస్వతి (క్రీ.శ. 1450) రూపంలో అవతరించింది. ఆ అవతారాన్ని ముగించిన తర్వాత 300 సంవత్సరాలు కదళీ వనంలో తపస్సు చేసి, ఆ తర్వాత మహారాష్ట్రలో స్వామి సమర్థగా అవతరించారు.' },
+            about_card2_h3: { ta:'அக்கல்கோட் மகாராஜ்', hi:'अक्कलकोट महाराज', mr:'अक्कलकोट महाराज', te:'అక్కల్‌కోట్ మహారాజ్' },
+            about_card2_p:  { ta:'ஸ்வாமி சமர்த்த அக்கல்கோட்டில் இருபது ஆண்டுகள் தங்கி, அங்குள்ள ஒரு பக்தரின் இல்லத்தில் சமாதி அடைந்தார்; இதனால் "அக்கல்கோட் மகாராஜ்" என்ற அன்புப் பெயரைப் பெற்றார்.', hi:'स्वामी समर्थ अक्कलकोट में बीस वर्ष रहे और वहाँ एक भक्त के घर में समाधि प्राप्त की, जिससे उन्हें "अक्कलकोट महाराज" का प्रिय नाम मिला।', mr:'स्वामी समर्थ अक्कलकोटमध्ये वीस वर्षे राहिले आणि तेथे एका भक्ताच्या घरी समाधिस्त झाले, त्यामुळे त्यांना "अक्कलकोट महाराज" हे प्रिय नाव मिळाले.', te:'స్వామి సమర్థ అక్కల్‌కోట్‌లో ఇరవై సంవత్సరాలు ఉండి, అక్కడ ఒక భక్తుని ఇంటిలో సమాధి చెందారు; దీంతో "అక్కల్‌కోట్ మహారాజ్" అనే ప్రియమైన పేరు పొందారు.' },
+            about_callout:  { ta:'"தெய்வீக சாந்நித்யம், கருணை அருள், காப்பு — இவையே ஸ்வாமி சமர்த்த வழியின் அடையாளம். தூய்மையான இதயத்துடன் வேண்டும் அனைவருக்கும் குருவின் அருள் இடைவிடாது பொழிகிறது."', hi:'"दिव्य सान्निध्य, करुणामयी कृपा और रक्षण — यही स्वामी समर्थ मार्ग की पहचान है। शुद्ध हृदय से प्रार्थना करने वाले सभी पर गुरु की कृपा निरंतर बरसती है।"', mr:'"दिव्य सान्निध्य, करुणामयी कृपा आणि रक्षण हीच स्वामी समर्थ मार्गाची ओळख आहे. शुद्ध अंतःकरणाने प्रार्थना करणाऱ्या सर्वांवर गुरूंची कृपा अखंड बरसते."', te:'"దివ్య సాన్నిధ్యం, కరుణామయ కృప, రక్షణ — ఇవే స్వామి సమర్థ మార్గానికి గుర్తు. స్వచ్ఛమైన హృదయంతో వేడుకునే వారందరిపై గురువు అనుగ్రహం నిరంతరం వర్షిస్తుంది."' },
+            about_card3_h3: { ta:'தத்தாத்ரேய அவதாரங்கள்', hi:'दत्तात्रेय अवतार', mr:'दत्तात्रेय अवतार', te:'దత్తాత్రేయ అవతారాలు' },
+            about_card3_p:  { ta:'பிரம்மா, விஷ்ணு, சிவன் ஆகியோரின் தெய்வீக ஒருங்கிணைப்பான ஸ்ரீ தத்தாத்ரேயர், நூற்றாண்டுகளாக மூன்று புனித அவதாரங்களின் வழியே மனிதகுலத்தை ஆசீர்வதித்துள்ளார் — பக்தி அழைக்கும்போதெல்லாம் அவர் தோன்றியுள்ளார்.', hi:'ब्रह्मा, विष्णु और शिव के दिव्य त्रिमूर्ति स्वरूप श्री दत्तात्रेय ने सदियों से तीन पवित्र अवतारों के माध्यम से मानवता को आशीर्वाद दिया है — जब-जब भक्ति ने पुकारा, तब-तब वे प्रकट हुए।', mr:'ब्रह्मा, विष्णू आणि शिव यांचे दिव्य त्रिमूर्ती स्वरूप असलेल्या श्री दत्तात्रेयांनी शतकानुशतके तीन पवित्र अवतारांद्वारे मानवतेला आशीर्वाद दिला आहे — जेव्हा जेव्हा भक्तीने हाक दिली, तेव्हा ते प्रकट झाले.', te:'బ్రహ్మ, విష్ణు, శివుల దివ్య త్రిమూర్తి స్వరూపమైన శ్రీ దత్తాత్రేయుడు శతాబ్దాలుగా మూడు పవిత్ర అవతారాల ద్వారా మానవాళిని ఆశీర్వదించారు — భక్తి పిలిచిన ప్రతిసారి ఆయన అవతరించారు.' },
+            pill_sripada:   { ta:'ஸ்ரீபாத ஸ்ரீவல்லபர் — கி.பி. 1320', hi:'श्रीपाद श्रीवल्लभ — 1320 ई.', mr:'श्रीपाद श्रीवल्लभ — इ.स. 1320', te:'శ్రీపాద శ్రీవల్లభ — క్రీ.శ. 1320' },
+            pill_narasimha: { ta:'நரசிம்ம சரஸ்வதி — கி.பி. 1450', hi:'नरसिंह सरस्वती — 1450 ई.', mr:'नृसिंह सरस्वती — इ.स. 1450', te:'నరసింహ సరస్వతి — క్రీ.శ. 1450' },
+            pill_swami:     { ta:'ஸ்வாமி சமர்த்த', hi:'स्वामी समर्थ', mr:'स्वामी समर्थ', te:'స్వామి సమర్థ' }
+        });
+        Object.assign(I18N, {
+            origin_eyebrow: { ta:'எங்கள் கதை', hi:'हमारी कहानी', mr:'आमची कहाणी', te:'మా కథ' },
+            origin_title:   { ta:'காஞ்சிபுரத்தில் தோற்றம்', hi:'कांचीपुरम में उद्गम', mr:'कांचीपुरममधील उगम', te:'కంచీపురంలో ఆవిర్భావం' },
+            origin_subtitle:{ ta:'மருதம் (மருதிபுரம்) என்னும் ஊரில் பரமகுரு ஸ்ரீ சாயிநாத் சத்குருவுக்கு ஒரு கோயில் கட்ட வேண்டும் என்ற ஆசை 2011-ல் தோன்றி, தெய்வீக அருளால் மலர்ந்தது.', hi:'मरुदम (मारुतिपुरम) में परमगुरु श्री साईनाथ सद्गुरु के लिए मंदिर बनाने की इच्छा 2011 में जागी और दिव्य कृपा से साकार हुई।', mr:'मरुदम (मारुतीपुरम) येथे परमगुरु श्री साईनाथ सद्गुरूंसाठी मंदिर बांधण्याची इच्छा 2011 मध्ये निर्माण झाली आणि दिव्य कृपेने ती बहरली.', te:'మరుదం (మారుతిపురం)లో పరమగురు శ్రీ సాయినాథ్ సద్గురువు కోసం ఆలయం నిర్మించాలనే కోరిక 2011లో మొలకెత్తి, దివ్య అనుగ్రహంతో వికసించింది.' },
+            timeline_2015:  { ta:'உள்ளூர் மாருதி கோயிலில் 18 நாட்கள் ஹனுமான் சாலீசாவை 108 முறை பாராயணம் செய்த பின், பாதுகைகளுடனும் ஸ்ரீ சாயிநாத் படத்துடனும் ஒரு வழிபாட்டு மையம் தொடங்கப்பட்டது.', hi:'स्थानीय मारुति मंदिर में 18 दिनों तक हनुमान चालीसा का 108 बार पाठ करने के बाद, पादुकाओं और साईनाथ के चित्र के साथ एक उपासना केंद्र का उद्घाटन हुआ।', mr:'स्थानिक मारुती मंदिरात 18 दिवस हनुमान चालीसाचे 108 वेळा पठण केल्यानंतर, पादुका आणि साईनाथांच्या प्रतिमेसह एक उपासना केंद्र सुरू करण्यात आले.', te:'స్థానిక మారుతి ఆలయంలో 18 రోజులపాటు హనుమాన్ చాలీసాను 108 సార్లు పారాయణం చేసిన తర్వాత, పాదుకలు మరియు సాయినాథ్ చిత్రపటంతో ఒక ఆరాధనా కేంద్రాన్ని ప్రారంభించారు.' },
+            timeline_2017:  { ta:'ஒரு தனி பாதுகா மந்திர் கட்ட வேண்டும் என்ற எண்ணம் பக்தர்கள் மற்றும் அறங்காவலர்களின் உள்ளங்களில் ஆழமாக வேரூன்றியது.', hi:'एक समर्पित पादुका मंदिर बनाने का विचार भक्तों और न्यासियों के हृदय में गहराई से बस गया।', mr:'स्वतंत्र पादुका मंदिर बांधण्याचा विचार भक्त आणि विश्वस्तांच्या हृदयात खोलवर रुजला.', te:'ప్రత్యేక పాదుక మందిరం నిర్మించాలనే ఆలోచన భక్తులు మరియు ధర్మకర్తల హృదయాల్లో లోతుగా నాటుకుంది.' },
+            timeline_2021:  { ta:'குருமார்களின் ஆசியுடன், புனித பூமி பூஜை பிப்ரவரி 24 அன்று நடைபெற்று, கட்டுமானப் பணிகள் தொடங்கின.', hi:'गुरुओं के आशीर्वाद से 24 फरवरी को पवित्र भूमि पूजा संपन्न हुई, जिससे निर्माण कार्य का शुभारंभ हुआ।', mr:'गुरूंच्या आशीर्वादाने 24 फेब्रुवारी रोजी पवित्र भूमिपूजन झाले आणि बांधकामाला सुरुवात झाली.', te:'గురువుల ఆశీర్వాదంతో ఫిబ్రవరి 24న పవిత్ర భూమి పూజ జరిగి, నిర్మాణ పనులు ప్రారంభమయ్యాయి.' },
+            origin_card_h3a:{ ta:'பக்தியால் வழிநடத்தப்பட்டது', hi:'भक्ति से प्रेरित', mr:'भक्तीने प्रेरित', te:'భక్తితో నడిచిన ప్రయాణం' },
+            origin_card_pa: { ta:'ஒவ்வொரு மைல்கல்லும், பக்தர்கள் தரிசனம், சேவை, ஆன்மிக உயர்வை அனுபவிக்கக்கூடிய ஒரு புனித இடத்தை உருவாக்கும் உறுதியை வலுப்படுத்தியது. இந்தப் பயணம் கூட்டுப் பக்திக்குச் சான்று.', hi:'हर पड़ाव ने एक ऐसे पवित्र स्थान के निर्माण का संकल्प दृढ़ किया, जहाँ भक्त दर्शन, सेवा और आध्यात्मिक उन्नति का अनुभव कर सकें। यह यात्रा सामूहिक आस्था का प्रमाण है।', mr:'प्रत्येक टप्प्याने भक्तांना दर्शन, सेवा आणि आध्यात्मिक उन्नती अनुभवता येईल असे पवित्र स्थान निर्माण करण्याचा निर्धार दृढ केला. हा प्रवास सामूहिक श्रद्धेची साक्ष आहे.', te:'ప్రతి మైలురాయి, భక్తులు దర్శనం, సేవ, ఆధ్యాత్మిక ఉన్నతిని అనుభవించగల పవిత్ర స్థలాన్ని నిర్మించాలనే సంకల్పాన్ని బలపరిచింది. ఈ ప్రయాణం సామూహిక విశ్వాసానికి నిదర్శనం.' },
+            origin_card_h3b:{ ta:'கோயில் அமைப்பு', hi:'मंदिर संरचना', mr:'मंदिराची रचना', te:'ఆలయ నిర్మాణం' },
+            origin_card_pb: { ta:'கோயில் மூன்று புனித நிலைகளைக் கொண்டது; ஒவ்வொன்றும் தெய்வீக வடிவத்தின் ஒரு பரிமாணத்தைக் குறிக்கிறது:', hi:'मंदिर तीन पवित्र स्तरों से बना है, प्रत्येक दिव्य स्वरूप के एक आयाम का प्रतीक है:', mr:'मंदिर तीन पवित्र स्तरांचे बनलेले आहे, प्रत्येक स्तर दिव्य स्वरूपाच्या एका आयामाचे प्रतीक आहे:', te:'ఆలయం మూడు పవిత్ర స్థాయిలతో ఉంటుంది; ప్రతి ఒక్కటి దివ్య స్వరూపంలోని ఒక కోణాన్ని సూచిస్తుంది:' },
+            pill_underground:{ ta:'நிலத்தடி (தாழ்தளம்)', hi:'भूगर्भ (ताळतलम)', mr:'तळघर (ताळतलम)', te:'భూగర్భం (తాళతలం)' },
+            pill_sanctum:   { ta:'கருவறை (கர்ப்பகிருஹம்)', hi:'गर्भगृह', mr:'गर्भगृह', te:'గర్భగుడి (గర్భగృహం)' },
+            pill_tower:     { ta:'கோபுரம்', hi:'शिखर (गोपुरम)', mr:'शिखर (गोपुरम)', te:'గోపురం' },
+            origin_card_pc: { ta:'கர்ப்பகிருஹத்தில் ஸ்ரீ நரசிம்ம சரஸ்வதி, ஸ்ரீ ஸ்வாமி சமர்த்த, ஸ்ரீ சாயிநாத், ஔதும்பர மூல பாதுகை, மற்றும் தத்தாத்ரேயரின் பஞ்சலோக விக்கிரகம் எழுந்தருளியுள்ளன — ஸ்ரீ சக்ரம், வைபவ லட்சுமி, ஹனுமான், தத்த யந்திரங்கள் உள்ளிட்ட புனித யந்திரங்களின் மீது பிரதிஷ்டை செய்யப்பட்டுள்ளன.', hi:'गर्भगृह में श्री नृसिंह सरस्वती, श्री स्वामी समर्थ, श्री साईनाथ, औदुंबर मूल पादुका और दत्तात्रेय की पंचलोह मूर्ति विराजमान हैं — ये श्री चक्र, वैभव लक्ष्मी, हनुमान और दत्त यंत्रों सहित पवित्र यंत्रों पर प्रतिष्ठित हैं।', mr:'गर्भगृहात श्री नृसिंह सरस्वती, श्री स्वामी समर्थ, श्री साईनाथ, औदुंबर मूळ पादुका आणि दत्तात्रेयांची पंचलोह मूर्ती विराजमान आहे — श्री चक्र, वैभव लक्ष्मी, हनुमान आणि दत्त यंत्रांसह पवित्र यंत्रांवर त्यांची प्रतिष्ठापना झाली आहे.', te:'గర్భగుడిలో శ్రీ నరసింహ సరస్వతి, శ్రీ స్వామి సమర్థ, శ్రీ సాయినాథ్, ఔదుంబర మూల పాదుక, దత్తాత్రేయుని పంచలోహ విగ్రహం కొలువై ఉన్నాయి — శ్రీ చక్రం, వైభవ లక్ష్మి, హనుమాన్, దత్త యంత్రాలతో సహా పవిత్ర యంత్రాలపై వీటిని ప్రతిష్ఠించారు.' },
+            goshala_eyebrow:{ ta:'வாழும் தர்மம்', hi:'जीवंत धर्म', mr:'जिवंत धर्म', te:'సజీవ ధర్మం' },
+            goshala_title:  { ta:'கோசாலை — தெய்வீக தாய்க்கான சேவை', hi:'गोशाला — दिव्य माता की सेवा', mr:'गोशाळा — दिव्य मातेची सेवा', te:'గోశాల — దివ్య మాతృ సేవ' },
+            goshala_subtitle:{ ta:'இந்து தர்மத்தில் பசு கோமாதா — உயிர்களைப் போற்றி வளர்க்கும் தெய்வீகத் தாய். கோசாலையை ஆதரிப்பது இயற்கையுடன் இணக்கத்தைக் காக்கும், நிலையான புண்ணியத்தைத் தரும் சேவை.', hi:'हिंदू धर्म में गाय गोमाता है — जीवन का पोषण करने वाली दिव्य माता। गोशाला का सहयोग करना प्रकृति के साथ सामंजस्य बनाए रखने वाली और अनंत पुण्य देने वाली सेवा है।', mr:'हिंदू धर्मात गाय ही गोमाता आहे — जीवनाचे पोषण करणारी दिव्य माता. गोशाळेला पाठिंबा देणे ही निसर्गाशी सुसंवाद राखणारी आणि अक्षय पुण्य देणारी सेवा आहे.', te:'హిందూ ధర్మంలో గోవు గోమాత — జీవాన్ని పోషించే దివ్య మాత. గోశాలను ఆదరించడం ప్రకృతితో సామరస్యాన్ని నిలబెట్టే, శాశ్వత పుణ్యాన్ని కలిగించే సేవ.' },
+            goshala_card1_h3:{ ta:'கோசாலை ஏன் முக்கியம்', hi:'गोशाला क्यों महत्वपूर्ण है', mr:'गोशाळा का महत्त्वाची', te:'గోశాల ఎందుకు ముఖ్యం' },
+            goshala_card1_p:{ ta:'காமதேனு செழிப்பை அருளும் தெய்வீகப் பசுவாகப் போற்றப்படுகிறாள். கண்ணன் கோபாலனாகப் பசுக்களுடன் வாழ்ந்து, அஹிம்சையையும் இயற்கையுடன் இணக்கத்தையும் போதித்தார். பசுவுக்குச் சேவை செய்வது குருவுக்குச் சேவை செய்வதாகும்.', hi:'कामधेनु को समृद्धि प्रदान करने वाली दिव्य गाय के रूप में पूजा जाता है। भगवान कृष्ण ने गोपाल रूप में गायों के साथ रहकर अहिंसा और प्रकृति के साथ सामंजस्य का उपदेश दिया। गाय की सेवा करना गुरु की सेवा करना है।', mr:'कामधेनूला समृद्धी देणारी दिव्य गाय म्हणून पूजले जाते. भगवान कृष्णाने गोपाळ रूपात गायींसोबत राहून अहिंसा आणि निसर्गाशी सुसंवादाची शिकवण दिली. गायीची सेवा करणे म्हणजे गुरूंची सेवा करणे.', te:'కామధేనువు సమృద్ధిని ప్రసాదించే దివ్య గోవుగా కీర్తించబడుతుంది. శ్రీకృష్ణుడు గోపాలుడిగా గోవులతో జీవించి, అహింసను, ప్రకృతితో సామరస్యాన్ని బోధించాడు. గోవును సేవించడం గురువును సేవించడమే.' },
+            goshala_card2_h3:{ ta:'ஆதரிப்பதன் பயன்கள்', hi:'सहयोग के लाभ', mr:'पाठिंब्याचे लाभ', te:'తోడ్పాటు వల్ల ప్రయోజనాలు' },
+            goshala_card2_p:{ ta:'கோசாலைக்கான ஒவ்வொரு பங்களிப்பும் மிகுந்த ஆன்மிக புண்ணியத்தைத் தருகிறது. உங்கள் சேவை கோமாதாவின் நலனைக் காத்து, இந்த ஆசிகளைக் கொணர்கிறது:', hi:'गोशाला में दिया गया हर योगदान अपार आध्यात्मिक पुण्य देता है। आपकी सेवा गोमाता के कल्याण को बनाए रखती है और ये आशीर्वाद लाती है:', mr:'गोशाळेसाठी दिलेले प्रत्येक योगदान अपार आध्यात्मिक पुण्य देते. तुमची सेवा गोमातेचे कल्याण राखते आणि हे आशीर्वाद आणते:', te:'గోశాలకు ఇచ్చే ప్రతి తోడ్పాటు అపారమైన ఆధ్యాత్మిక పుణ్యాన్ని ఇస్తుంది. మీ సేవ గోమాత క్షేమాన్ని నిలబెట్టి, ఈ ఆశీర్వాదాలను అందిస్తుంది:' },
+            pill_godhanam:  { ta:'கோதான புண்ணியம்', hi:'गोदान का पुण्य', mr:'गोदानाचे पुण्य', te:'గోదాన పుణ్యం' },
+            pill_family:    { ta:'குடும்ப ஒற்றுமை', hi:'पारिवारिक सौहार्द', mr:'कौटुंबिक सलोखा', te:'కుటుంబ సామరస్యం' },
+            pill_nature:    { ta:'இயற்கையின் பாதுகாப்பு', hi:'प्रकृति की रक्षा', mr:'निसर्गाचे रक्षण', te:'ప్రకృతి రక్షణ' },
+            pill_agri:      { ta:'பாரம்பரிய வேளாண்மை', hi:'पारंपरिक कृषि', mr:'पारंपरिक शेती', te:'సాంప్రదాయ వ్యవసాయం' },
+            pill_ancestral: { ta:'முன்னோர் ஆசிகள்', hi:'पितरों का आशीर्वाद', mr:'पूर्वजांचे आशीर्वाद', te:'పితృ ఆశీర్వాదం' },
+            goshala_callout:{ ta:'"ஒரு கை கொடுங்கள் — ஓர் உயிரைக் காப்பாற்றுங்கள். கோசாலைக்குச் செய்யும் சேவை இறைவனுக்கே செய்யும் சேவை."', hi:'"एक हाथ बढ़ाइए — एक जीवन बचाइए। गोशाला की सेवा स्वयं ईश्वर की सेवा है।"', mr:'"एक हात पुढे करा — एक जीव वाचवा. गोशाळेची सेवा म्हणजे प्रत्यक्ष ईश्वराची सेवा."', te:'"ఒక చేయి అందించండి — ఒక ప్రాణాన్ని కాపాడండి. గోశాలకు చేసే సేవ సాక్షాత్తు భగవంతునికి చేసే సేవే."' }
+        });
+        Object.assign(I18N, {
+            events_eyebrow: { ta:'புனித நாட்காட்டி', hi:'पवित्र पंचांग', mr:'पवित्र दिनदर्शिका', te:'పవిత్ర పంచాంగం' },
+            events_title:   { ta:'ஆண்டு விழாக்கள் & நிகழ்வுகள்', hi:'वार्षिक उत्सव और कार्यक्रम', mr:'वार्षिक उत्सव आणि कार्यक्रम', te:'వార్షిక ఉత్సవాలు & కార్యక్రమాలు' },
+            events_subtitle:{ ta:'ஆண்டு முழுவதும் வரும் இந்தப் புனித நிகழ்வுகளைக் கொண்டாட எங்களுடன் இணையுங்கள். ஒவ்வொரு விழாவும் தரிசனம், சேவை, தெய்வீக ஆசிகளுக்கான வாய்ப்பு.', hi:'वर्ष भर मनाए जाने वाले इन पवित्र अवसरों में हमारे साथ शामिल हों। प्रत्येक उत्सव दर्शन, सेवा और दिव्य आशीर्वाद का अवसर है।', mr:'वर्षभर साजरे होणाऱ्या या पवित्र प्रसंगांमध्ये आमच्यासोबत सहभागी व्हा. प्रत्येक उत्सव दर्शन, सेवा आणि दिव्य आशीर्वादाची संधी आहे.', te:'ఏడాది పొడవునా జరిగే ఈ పవిత్ర సందర్భాలను జరుపుకోవడంలో మాతో చేరండి. ప్రతి ఉత్సవం దర్శనం, సేవ, దివ్య ఆశీర్వాదాలకు అవకాశం.' },
+            ev_apr:         { ta:'ஏப்ரல்', hi:'अप्रैल', mr:'एप्रिल', te:'ఏప్రిల్' },
+            ev_jun:         { ta:'ஜூன்', hi:'जून', mr:'जून', te:'జూన్' },
+            ev_jul:         { ta:'ஜூலை', hi:'जुलाई', mr:'जुलै', te:'జూలై' },
+            ev_oct:         { ta:'அக்டோபர்', hi:'अक्टूबर', mr:'ऑक्टोबर', te:'అక్టోబర్' },
+            ev_dec:         { ta:'டிசம்பர்', hi:'दिसंबर', mr:'डिसेंबर', te:'డిసెంబర్' },
+            ev1_name:       { ta:'ஸ்ரீ ராம நவமி', hi:'श्री राम नवमी', mr:'श्री राम नवमी', te:'శ్రీ రామ నవమి' },
+            ev1_year:       { ta:'ஆண்டுதோறும் — ஏப்ரல்', hi:'वार्षिक — अप्रैल', mr:'वार्षिक — एप्रिल', te:'వార్షికం — ఏప్రిల్' },
+            ev1_desc:       { ta:'ஸ்ரீ ராமரின் தெய்வீகத் திருவவதாரத்தை சிறப்பு அபிஷேகம், பஜனைகள், அனைத்து பக்தர்களுக்கும் அன்னதானத்துடன் கொண்டாடுதல்.', hi:'भगवान राम के दिव्य जन्म को विशेष अभिषेक, भजन और सभी भक्तों के लिए अन्नदान के साथ मनाया जाता है।', mr:'भगवान रामांच्या दिव्य जन्माचा विशेष अभिषेक, भजन आणि सर्व भक्तांसाठी अन्नदानासह उत्सव.', te:'శ్రీరాముని దివ్య జన్మను ప్రత్యేక అభిషేకం, భజనలు, భక్తులందరికీ అన్నదానంతో జరుపుకుంటారు.' },
+            ev2_name:       { ta:'வருடாபிஷேகம்', hi:'वरुषाभिषेकम्', mr:'वर्षाभिषेकम', te:'వరుషాభిషేకం' },
+            ev2_year:       { ta:'வைகாசி அஷ்டமி', hi:'वैगासी अष्टमी', mr:'वैगासी अष्टमी', te:'వైగాసి అష్టమి' },
+            ev2_desc:       { ta:'வைகாசி அஷ்டமி அன்று நடைபெறும் கோயிலின் ஆண்டுவிழா அபிஷேகம். அனைத்துப் பக்தர்களுக்கும் மிகவும் சுபமான நாள்.', hi:'वैगासी अष्टमी पर मंदिर का वार्षिक अभिषेक। सभी भक्तों के लिए अत्यंत शुभ अवसर।', mr:'वैगासी अष्टमीला मंदिराचा वार्षिक अभिषेक. सर्व भक्तांसाठी अत्यंत शुभ प्रसंग.', te:'వైగాసి అష్టమి నాడు ఆలయ వార్షికోత్సవ అభిషేకం. భక్తులందరికీ అత్యంత శుభప్రదమైన సందర్భం.' },
+            ev3_name:       { ta:'ஸ்வாமி சமர்த்த புண்யதிதி', hi:'स्वामी समर्थ पुण्यतिथि', mr:'स्वामी समर्थ पुण्यतिथी', te:'స్వామి సమర్థ పుణ్యతిథి' },
+            ev3_year:       { ta:'ஆண்டுதோறும் — ஜூலை', hi:'वार्षिक — जुलाई', mr:'वार्षिक — जुलै', te:'వార్షికం — జూలై' },
+            ev3_desc:       { ta:'ஸ்வாமி சமர்த்தரின் மகாசமாதியை சிறப்பு பூஜைகள், ஹோமம், பக்தி நிகழ்ச்சிகளுடன் பயபக்தியுடனும் மகிழ்வுடனும் நினைவுகூர்தல்.', hi:'स्वामी समर्थ की महासमाधि का विशेष पूजा, हवन और भक्ति कार्यक्रमों के साथ श्रद्धापूर्ण और आनंदमय स्मरण।', mr:'स्वामी समर्थांच्या महासमाधीचे विशेष पूजा, होम आणि भक्ती कार्यक्रमांसह भक्तिमय आणि आनंदमय स्मरण.', te:'స్వామి సమర్థ మహాసమాధిని ప్రత్యేక పూజలు, హోమం, భక్తి కార్యక్రమాలతో భక్తిపూర్వకంగా, ఆనందంగా స్మరించుకుంటారు.' },
+            ev4_name:       { ta:'குரு பூர்ணிமா', hi:'गुरु पूर्णिमा', mr:'गुरु पौर्णिमा', te:'గురు పూర్ణిమ' },
+            ev4_year:       { ta:'ஆண்டுதோறும் — பௌர்ணமி', hi:'वार्षिक — पूर्णिमा', mr:'वार्षिक — पौर्णिमा', te:'వార్షికం — పౌర్ణమి' },
+            ev4_desc:       { ta:'குரு பரம்பரையை — தத்தாத்ரேயர், நரசிம்ம சரஸ்வதி, ஸ்வாமி சமர்த்த, சாயிநாத் — போற்றும் மிகப் புனிதமான நாள்.', hi:'गुरु परंपरा — दत्तात्रेय, नरसिंह सरस्वती, स्वामी समर्थ और साईनाथ — का सम्मान करने का सर्वाधिक पवित्र दिन।', mr:'गुरु परंपरेचा — दत्तात्रेय, नृसिंह सरस्वती, स्वामी समर्थ आणि साईनाथ — सन्मान करण्याचा सर्वांत पवित्र दिवस.', te:'గురు పరంపరను — దత్తాత్రేయ, నరసింహ సరస్వతి, స్వామి సమర్థ, సాయినాథ్ — గౌరవించే అత్యంత పవిత్ర దినం.' },
+            ev5_name:       { ta:'விஜய தசமி', hi:'विजय दशमी', mr:'विजया दशमी', te:'విజయ దశమి' },
+            ev5_year:       { ta:'ஆண்டுதோறும் — நவராத்திரி', hi:'वार्षिक — नवरात्रि', mr:'वार्षिक — नवरात्र', te:'వార్షికం — నవరాత్రి' },
+            ev5_desc:       { ta:'அதர்மத்தின் மீது தர்மம் வெற்றி பெற்றதை சரஸ்வதி பூஜை, ஊர்வலம், சிறப்பு வழிபாடுகளுடன் கொண்டாடுதல்.', hi:'अधर्म पर धर्म की विजय को सरस्वती पूजा, शोभायात्रा और विशेष अर्पणों के साथ मनाया जाता है।', mr:'अधर्मावर धर्माचा विजय सरस्वती पूजा, मिरवणूक आणि विशेष अर्पणांसह साजरा केला जातो.', te:'అధర్మంపై ధర్మ విజయాన్ని సరస్వతి పూజ, ఊరేగింపు, ప్రత్యేక నైవేద్యాలతో జరుపుకుంటారు.' },
+            ev6_name:       { ta:'தத்த ஜயந்தி', hi:'दत्त जयंती', mr:'दत्त जयंती', te:'దత్త జయంతి' },
+            ev6_year:       { ta:'ஆண்டுதோறும் — டிசம்பர்', hi:'वार्षिक — दिसंबर', mr:'वार्षिक — डिसेंबर', te:'వార్షికం — డిసెంబర్' },
+            ev6_desc:       { ta:'பரம குருவான ஸ்ரீ தத்தாத்ரேயரின் தெய்வீகத் திருவவதாரத்தை சஹஸ்ரநாம பூஜை, ஊர்வலம், அன்னதானத்துடன் கொண்டாடுதல்.', hi:'परम गुरु श्री दत्तात्रेय के दिव्य जन्म को सहस्रनाम पूजा, शोभायात्रा और अन्नदान के साथ मनाया जाता है।', mr:'परम गुरु श्री दत्तात्रेयांच्या दिव्य जन्माचा सहस्रनाम पूजा, मिरवणूक आणि अन्नदानासह उत्सव.', te:'పరమ గురువు శ్రీ దత్తాత్రేయుని దివ్య జన్మను సహస్రనామ పూజ, ఊరేగింపు, అన్నదానంతో జరుపుకుంటారు.' },
+            tag_major:      { ta:'🪔 முக்கிய விழா', hi:'🪔 प्रमुख उत्सव', mr:'🪔 प्रमुख उत्सव', te:'🪔 ప్రధాన ఉత్సవం' },
+            tag_annual:     { ta:'⭐ ஆண்டின் சிறப்பு', hi:'⭐ वार्षिक विशेष', mr:'⭐ वार्षिक विशेष', te:'⭐ వార్షిక విశేషం' },
+            tag_devotional: { ta:'🙏 பக்தி நிகழ்வு', hi:'🙏 भक्तिमय', mr:'🙏 भक्तिमय', te:'🙏 భక్తిమయం' },
+            tag_sacred:     { ta:'🌕 புனித நாள்', hi:'🌕 पवित्र दिन', mr:'🌕 पवित्र दिवस', te:'🌕 పవిత్ర దినం' },
+            tag_grand:      { ta:'🎉 பெருவிழா', hi:'🎉 भव्य उत्सव', mr:'🎉 भव्य उत्सव', te:'🎉 ఘన ఉత్సవం' },
+            tag_divine:     { ta:'🔱 தெய்வீக விழா', hi:'🔱 दिव्य उत्सव', mr:'🔱 दिव्य उत्सव', te:'🔱 దివ్య ఉత్సవం' },
+            events_bottom:  { ta:'மாதந்தோறும் நடைபெறும் நிகழ்வுகள்: குருவார பூஜை (ஒவ்வொரு வியாழக்கிழமையும்), கோ பூஜை (ஒவ்வொரு ரேவதி நட்சத்திரத்திலும்), அமாவாசை / பௌர்ணமி தத்த ஸஹஸ்ரநாம பூஜை.', hi:'मासिक कार्यक्रमों में गुरुवार पूजा (प्रत्येक गुरुवार), गो पूजा (प्रत्येक रेवती नक्षत्र) और अमावस्या / पूर्णिमा दत्त सहस्रनाम पूजा शामिल हैं।', mr:'मासिक कार्यक्रमांमध्ये गुरुवार पूजा (प्रत्येक गुरुवारी), गो पूजा (प्रत्येक रेवती नक्षत्रावर) आणि अमावस्या / पौर्णिमा दत्त सहस्रनाम पूजा यांचा समावेश होतो.', te:'మాసిక కార్యక్రమాల్లో గురువార పూజ (ప్రతి గురువారం), గో పూజ (ప్రతి రేవతి నక్షత్రం), అమావాస్య / పౌర్ణమి దత్త సహస్రనామ పూజ ఉంటాయి.' }
+        });
+        Object.assign(I18N, {
+            don_eyebrow:    { ta:'கொடுங்கள் & பெறுங்கள்', hi:'दें और पाएँ', mr:'द्या आणि मिळवा', te:'ఇవ్వండి & పొందండి' },
+            don_title:      { ta:'நன்கொடைகள் & சேவைகள்', hi:'दान और सेवाएँ', mr:'देणग्या आणि सेवा', te:'విరాళాలు & సేవలు' },
+            don_subtitle:   { ta:'உங்கள் பங்களிப்பு தினசரி பூஜைகள், அன்னதானம், கோசாலை பராமரிப்புக்கு உதவுகிறது — ஒவ்வொரு காணிக்கையும் கொடுப்பவருக்கும் அவர் குடும்பத்துக்கும் பன்மடங்கு ஆசிகளைத் திரும்பத் தருகிறது.', hi:'आपका योगदान दैनिक पूजा, अन्नदान और गोशाला की देखभाल में सहायक होता है — हर अर्पण दाता और उसके परिवार को अनेक गुना आशीर्वाद लौटाता है।', mr:'तुमचे योगदान दैनिक पूजा, अन्नदान आणि गोशाळेच्या देखभालीस मदत करते — प्रत्येक अर्पण दात्याला आणि त्याच्या कुटुंबाला अनेक पटींनी आशीर्वाद परत देते.', te:'మీ తోడ్పాటు నిత్య పూజలు, అన్నదానం, గోశాల సంరక్షణకు సహాయపడుతుంది — ప్రతి సమర్పణ ఇచ్చేవారికి, వారి కుటుంబానికి అనేక రెట్లు ఆశీర్వాదాలను తిరిగి ఇస్తుంది.' },
+            don_upi_h3:     { ta:'UPI மூலம் ஸ்கேன் செய்து நன்கொடை அளியுங்கள்', hi:'UPI से स्कैन कर दान करें', mr:'UPI द्वारे स्कॅन करून देणगी द्या', te:'UPI ద్వారా స్కాన్ చేసి విరాళం ఇవ్వండి' },
+            don_upi_p:      { ta:'GPay, PhonePe, Paytm, அல்லது BHIM போன்ற எந்த UPI செயலி மூலமும் உடனடியாகவும் பாதுகாப்பாகவும் நன்கொடை அளியுங்கள். உங்கள் சேவை நேரடியாகக் கோயிலை அடைகிறது.', hi:'GPay, PhonePe, Paytm या BHIM जैसे किसी भी UPI ऐप से तुरंत और सुरक्षित रूप से दान करें। आपकी सेवा सीधे मंदिर तक पहुँचती है।', mr:'GPay, PhonePe, Paytm किंवा BHIM यांसारख्या कोणत्याही UPI अॅपद्वारे त्वरित आणि सुरक्षितपणे देणगी द्या. तुमची सेवा थेट मंदिरापर्यंत पोहोचते.', te:'GPay, PhonePe, Paytm లేదా BHIM వంటి ఏ UPI యాప్‌తోనైనా తక్షణం, సురక్షితంగా విరాళం ఇవ్వండి. మీ సేవ నేరుగా ఆలయానికి చేరుతుంది.' },
+            don_qr_label:   { ta:'எந்த UPI செயலியிலும் ஸ்கேன் செய்யுங்கள்', hi:'किसी भी UPI ऐप से स्कैन करें', mr:'कोणत्याही UPI अॅपने स्कॅन करा', te:'ఏ UPI యాప్‌తోనైనా స్కాన్ చేయండి' },
+            don_send_btn:   { ta:'நன்கொடை விவரங்களை அனுப்புங்கள் →', hi:'दान विवरण भेजें →', mr:'देणगी तपशील पाठवा →', te:'విరాళ వివరాలు పంపండి →' },
+            don_bank_h3:    { ta:'வங்கி பரிமாற்ற விவரங்கள்', hi:'बैंक हस्तांतरण विवरण', mr:'बँक हस्तांतरण तपशील', te:'బ్యాంక్ బదిలీ వివరాలు' },
+            don_bank_p:     { ta:'NEFT/RTGS பரிமாற்றங்கள் மற்றும் பெரிய நன்கொடைகளுக்கு கீழே உள்ள விவரங்களைப் பயன்படுத்துங்கள்.', hi:'NEFT/RTGS हस्तांतरण और बड़े दान के लिए नीचे दिए गए विवरण का उपयोग करें।', mr:'NEFT/RTGS हस्तांतरण आणि मोठ्या देणग्यांसाठी खालील तपशील वापरा.', te:'NEFT/RTGS బదిలీలు, పెద్ద విరాళాల కోసం క్రింది వివరాలను ఉపయోగించండి.' },
+            bank_label_name:  { ta:'கணக்கின் பெயர்', hi:'खाता नाम', mr:'खाते नाव', te:'ఖాతా పేరు' },
+            bank_label_number:{ ta:'கணக்கு எண்', hi:'खाता संख्या', mr:'खाते क्रमांक', te:'ఖాతా సంఖ్య' },
+            bank_label_branch:{ ta:'வங்கி & கிளை', hi:'बैंक और शाखा', mr:'बँक आणि शाखा', te:'బ్యాంక్ & శాఖ' },
+            bank_label_ifsc:  { ta:'IFSC குறியீடு', hi:'IFSC कोड', mr:'IFSC कोड', te:'IFSC కోడ్' },
+            don_80g:        { ta:'🏛️ நன்கொடைகள் வருமான வரிச் சட்டம், 1961-ன் பிரிவு 80G-ன் கீழ் கழிவுக்குத் தகுதியுடையவை.', hi:'🏛️ दान आयकर अधिनियम, 1961 की धारा 80G के अंतर्गत कटौती के पात्र हैं।', mr:'🏛️ देणग्या आयकर कायदा, 1961 च्या कलम 80G अंतर्गत वजावटीस पात्र आहेत.', te:'🏛️ విరాళాలు ఆదాయపు పన్ను చట్టం, 1961లోని సెక్షన్ 80G కింద మినహాయింపుకు అర్హత కలిగి ఉంటాయి.' },
+            don_receipt_btn:{ ta:'ரசீதுகளுக்குத் தொடர்பு கொள்ளுங்கள் →', hi:'रसीद के लिए संपर्क करें →', mr:'पावतीसाठी संपर्क करा →', te:'రసీదుల కోసం సంప్రదించండి →' },
+            don_puja_heading:{ ta:'பூஜை முறைகள் & கட்டணங்கள்', hi:'पूजा विधियाँ और शुल्क', mr:'पूजा पद्धती आणि शुल्क', te:'పూజా విధానాలు & రుసుములు' },
+            puja_th_seva:   { ta:'பூஜை / சேவை', hi:'पूजा / सेवा', mr:'पूजा / सेवा', te:'పూజ / సేవ' },
+            puja_th_offering:{ ta:'காணிக்கை (ரூ.)', hi:'अर्पण (रु.)', mr:'अर्पण (रु.)', te:'సమర్పణ (రూ.)' },
+            puja_nithya:    { ta:'நித்திய பூஜா', hi:'नित्य पूजा', mr:'नित्य पूजा', te:'నిత్య పూజ' },
+            puja_guruvara:  { ta:'குருவார பூஜா', hi:'गुरुवार पूजा', mr:'गुरुवार पूजा', te:'గురువార పూజ' },
+            puja_go:        { ta:'கோ பூஜா (பிரதி ரேவதி நட்சத்திரம்)', hi:'गो पूजा (प्रत्येक रेवती नक्षत्र पर)', mr:'गो पूजा (प्रत्येक रेवती नक्षत्राला)', te:'గో పూజ (ప్రతి రేవతి నక్షత్రం నాడు)' },
+            puja_amavasya_pournami:{ ta:'அமாவாசை / பௌர்ணமி தத்த ஸஹஸ்ரநாமம் பூஜா', hi:'अमावस्या / पूर्णिमा दत्त सहस्रनाम पूजा', mr:'अमावस्या / पौर्णिमा दत्त सहस्रनाम पूजा', te:'అమావాస్య / పౌర్ణమి దత్త సహస్రనామ పూజ' },
+            puja_vaibhava:  { ta:'வைபவ லஷ்மி பூஜா (மாலை)', hi:'वैभव लक्ष्मी पूजा (संध्या)', mr:'वैभव लक्ष्मी पूजा (सायंकाळ)', te:'వైభవ లక్ష్మి పూజ (సాయంత్రం)' },
+            puja_sarva:     { ta:'சர்வ பூர்த்திகரி (லலிதா பூஜா) மாலை', hi:'सर्व पूर्तिकरी (ललिता पूजा) संध्या', mr:'सर्व पूर्तिकरी (ललिता पूजा) सायंकाळ', te:'సర్వ పూర్థికరి (లలితా పూజ) సాయంత్రం' },
+            puja_mandala:   { ta:'மண்டல அபிஷேகம் (40 நாள் சங்கல்பம்)', hi:'मंडल अभिषेकम् (40-दिवसीय संकल्प)', mr:'मंडल अभिषेकम (40 दिवसांचा संकल्प)', te:'మండల అభిషేకం (40 రోజుల సంకల్పం)' },
+            puja_pithru:    { ta:'பித்ரு பூஜா அமாவாசை அன்னதானம்', hi:'पितृ पूजा अमावस्या अन्नदानम्', mr:'पितृ पूजा अमावस्या अन्नदान', te:'పితృ పూజ అమావాస్య అన్నదానం' },
+            puja_mahaparani:{ ta:'மகாபரணி தில ஹோமம் (புரட்டாசி மாதம்)', hi:'महाभरणी तिल होमम् (पुरट्टासी मास)', mr:'महाभरणी तिळ होमम् (पुरट्टासी महिना)', te:'మహాభరణి తిల హోమం (పురట్టాసి మాసం)' },
+            puja_pournami_annadanam:{ ta:'பௌர்ணமி அன்னதானம்', hi:'पूर्णिमा अन्नदानम्', mr:'पौर्णिमा अन्नदान', te:'పౌర్ణమి అన్నదానం' },
+            varushabishekam:{ ta:'வருடாபிஷேகம் (வைகாசி அஸ்தம்)', hi:'वरुषाभिषेकम् (वैगासी अस्तम)', mr:'वर्षाभिषेकम (वैगासी अस्तम)', te:'వరుషాభిషేకం (వైగాసి అస్తం)' },
+            amount_116:     { ta:'ரூ. 116/-', hi:'रु. 116/-', mr:'रु. 116/-', te:'రూ. 116/-' },
+            amount_333:     { ta:'ரூ. 333/-', hi:'रु. 333/-', mr:'रु. 333/-', te:'రూ. 333/-' },
+            amount_1116:    { ta:'ரூ. 1116/-', hi:'रु. 1116/-', mr:'रु. 1116/-', te:'రూ. 1116/-' },
+            amount_3016:    { ta:'ரூ. 3016/-', hi:'रु. 3016/-', mr:'रु. 3016/-', te:'రూ. 3016/-' },
+            amount_5016:    { ta:'ரூ. 5016/-', hi:'रु. 5016/-', mr:'रु. 5016/-', te:'రూ. 5016/-' },
+            amount_3016_5016:{ ta:'ரூ. 3016 / 5016/-', hi:'रु. 3016 / 5016/-', mr:'रु. 3016 / 5016/-', te:'రూ. 3016 / 5016/-' },
+            amount_20000:   { ta:'ரூ. 20,000/-', hi:'रु. 20,000/-', mr:'रु. 20,000/-', te:'రూ. 20,000/-' },
+            amount_blank:   { ta:'—', hi:'—', mr:'—', te:'—' }
+        });
+        Object.assign(I18N, {
+            gal_eyebrow:    { ta:'காட்சிப் பயணம்', hi:'दृश्य यात्रा', mr:'दृश्य प्रवास', te:'దృశ్య యాత్ర' },
+            gal_title:      { ta:'கோயில் படத்தொகுப்பு', hi:'मंदिर गैलरी', mr:'मंदिर गॅलरी', te:'ఆలయ గ్యాలరీ' },
+            gal_subtitle:   { ta:'ஸ்ரீ குரு தத்த பாதுக க்ஷேத்ரத்தில் உள்ள தெய்வீக சாந்நித்யம், புனித இடங்கள், தொடரும் சேவையின் ஒரு பார்வை.', hi:'श्री गुरु दत्त पादुका क्षेत्र की दिव्य उपस्थिति, पवित्र स्थलों और सतत सेवा की एक झलक।', mr:'श्री गुरु दत्त पादुका क्षेत्रातील दिव्य सान्निध्य, पवित्र स्थळे आणि अखंड सेवेची एक झलक.', te:'శ్రీ గురు దత్త పాదుక క్షేత్రంలోని దివ్య సాన్నిధ్యం, పవిత్ర స్థలాలు, నిరంతర సేవ యొక్క ఒక సంగ్రహ దృశ్యం.' },
+            gal_tab_temple: { ta:'கோயில் படங்கள்', hi:'मंदिर चित्र', mr:'मंदिर चित्रे', te:'ఆలయ చిత్రాలు' },
+            gal_tab_goshala:{ ta:'கோசாலை', hi:'गोशाला', mr:'गोशाळा', te:'గోశాల' },
+            gal_tab_book:   { ta:'கோயில் நூல்', hi:'मंदिर पुस्तक', mr:'मंदिर पुस्तक', te:'ఆలయ పుస్తకం' },
+            gal_video_heading:{ ta:'சிறப்பு வீடியோ', hi:'विशेष वीडियो', mr:'विशेष व्हिडिओ', te:'ప్రత్యేక వీడియో' },
+            gal_yt_title:   { ta:'ஸ்வாமி அக்கல்கோட் மகாராஜ் ஆலயம் அமைய கை கோர்ப்போம் | கோபுரம் டிவி', hi:'स्वामी अक्कलकोट महाराज आलयम अमैया कै कोर्प्पोम | गोपुरम टीवी', mr:'स्वामी अक्कलकोट महाराज आलयम अमैया कै कोर्प्पोम | गोपुरम टीव्ही', te:'స్వామి అక్కల్‌కోట్ మహారాజ్ ఆలయం అమైయ కై కోర్ప్పోం | గోపురం టీవీ' },
+            gal_yt_desc:    { ta:'கோயில் கட்டுமானம் மற்றும் திறப்பு விழா குறித்த முழுமையான சிறப்புப் பகுதியை கோபுரம் டிவியில் காணுங்கள்.', hi:'मंदिर निर्माण और उद्घाटन पर पूरी विशेष प्रस्तुति गोपुरम टीवी पर देखें।', mr:'मंदिर बांधकाम आणि उद्घाटनावरील संपूर्ण विशेष भाग गोपुरम टीव्हीवर पाहा.', te:'ఆలయ నిర్మాణం, ప్రారంభోత్సవంపై పూర్తి ప్రత్యేక కథనాన్ని గోపురం టీవీలో చూడండి.' },
+            gal_qr_text:    { ta:'உங்கள் தொலைபேசியில் பார்க்க QR குறியீட்டை ஸ்கேன் செய்யுங்கள்', hi:'अपने फ़ोन पर देखने के लिए QR कोड स्कैन करें', mr:'तुमच्या फोनवर पाहण्यासाठी QR कोड स्कॅन करा', te:'మీ ఫోన్‌లో చూడటానికి QR కోడ్‌ను స్కాన్ చేయండి' },
+            vol_eyebrow:    { ta:'சேவையில் இணையுங்கள்', hi:'सेवा में जुड़ें', mr:'सेवेत सहभागी व्हा', te:'సేవలో చేరండి' },
+            vol_title:      { ta:'தொண்டு & பங்கேற்பு', hi:'स्वयंसेवा और सहभागिता', mr:'स्वयंसेवा आणि सहभाग', te:'స్వచ్ఛంద సేవ & భాగస్వామ్యం' },
+            vol_subtitle:   { ta:'இக்கோயில் பக்தியின் மீதும் கூட்டுச் சேவையின் மீதும் கட்டப்பட்டது. இந்தப் புனிதப் பணிக்கு உங்கள் நேரம், திறமை, ஆற்றலைப் பங்களிக்க பல வழிகள் உள்ளன.', hi:'यह मंदिर भक्ति और सामूहिक सेवा पर आधारित है। इस पवित्र कार्य में अपना समय, कौशल और ऊर्जा योगदान करने के अनेक मार्ग हैं।', mr:'हे मंदिर भक्ती आणि सामूहिक सेवेवर उभे आहे. या पवित्र कार्यात तुमचा वेळ, कौशल्य आणि ऊर्जा देण्याचे अनेक मार्ग आहेत.', te:'ఈ ఆలయం భక్తి, సామూహిక సేవపై నిర్మితమైంది. ఈ పవిత్ర కార్యానికి మీ సమయం, నైపుణ్యం, శక్తిని అందించడానికి అనేక మార్గాలు ఉన్నాయి.' },
+            vol_callout:    { ta:'"சேவை (சுயநலமற்ற தொண்டு) வழிபாட்டின் உயரிய வடிவம். நீங்கள் க்ஷேத்ரத்துக்குச் சேவை செய்யும்போது, குருவுக்கே சேவை செய்கிறீர்கள்."', hi:'"सेवा (निःस्वार्थ सेवा) उपासना का सर्वोच्च रूप है। जब आप क्षेत्र की सेवा करते हैं, तो आप स्वयं गुरु की सेवा करते हैं।"', mr:'"सेवा (निःस्वार्थ सेवा) ही उपासनेची सर्वोच्च रूप आहे. जेव्हा तुम्ही क्षेत्राची सेवा करता, तेव्हा तुम्ही प्रत्यक्ष गुरूंची सेवा करता."', te:'"సేవ (నిస్వార్థ సేవ) ఆరాధనలో అత్యున్నత రూపం. మీరు క్షేత్రానికి సేవ చేసినప్పుడు, సాక్షాత్తు గురువుకే సేవ చేస్తారు."' },
+            vol_p:          { ta:'நீங்கள் காஞ்சிபுரத்துக்கு அருகில் இருந்தாலும் சரி, தொலைவில் இருந்தாலும் சரி, ஒவ்வொரு பக்தருக்கும் ஒரு அர்த்தமுள்ள பங்கு உண்டு — ஓர் உணவை வழங்குவது முதல் விழாக்களில் பங்கேற்பது வரை, தகவல் தொடர்பில் உதவுவது முதல் வருகையாளர்களை வரவேற்பது வரை.', hi:'चाहे आप कांचीपुरम के पास हों या दूर, हर भक्त के लिए एक सार्थक भूमिका है — भोजन प्रायोजित करने से लेकर उत्सवों में भाग लेने तक, संचार में सहायता करने से लेकर आगंतुकों के स्वागत तक।', mr:'तुम्ही कांचीपुरमजवळ असा किंवा दूर, प्रत्येक भक्तासाठी एक अर्थपूर्ण भूमिका आहे — जेवण प्रायोजित करण्यापासून उत्सवांत सहभागी होण्यापर्यंत, संवादात मदत करण्यापासून पाहुण्यांचे स्वागत करण्यापर्यंत.', te:'మీరు కంచీపురం దగ్గర ఉన్నా, దూరంగా ఉన్నా, ప్రతి భక్తునికీ ఒక అర్థవంతమైన పాత్ర ఉంది — భోజనం స్పాన్సర్ చేయడం నుంచి ఉత్సవాల్లో పాల్గొనడం వరకు, సమాచార సహాయం నుంచి సందర్శకులను స్వాగతించడం వరకు.' },
+            vol_btn_connect:{ ta:'அறக்கட்டளையுடன் தொடர்பு கொள்ளுங்கள் →', hi:'ट्रस्ट से जुड़ें →', mr:'ट्रस्टशी संपर्क साधा →', te:'ట్రస్ట్‌తో సంప్రదించండి →' },
+            role1_h4:       { ta:'அன்னதான வழங்குநர்', hi:'अन्नदान प्रायोजक', mr:'अन्नदान प्रायोजक', te:'అన్నదాన దాత' },
+            role1_p:        { ta:'எந்த விழா நாளிலும் அல்லது அமாவாசை / பௌர்ணமி அன்று ஓர் உணவை வழங்குங்கள். பக்தர்களுக்கு உணவளித்து அன்னதானப் புண்ணியத்தைப் பெறுங்கள்.', hi:'किसी भी उत्सव दिवस या अमावस्या / पूर्णिमा पर भोजन प्रायोजित करें। भक्तों को भोजन कराएँ और अन्नदान का पुण्य प्राप्त करें।', mr:'कोणत्याही उत्सवदिनी किंवा अमावस्या / पौर्णिमेला जेवण प्रायोजित करा. भक्तांना भोजन द्या आणि अन्नदानाचे पुण्य मिळवा.', te:'ఏ ఉత్సవ దినాన లేదా అమావాస్య / పౌర్ణమి నాడు భోజనాన్ని స్పాన్సర్ చేయండి. భక్తులకు అన్నం పెట్టి అన్నదాన పుణ్యాన్ని పొందండి.' },
+            role2_h4:       { ta:'கோசாலை சேவை', hi:'गोशाला सेवा', mr:'गोशाळा सेवा', te:'గోశాల సేవ' },
+            role2_p:        { ta:'பசுக்களின் தினசரி பராமரிப்புக்கு — தீவனம், சுத்தம், அல்லது அவற்றின் பராமரிப்புக்கு நிதியுதவி — பங்களியுங்கள். கோமாதாவின் அருள் எல்லையற்றது.', hi:'गायों की दैनिक देखभाल में योगदान करें — चारा, सफाई या उनके पालन-पोषण का प्रायोजन। गोमाता की कृपा असीम है।', mr:'गायींच्या दैनंदिन देखभालीस हातभार लावा — चारा, स्वच्छता किंवा त्यांच्या निगराणीचे प्रायोजन. गोमातेची कृपा अमर्याद आहे.', te:'గోవుల నిత్య సంరక్షణకు తోడ్పడండి — మేత, శుభ్రత, లేదా వాటి పోషణకు స్పాన్సర్‌షిప్. గోమాత అనుగ్రహం అపరిమితం.' },
+            role3_h4:       { ta:'விழா தொண்டர்', hi:'उत्सव स्वयंसेवक', mr:'उत्सव स्वयंसेवक', te:'ఉత్సవ స్వచ్ఛంద సేవకుడు' },
+            role3_p:        { ta:'கோயிலில் முக்கிய விழாக்கள் மற்றும் தினசரி பூஜைகளை ஏற்பாடு செய்வது, அலங்கரிப்பது, நடத்துவதில் உதவுங்கள்.', hi:'मंदिर में प्रमुख उत्सवों और दैनिक पूजाओं के आयोजन, सजावट और संचालन में सहायता करें।', mr:'मंदिरातील प्रमुख उत्सव आणि दैनिक पूजांचे आयोजन, सजावट आणि संचालन यात मदत करा.', te:'ఆలయంలో ప్రధాన ఉత్సవాలు, నిత్య పూజల ఏర్పాటు, అలంకరణ, నిర్వహణలో సహాయం చేయండి.' },
+            role4_h4:       { ta:'விழிப்புணர்வு & பரப்புரை', hi:'प्रचार और जागरूकता', mr:'प्रसार आणि जनजागृती', te:'ప్రచారం & అవగాహన' },
+            role4_p:        { ta:'சமூக ஊடகங்கள், வாய்மொழி, அல்லது அச்சுப் பொருட்கள் வழியே கோயிலின் நோக்கம் குறித்த விழிப்புணர்வைப் பரப்ப உதவுங்கள்.', hi:'सोशल मीडिया, मौखिक प्रचार या मुद्रित सामग्री के माध्यम से मंदिर के उद्देश्य के बारे में जागरूकता फैलाने में सहायता करें।', mr:'सोशल मीडिया, तोंडी प्रचार किंवा छापील साहित्याद्वारे मंदिराच्या उद्दिष्टाबद्दल जनजागृती करण्यात मदत करा.', te:'సోషల్ మీడియా, మాట ద్వారా, లేదా ముద్రిత సామగ్రి ద్వారా ఆలయ లక్ష్యంపై అవగాహన పెంచడంలో సహాయం చేయండి.' },
+            vol_cta_h3:     { ta:'உங்கள் சேவையைத் தொடங்கத் தயாரா?', hi:'अपनी सेवा शुरू करने के लिए तैयार हैं?', mr:'तुमची सेवा सुरू करण्यास तयार आहात?', te:'మీ సేవను ప్రారంభించడానికి సిద్ధంగా ఉన్నారా?' },
+            vol_cta_p:      { ta:'அறக்கட்டளையை நேரடியாகத் தொடர்பு கொள்ளுங்கள். பெரிதோ சிறிதோ, ஒவ்வொரு சேவையும் குருவால் அன்புடனும் நன்றியுடனும் ஏற்கப்படுகிறது.', hi:'ट्रस्ट से सीधे संपर्क करें। सेवा का हर कार्य, चाहे बड़ा हो या छोटा, गुरु द्वारा प्रेम और कृतज्ञता से स्वीकार किया जाता है।', mr:'ट्रस्टशी थेट संपर्क साधा. सेवेचे प्रत्येक कार्य, लहान असो वा मोठे, गुरूंकडून प्रेम आणि कृतज्ञतेने स्वीकारले जाते.', te:'ట్రస్ట్‌ను నేరుగా సంప్రదించండి. చిన్నదైనా పెద్దదైనా, ప్రతి సేవను గురువు ప్రేమతో, కృతజ్ఞతతో స్వీకరిస్తారు.' },
+            vol_cta_btn:    { ta:'அறக்கட்டளையை அழையுங்கள் —', hi:'ट्रस्ट को कॉल करें —', mr:'ट्रस्टला कॉल करा —', te:'ట్రస్ట్‌కు కాల్ చేయండి —' },
+            con_eyebrow:    { ta:'வாருங்கள், தரிசியுங்கள், அருள் பெறுங்கள்', hi:'आइए, दर्शन कीजिए, कृपा पाइए', mr:'या, दर्शन घ्या, कृपा मिळवा', te:'రండి, దర్శించండి, అనుగ్రహం పొందండి' },
+            con_title:      { ta:'தொடர்பு & இடம்', hi:'संपर्क और स्थान', mr:'संपर्क आणि स्थान', te:'సంప్రదింపు & స్థానం' },
+            con_subtitle:   { ta:'பக்தர்கள் வருகை தந்து, ஸ்வாமியிடம் சங்கல்பம் செய்து, தங்கள் கைகளாலேயே அபிஷேகம், அலங்காரம், நைவேத்யம் செய்து தெய்வீக ஆனந்தத்தை அனுபவிக்கலாம்.', hi:'भक्त मंदिर आकर स्वामी को संकल्प कर सकते हैं और अपने हाथों से अभिषेक, अलंकार और नैवेद्य कर दिव्य आनंद का अनुभव कर सकते हैं।', mr:'भक्त येऊन स्वामींना संकल्प करू शकतात आणि स्वतःच्या हातांनी अभिषेक, अलंकार आणि नैवेद्य करून दिव्य आनंद अनुभवू शकतात.', te:'భక్తులు వచ్చి, స్వామికి సంకల్పం చేసి, తమ చేతులతోనే అభిషేకం, అలంకారం, నైవేద్యం చేసి దివ్య ఆనందాన్ని అనుభవించవచ్చు.' },
+            con_card_h3:    { ta:'அறங்காவலர் தொடர்பு எண்கள்', hi:'न्यासी संपर्क नंबर', mr:'विश्वस्त संपर्क क्रमांक', te:'ధర్మకర్తల సంప్రదింపు నంబర్లు' },
+            con_label_trust:{ ta:'SSMS அறக்கட்டளை', hi:'SSMS ट्रस्ट', mr:'SSMS ट्रस्ट', te:'SSMS ట్రస్ట్' },
+            con_label_email:{ ta:'மின்னஞ்சல்', hi:'ईमेल', mr:'ईमेल', te:'ఇమెయిల్' },
+            con_label_address:{ ta:'முகவரி', hi:'पता', mr:'पत्ता', te:'చిరునామా' },
+            con_label_gps:  { ta:'GPS ஆயத்தொலைவுகள்', hi:'GPS निर्देशांक', mr:'GPS निर्देशांक', te:'GPS అక్షాంశాలు' },
+            con_address_value:{ ta:'மருதிபுரம், மருதம் குளக்கரை, உத்திரமேரூர், காஞ்சிபுரம், தமிழ்நாடு — 603 406', hi:'मारुतिपुरम, मरुदम कुलक्कराई, उत्तिरमेरूर, कांचीपुरम, तमिलनाडु — 603 406', mr:'मारुतीपुरम, मरुदम कुलक्कराई, उत्तिरमेरूर, कांचीपुरम, तमिळनाडू — 603 406', te:'మారుతిపురం, మరుదం కులక్కరై, ఉత్తిరమేరూర్, కంచీపురం, తమిళనాడు — 603 406' },
+            con_maps_btn:   { ta:'📍 கூகுள் வரைபடத்தில் திறக்க', hi:'📍 गूगल मैप्स में खोलें', mr:'📍 गूगल मॅप्समध्ये उघडा', te:'📍 గూగుల్ మ్యాప్స్‌లో తెరవండి' },
+            con_map_click:  { ta:'கூகுள் வரைபடத்தில் திறக்க கிளிக் செய்யுங்கள்', hi:'गूगल मैप्स में खोलने के लिए क्लिक करें', mr:'गूगल मॅप्समध्ये उघडण्यासाठी क्लिक करा', te:'గూగుల్ మ్యాప్స్‌లో తెరవడానికి క్లిక్ చేయండి' },
+            con_callout:    { ta:'"வந்தீர்... கண்டீர்... பெற்றீர்..." — இந்தப் புனித இடத்திற்கு வரும் ஒவ்வொரு உண்மையான பக்தருக்கும் குருவின் அருள் காத்திருக்கிறது.', hi:'"आप आए... आपने देखा... आपने पाया..." — इस पवित्र स्थान पर आने वाले हर सच्चे भक्त के लिए गुरु की कृपा प्रतीक्षारत है।', mr:'"तुम्ही आलात... तुम्ही पाहिलेत... तुम्हाला मिळाले..." — या पवित्र स्थळी येणाऱ्या प्रत्येक प्रामाणिक भक्तासाठी गुरूंची कृपा वाट पाहत आहे.', te:'"మీరు వచ్చారు... చూశారు... పొందారు..." — ఈ పవిత్ర స్థలాన్ని సందర్శించే ప్రతి నిజమైన భక్తునికి గురువు అనుగ్రహం ఎదురుచూస్తోంది.' },
+            footer_org:     { ta:'ஸ்வாமி சமர்த்த மகாராஜ் சேவா சமஸ்தான் அறக்கட்டளை', hi:'स्वामी समर्थ महाराज सेवा समस्थान ट्रस्ट', mr:'स्वामी समर्थ महाराज सेवा समस्थान ट्रस्ट', te:'స్వామి సమర్థ మహారాజ్ సేవా సమస్థాన్ ట్రస్ట్' },
+            footer_quicklinks:{ ta:'விரைவு இணைப்புகள்', hi:'त्वरित लिंक', mr:'त्वरित दुवे', te:'త్వరిత లింకులు' },
+            fl_about:       { ta:'கோயிலைப் பற்றி', hi:'मंदिर के बारे में', mr:'मंदिराविषयी', te:'ఆలయం గురించి' },
+            fl_origin:      { ta:'எங்கள் தோற்றம்', hi:'हमारा उद्गम', mr:'आमचा उगम', te:'మా ఆవిర్భావం' },
+            fl_goshala:     { ta:'கோசாலை சேவை', hi:'गोशाला सेवा', mr:'गोशाळा सेवा', te:'గోశాల సేవ' },
+            fl_events:      { ta:'விழாக்கள் & நிகழ்வுகள்', hi:'उत्सव और कार्यक्रम', mr:'उत्सव आणि कार्यक्रम', te:'ఉత్సవాలు & కార్యక్రమాలు' },
+            footer_support: { ta:'ஆதரவு', hi:'सहयोग', mr:'सहकार्य', te:'సహకారం' },
+            fs_donate:      { ta:'நன்கொடை & சேவை வழங்குதல்', hi:'दान करें और सेवा प्रायोजित करें', mr:'देणगी द्या आणि सेवा प्रायोजित करा', te:'విరాళం & సేవ స్పాన్సర్ చేయండి' },
+            fs_contact:     { ta:'அறக்கட்டளையைத் தொடர்பு கொள்ள', hi:'ट्रस्ट से संपर्क करें', mr:'ट्रस्टशी संपर्क करा', te:'ట్రస్ట్‌ను సంప్రదించండి' },
+            fs_youtube:     { ta:'YouTube-ல் காண்க', hi:'YouTube पर देखें', mr:'YouTube वर पाहा', te:'YouTube లో చూడండి' },
+            footer_copyright:{ ta:'© 2026 ஸ்வாமி சமர்த்த மகாராஜ் சேவா சமஸ்தான். அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.', hi:'© 2026 स्वामी समर्थ महाराज सेवा समस्थान। सर्वाधिकार सुरक्षित।', mr:'© 2026 स्वामी समर्थ महाराज सेवा समस्थान. सर्व हक्क राखीव.', te:'© 2026 స్వామి సమర్థ మహారాజ్ సేవా సమస్థాన్. సర్వ హక్కులు రిజర్వ్‌డ్.' },
+            footer_tagline: { ta:'பக்தியுடன் வடிவமைக்கப்பட்டது · காஞ்சிபுரம், தமிழ்நாடு', hi:'भक्ति के साथ निर्मित · कांचीपुरम, तमिलनाडु', mr:'भक्तीने साकारलेले · कांचीपुरम, तमिळनाडू', te:'భక్తితో రూపొందించబడింది · కంచీపురం, తమిళనాడు' }
+        });
+        // I18N_ENTRIES
 
-        function updateLocalizedContent(langCode) {
-            document.querySelectorAll('[data-i18n]').forEach(function(node) {
-                var key = node.getAttribute('data-i18n');
-                var set = localizedContent[key];
-                if (set) node.textContent = set[langCode] || set.en;
+        /* Capture original (English) text for every translatable node. */
+        var I18N_NODES = document.querySelectorAll('[data-i18n]');
+        I18N_NODES.forEach(function(el) { el.setAttribute('data-en', el.textContent.trim()); });
+
+        function setLang(lang) {
+            document.documentElement.lang = lang;
+            I18N_NODES.forEach(function(el) {
+                var key = el.getAttribute('data-i18n');
+                if (lang === 'en') { el.textContent = el.getAttribute('data-en'); return; }
+                var set = I18N[key];
+                el.textContent = (set && set[lang]) ? set[lang] : el.getAttribute('data-en');
             });
+            document.querySelectorAll('.lang-btn').forEach(function(b) {
+                b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+            });
+            try { localStorage.setItem('temple_lang', lang); } catch (e) {}
         }
 
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                includedLanguages: 'en,ta,hi,mr,te',
-                autoDisplay: false
-            }, 'google_translate_element');
-            updateLocalizedContent('en');
-        }
-
-        function triggerLanguage(langCode) {
-            document.querySelectorAll('.lang-btn').forEach(function(b) { b.classList.remove('active'); });
-            event.target.classList.add('active');
-            var sel = document.querySelector('.goog-te-combo');
-            if (sel) {
-                sel.value = langCode;
-                sel.dispatchEvent(new Event('change'));
-                setTimeout(function() { updateLocalizedContent(langCode); }, 150);
-            } else {
-                alert('Translation tool is loading... please try again in a moment.');
-            }
-        }
+        /* Restore previously chosen language. */
+        (function() {
+            var saved = 'en';
+            try { saved = localStorage.getItem('temple_lang') || 'en'; } catch (e) {}
+            if (saved !== 'en') setLang(saved);
+        })();
 
         /* ===== NAV SCROLL EFFECT ===== */
         var nav = document.getElementById('mainNav');
@@ -1012,7 +1184,5 @@
             btn.classList.add('active');
         }
     </script>
-
-    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
