@@ -6,7 +6,25 @@
     <!-- Stop browser (Chrome/Edge) auto-translate from reverting our own language switcher -->
     <meta name="google" content="notranslate">
     <meta http-equiv="Content-Language" content="en">
-    <title>Sri Guru Datta Paduka Kshetra | Swami Samartha Maharaj Seva Samasthan</title>
+    <title>Datta Sannidhi · Sri Guru Datta Paduka Kshetra | Swami Samartha Maharaj Seva Samasthan</title>
+
+    <!-- ===== SEO & SOCIAL PREVIEW =====
+         IMPORTANT: replace the 3 occurrences of  https://your-domain.org  below
+         with your real domain before going live (needed for WhatsApp/Facebook previews). -->
+    <meta name="description" content="Datta Sannidhi — the official site of Sri Guru Datta Paduka Kshetra, Swami Samartha Maharaj Seva Samasthan, Maruthipuram, Kanchipuram. Darshan, daily sevas, Goshala seva, festivals and donations. Available in English, Tamil, Hindi, Marathi & Telugu.">
+    <meta name="theme-color" content="#7B1F1A">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%237B1F1A'/%3E%3Ctext x='50' y='73' font-size='66' text-anchor='middle' fill='%23F5A94A'%3E%E0%A5%90%3C/text%3E%3C/svg%3E">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Datta Sannidhi">
+    <meta property="og:title" content="Datta Sannidhi — Sri Guru Datta Paduka Kshetra">
+    <meta property="og:description" content="Darshan, daily sevas, Goshala seva, festivals & donations at Sri Guru Datta Paduka Kshetra, Kanchipuram. In English, Tamil, Hindi, Marathi & Telugu.">
+    <meta property="og:image" content="https://your-domain.org/1.jpg.jpeg">
+    <meta property="og:url" content="https://your-domain.org/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Datta Sannidhi — Sri Guru Datta Paduka Kshetra">
+    <meta name="twitter:description" content="Darshan, daily sevas, Goshala seva, festivals & donations at Sri Guru Datta Paduka Kshetra, Kanchipuram.">
+    <meta name="twitter:image" content="https://your-domain.org/1.jpg.jpeg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Hind+Madurai:wght@300;400;500;600&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Noto+Serif+Tamil:wght@500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@500;600;700&family=Noto+Sans+Telugu:wght@400;500;600;700&family=Noto+Serif+Telugu:wght@500;600;700&display=swap" rel="stylesheet">
@@ -88,10 +106,20 @@
         .reveal-delay-3 { transition-delay: 0.3s; }
         .reveal-delay-4 { transition-delay: 0.4s; }
 
-        /* ===== LANGUAGE BAR ===== */
-        .lang-bar { background: var(--maroon-dark); padding: 10px 0; position: relative; z-index: 100; }
-        .lang-bar .container { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; align-items: center; }
+        /* ===== TOP UTILITY BAR ===== */
+        .lang-bar { background: var(--maroon-dark); padding: 9px 0; position: relative; z-index: 100; }
+        .lang-bar .container { display: flex; flex-wrap: wrap; gap: 10px 18px; justify-content: space-between; align-items: center; }
+        .topbar-brand { font-family: var(--font-serif); font-weight: 700; font-size: 1rem; letter-spacing: 0.4px; color: var(--saffron-light); display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+        .lang-switch { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: center; }
         .lang-label { font-size: 0.75rem; color: rgba(255,255,255,0.5); letter-spacing: 1px; text-transform: uppercase; margin-right: 4px; }
+        .visitor-count { display: inline-flex; align-items: center; gap: 7px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); padding: 4px 12px; border-radius: 999px; font-size: 0.78rem; color: rgba(255,255,255,0.75); white-space: nowrap; }
+        .visitor-count .vc-num { color: var(--saffron-light); font-weight: 700; font-variant-numeric: tabular-nums; }
+        .visitor-count .vc-label { text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.7rem; }
+        @media (max-width: 620px) {
+            .lang-bar .container { justify-content: center; }
+            .topbar-brand { width: 100%; justify-content: center; }
+            .visitor-count .vc-label { display: none; }
+        }
         .lang-btn { border: 1px solid rgba(255,255,255,0.25); color: rgba(255,255,255,0.85); background: transparent; padding: 5px 14px; border-radius: 999px; cursor: pointer; font-size: 0.85rem; font-weight: 600; font-family: var(--font-sans); transition: var(--transition); }
         .lang-btn:hover, .lang-btn.active { background: var(--saffron); color: var(--ink); border-color: var(--saffron); }
 
@@ -307,15 +335,23 @@
 </head>
 <body>
 
-    <!-- LANGUAGE BAR -->
+    <!-- TOP UTILITY BAR: brand · language · visitor count -->
     <div class="lang-bar">
         <div class="container">
-            <span class="lang-label" data-i18n="ui_language">Language:</span>
-            <button class="lang-btn active" data-lang="en" onclick="setLang('en')">English</button>
-            <button class="lang-btn" data-lang="ta" onclick="setLang('ta')">தமிழ்</button>
-            <button class="lang-btn" data-lang="hi" onclick="setLang('hi')">हिंदी</button>
-            <button class="lang-btn" data-lang="mr" onclick="setLang('mr')">मराठी</button>
-            <button class="lang-btn" data-lang="te" onclick="setLang('te')">తెలుగు</button>
+            <div class="topbar-brand">🕉️ <span data-i18n="site_brand">Datta Sannidhi</span></div>
+            <div class="lang-switch">
+                <span class="lang-label" data-i18n="ui_language">Language:</span>
+                <button class="lang-btn active" data-lang="en" onclick="setLang('en')">English</button>
+                <button class="lang-btn" data-lang="ta" onclick="setLang('ta')">தமிழ்</button>
+                <button class="lang-btn" data-lang="hi" onclick="setLang('hi')">हिंदी</button>
+                <button class="lang-btn" data-lang="mr" onclick="setLang('mr')">मराठी</button>
+                <button class="lang-btn" data-lang="te" onclick="setLang('te')">తెలుగు</button>
+            </div>
+            <div class="visitor-count" id="visitorCount" title="Visitors to this site">
+                <span class="vc-icon">🙏</span>
+                <span class="vc-num" id="vcNum">…</span>
+                <span class="vc-label" data-i18n="visitors_label">Visitors</span>
+            </div>
         </div>
     </div>
 
@@ -336,6 +372,7 @@
                 <li><a href="#events" data-i18n="nav_events">Events</a></li>
                 <li><a href="#gallery" data-i18n="nav_gallery">Gallery</a></li>
                 <li><a href="#volunteer" data-i18n="nav_volunteer">Volunteer</a></li>
+                <li><a href="#timings" data-i18n="nav_timings">Timings</a></li>
                 <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
                 <li><a href="#donations" class="nav-donate-btn" data-i18n="nav_donate">Donate</a></li>
             </ul>
@@ -877,6 +914,30 @@
             </div>
         </section>
 
+        <!-- DARSHAN TIMINGS -->
+        <section id="timings" style="background: var(--cream-dark);">
+            <div class="container">
+                <span class="section-eyebrow reveal" data-i18n="tim_eyebrow">Open Every Day</span>
+                <h2 class="section-title reveal" data-i18n="tim_title">Darshan Timings</h2>
+                <p class="section-subtitle reveal" data-i18n="tim_subtitle">The temple is open daily for darshan. All devotees are welcome.</p>
+
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:28px; max-width:620px; margin:0 auto;">
+                    <div class="card reveal reveal-delay-1" style="text-align:center; padding:36px 28px;">
+                        <div style="font-size:2.6rem; margin-bottom:12px;">🌅</div>
+                        <div style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:var(--saffron); margin-bottom:10px;" data-i18n="tim_morning_label">Morning</div>
+                        <div style="font-family:var(--font-serif); font-size:1.7rem; font-weight:700; color:var(--maroon); line-height:1.2;" data-i18n="tim_morning_hours">8:00 AM – 12:00 PM</div>
+                    </div>
+                    <div class="card reveal reveal-delay-2" style="text-align:center; padding:36px 28px;">
+                        <div style="font-size:2.6rem; margin-bottom:12px;">🌆</div>
+                        <div style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:var(--saffron); margin-bottom:10px;" data-i18n="tim_evening_label">Evening</div>
+                        <div style="font-family:var(--font-serif); font-size:1.7rem; font-weight:700; color:var(--maroon); line-height:1.2;" data-i18n="tim_evening_hours">5:30 PM – 8:00 PM</div>
+                    </div>
+                </div>
+
+                <p class="reveal" style="text-align:center; margin-top:32px; font-size:0.9rem; color:var(--ink-light);" data-i18n="tim_note">Timings are the same on all days including festivals and special occasions.</p>
+            </div>
+        </section>
+
     </main>
 
     <!-- FOOTER -->
@@ -895,6 +956,7 @@
                         <li><a href="#origin" data-i18n="fl_origin">Our Origin</a></li>
                         <li><a href="#goshala" data-i18n="fl_goshala">Goshala Seva</a></li>
                         <li><a href="#events" data-i18n="fl_events">Festivals &amp; Events</a></li>
+                        <li><a href="#timings" data-i18n="fl_timings">Darshan Timings</a></li>
                         <li><a href="#gallery" data-i18n="nav_gallery">Gallery</a></li>
                         <li><a href="#volunteer" data-i18n="nav_volunteer">Volunteer</a></li>
                     </ul>
@@ -919,10 +981,20 @@
     </footer>
 
     <script>
+        /* ===== VISITOR COUNTER (GoatCounter) — one-time setup =====
+           1. Sign up free at https://www.goatcounter.com/ and choose a site code
+              (the first part of your address, e.g. "datta-sannidhi" -> datta-sannidhi.goatcounter.com).
+           2. Paste ONLY that code below (not the full URL).
+           3. In GoatCounter: Settings -> enable "Allow showing the visitor counter publicly".
+           Until a real code is set here, the counter stays hidden automatically. */
+        var GOATCOUNTER_CODE = 'YOUR_GOATCOUNTER_CODE';
+
         /* ===== TRANSLATIONS (ta / hi / mr / te). English is the authored HTML,
            captured per-element on load so switching back to English is lossless. ===== */
         var I18N = {};
         Object.assign(I18N, {
+            site_brand:     { ta:'தத்த ஸந்நிதி', hi:'दत्त सन्निधि', mr:'दत्त सन्निधी', te:'దత్త సన్నిధి' },
+            visitors_label: { ta:'பார்வையாளர்கள்', hi:'दर्शक', mr:'दर्शक', te:'సందర్శకులు' },
             ui_language:    { ta:'மொழி', hi:'भाषा', mr:'भाषा', te:'భాష' },
             nav_about:      { ta:'அறிமுகம்', hi:'परिचय', mr:'परिचय', te:'పరిచయం' },
             nav_origin:     { ta:'தோற்றம்', hi:'उद्गम', mr:'उगम', te:'ఆవిర్భావం' },
@@ -1101,7 +1173,17 @@
             con_map_click:  { ta:'கூகுள் வரைபடத்தில் திறக்க கிளிக் செய்யுங்கள்', hi:'गूगल मैप्स में खोलने के लिए क्लिक करें', mr:'गूगल मॅप्समध्ये उघडण्यासाठी क्लिक करा', te:'గూగుల్ మ్యాప్స్‌లో తెరవడానికి క్లిక్ చేయండి' },
             con_callout:    { ta:'"வந்தீர்... கண்டீர்... பெற்றீர்..." — இந்தப் புனித இடத்திற்கு வரும் ஒவ்வொரு உண்மையான பக்தருக்கும் குருவின் அருள் காத்திருக்கிறது.', hi:'"आप आए... आपने देखा... आपने पाया..." — इस पवित्र स्थान पर आने वाले हर सच्चे भक्त के लिए गुरु की कृपा प्रतीक्षारत है।', mr:'"तुम्ही आलात... तुम्ही पाहिलेत... तुम्हाला मिळाले..." — या पवित्र स्थळी येणाऱ्या प्रत्येक प्रामाणिक भक्तासाठी गुरूंची कृपा वाट पाहत आहे.', te:'"మీరు వచ్చారు... చూశారు... పొందారు..." — ఈ పవిత్ర స్థలాన్ని సందర్శించే ప్రతి నిజమైన భక్తునికి గురువు అనుగ్రహం ఎదురుచూస్తోంది.' },
             footer_org:     { ta:'ஸ்வாமி சமர்த்த மகாராஜ் சேவா சமஸ்தான் அறக்கட்டளை', hi:'स्वामी समर्थ महाराज सेवा समस्थान ट्रस्ट', mr:'स्वामी समर्थ महाराज सेवा समस्थान ट्रस्ट', te:'స్వామి సమర్థ మహారాజ్ సేవా సమస్థాన్ ట్రస్ట్' },
+            nav_timings:        { ta:'தரிசன நேரம்',          hi:'दर्शन समय',              mr:'दर्शन वेळ',              te:'దర్శన సమయాలు' },
+            tim_eyebrow:        { ta:'தினமும் திறந்திருக்கும்', hi:'प्रतिदिन खुला',          mr:'दररोज उघडे',            te:'ప్రతిరోజూ తెరిచి ఉంటుంది' },
+            tim_title:          { ta:'தரிசன நேரம்',          hi:'दर्शन समय',              mr:'दर्शन वेळ',              te:'దర్శన సమయాలు' },
+            tim_subtitle:       { ta:'கோயில் தினமும் தரிசனத்திற்காக திறந்திருக்கும். அனைத்து பக்தர்களும் வரவேற்கப்படுகிறார்கள்.', hi:'मंदिर प्रतिदिन दर्शन के लिए खुला रहता है। सभी भक्तों का स्वागत है।', mr:'मंदिर दररोज दर्शनासाठी उघडे असते. सर्व भक्तांचे स्वागत आहे.', te:'ఆలయం దర్శనం కోసం ప్రతిరోజూ తెరిచి ఉంటుంది. అందరు భక్తులకు స్వాగతం.' },
+            tim_morning_label:  { ta:'காலை',                 hi:'प्रातःकाल',              mr:'सकाळ',                  te:'ఉదయం' },
+            tim_morning_hours:  { ta:'காலை 8:00 – 12:00',   hi:'सुबह 8:00 – दोपहर 12:00', mr:'सकाळी 8:00 – दुपारी 12:00', te:'ఉదయం 8:00 – మధ్యాహ్నం 12:00' },
+            tim_evening_label:  { ta:'மாலை',                 hi:'सायंकाल',               mr:'संध्याकाळ',              te:'సాయంత్రం' },
+            tim_evening_hours:  { ta:'மாலை 5:30 – இரவு 8:00', hi:'शाम 5:30 – रात 8:00', mr:'संध्या 5:30 – रात्री 8:00', te:'సాయంత్రం 5:30 – రాత్రి 8:00' },
+            tim_note:           { ta:'விழா மற்றும் சிறப்பு நாட்களிலும் நேரம் மாறாது.', hi:'त्योहारों और विशेष दिनों पर भी समय वही रहता है।', mr:'सण आणि विशेष दिवसांवरही वेळ तीच राहते.', te:'పండుగలు మరియు ప్రత్యేక రోజులలో కూడా సమయాలు మారవు.' },
             footer_quicklinks:{ ta:'விரைவு இணைப்புகள்', hi:'त्वरित लिंक', mr:'त्वरित दुवे', te:'త్వరిత లింకులు' },
+            fl_timings:     { ta:'தரிசன நேரம்', hi:'दर्शन समय', mr:'दर्शन वेळ', te:'దర్శన సమయాలు' },
             fl_about:       { ta:'கோயிலைப் பற்றி', hi:'मंदिर के बारे में', mr:'मंदिराविषयी', te:'ఆలయం గురించి' },
             fl_origin:      { ta:'எங்கள் தோற்றம்', hi:'हमारा उद्गम', mr:'आमचा उगम', te:'మా ఆవిర్భావం' },
             fl_goshala:     { ta:'கோசாலை சேவை', hi:'गोशाला सेवा', mr:'गोशाळा सेवा', te:'గోశాల సేవ' },
@@ -1138,6 +1220,35 @@
             var saved = 'en';
             try { saved = localStorage.getItem('temple_lang') || 'en'; } catch (e) {}
             if (saved !== 'en') setLang(saved);
+        })();
+
+        /* ===== VISITOR COUNTER INIT ===== */
+        (function initVisitorCount() {
+            var box = document.getElementById('visitorCount');
+            if (!box) return;
+            if (!GOATCOUNTER_CODE || GOATCOUNTER_CODE === 'YOUR_GOATCOUNTER_CODE') {
+                // Not configured yet: show a placeholder during local preview so you can see
+                // the placement, but stay hidden on the real hosted site until you add your code.
+                if (location.protocol === 'file:') { document.getElementById('vcNum').textContent = '—'; }
+                else { box.style.display = 'none'; }
+                return;
+            }
+            var base = 'https://' + GOATCOUNTER_CODE + '.goatcounter.com';
+            // 1) record this pageview
+            var s = document.createElement('script');
+            s.async = true;
+            s.src = '//gc.zgo.at/count.js';
+            s.setAttribute('data-goatcounter', base + '/count');
+            document.body.appendChild(s);
+            // 2) display the running total
+            fetch(base + '/counter/TOTAL.json')
+                .then(function (r) { return r.json(); })
+                .then(function (d) {
+                    var n = (d && (d.count || d.count_unique));
+                    if (n) document.getElementById('vcNum').textContent = n;
+                    else box.style.display = 'none';
+                })
+                .catch(function () { box.style.display = 'none'; });
         })();
 
         /* ===== NAV SCROLL EFFECT ===== */
